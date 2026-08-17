@@ -9,8 +9,8 @@
 		<Company>Tacure</Company>
 		<Product>Massini Libs</Product>
 		
-		<Description>Massini is a collection of libraries and bindings.</Description>
-		<PackageDescription>Massini is a collection of libraries and bindings.</PackageDescription>
+		<Description>Massini is a collection of libraries and bindings focused on game development and multimedia applications.</Description>
+		<PackageDescription>Massini is a collection of libraries and bindings focused on game development and multimedia applications.</PackageDescription>
 		
 		<Copyright>Copyright © Tacure</Copyright>
 	</PropertyGroup>
