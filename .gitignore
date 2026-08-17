@@ -1,6 +1,7 @@
 nuget/
 artifacts/
 .vs/
+.vscode/
 *.sln
 !UnoGL.sln
 !Massini.slnx
