@@ -1,0 +1,29 @@
+namespace Massini.Bindings.Vulkan
+{
+    public unsafe partial struct VkPipelineMultisampleStateCreateInfo
+    {
+        public VkStructureType sType;
+
+        [NativeTypeName("const void *")]
+        public void* pNext;
+
+        [NativeTypeName("VkPipelineMultisampleStateCreateFlags")]
+        public uint flags;
+
+        public VkSampleCountFlagBits rasterizationSamples;
+
+        [NativeTypeName("VkBool32")]
+        public uint sampleShadingEnable;
+
+        public float minSampleShading;
+
+        [NativeTypeName("const VkSampleMask *")]
+        public uint* pSampleMask;
+
+        [NativeTypeName("VkBool32")]
+        public uint alphaToCoverageEnable;
+
+        [NativeTypeName("VkBool32")]
+        public uint alphaToOneEnable;
+    }
+}

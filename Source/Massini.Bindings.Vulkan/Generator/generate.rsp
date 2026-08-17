@@ -1,0 +1,55 @@
+# Library name
+-l
+vulkan
+
+# Methods class name
+--methodClassName
+Vk
+
+# Input header files
+--file
+./Include/vulkan/vulkan.h
+./Include/vulkan/vulkan_core.h
+./Include/vulkan/vulkan_win32.h
+./Include/vk_video/vulkan_video_codec_h265std.h
+./Include/vk_video/vulkan_video_codec_h265std_decode.h
+./Include/vk_video/vulkan_video_codec_h265std_encode.h
+./Include/vk_video/vulkan_video_codec_h264std.h
+./Include/vk_video/vulkan_video_codec_h264std_decode.h
+./Include/vk_video/vulkan_video_codec_h264std_encode.h
+./Include/vk_video/vulkan_video_codec_av1std.h
+./Include/vk_video/vulkan_video_codec_av1std_decode.h
+./Include/vk_video/vulkan_video_codec_av1std_encode.h
+
+# Output namespace for the generated C# code
+--namespace
+Atomic.Bindings.Vulkan
+
+# Output directory for the generated files
+--output
+../Interop/
+
+# Include directories for the C/C++ headers
+--include-directory
+./Include
+
+# Language of the input headers (c or c++)
+--language
+c++
+
+# Optional: Configuration options
+--config
+multi-file
+generate-helper-types
+generate-macro-bindings
+
+# Defines
+-D VK_ENABLE_BETA_EXTENSIONS=1
+-D VK_USE_PLATFORM_WIN32_KHR
+-D _WIN32
+-D VK_USE_PLATFORM_WIN32_KHR
+#-D VK_USE_PLATFORM_XCB_KHR
+#-D VK_USE_PLATFORM_XLIB_KHR
+-D VK_USE_PLATFORM_WAYLAND_KHR
+-D VK_USE_PLATFORM_METAL_EXT
+-D VK_USE_PLATFORM_ANDROID_KHR

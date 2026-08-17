@@ -1,0 +1,23 @@
+<Project>
+	<PropertyGroup>
+		<VersionPrefix>2026.1.0</VersionPrefix>
+		<VersionSuffix>alpha</VersionSuffix>
+		
+		<PackageIcon>AtomicLogo.png</PackageIcon>
+		
+		<Authors>Tacure</Authors>
+		<Company>Tacure</Company>
+		<Product>Massini Libs</Product>
+		
+		<Description>Massini is a collection of libraries and bindings.</Description>
+		<PackageDescription>Massini is a collection of libraries and bindings.</PackageDescription>
+		
+		<Copyright>Copyright © Tacure</Copyright>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)/Logo/AtomicLogo.png"
+			  Pack="true"
+			  PackagePath="" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,9 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkRayTracingLssPrimitiveEndCapsModeNV
+    {
+        VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_NONE_NV = 0,
+        VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_CHAINED_NV = 1,
+        VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_MAX_ENUM_NV = 0x7FFFFFFF,
+    }
+}

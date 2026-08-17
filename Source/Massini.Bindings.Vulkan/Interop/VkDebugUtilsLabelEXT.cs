@@ -1,0 +1,24 @@
+using System.Runtime.CompilerServices;
+
+namespace Massini.Bindings.Vulkan
+{
+    public unsafe partial struct VkDebugUtilsLabelEXT
+    {
+        public VkStructureType sType;
+
+        [NativeTypeName("const void *")]
+        public void* pNext;
+
+        [NativeTypeName("const char *")]
+        public sbyte* pLabelName;
+
+        [NativeTypeName("float[4]")]
+        public _color_e__FixedBuffer color;
+
+        [InlineArray(4)]
+        public partial struct _color_e__FixedBuffer
+        {
+            public float e0;
+        }
+    }
+}

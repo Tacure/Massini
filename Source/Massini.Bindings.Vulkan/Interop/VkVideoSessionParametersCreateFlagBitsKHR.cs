@@ -1,0 +1,8 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkVideoSessionParametersCreateFlagBitsKHR
+    {
+        VK_VIDEO_SESSION_PARAMETERS_CREATE_QUANTIZATION_MAP_COMPATIBLE_BIT_KHR = 0x00000001,
+        VK_VIDEO_SESSION_PARAMETERS_CREATE_FLAG_BITS_MAX_ENUM_KHR = 0x7FFFFFFF,
+    }
+}

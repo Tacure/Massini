@@ -1,0 +1,9 @@
+nuget/
+artifacts/
+.vs/
+*.sln
+!UnoGL.sln
+!Massini.slnx
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user

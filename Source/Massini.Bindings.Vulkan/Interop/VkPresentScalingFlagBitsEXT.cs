@@ -1,0 +1,10 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkPresentScalingFlagBitsEXT
+    {
+        VK_PRESENT_SCALING_ONE_TO_ONE_BIT_EXT = 0x00000001,
+        VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_EXT = 0x00000002,
+        VK_PRESENT_SCALING_STRETCH_BIT_EXT = 0x00000004,
+        VK_PRESENT_SCALING_FLAG_BITS_MAX_ENUM_EXT = 0x7FFFFFFF,
+    }
+}

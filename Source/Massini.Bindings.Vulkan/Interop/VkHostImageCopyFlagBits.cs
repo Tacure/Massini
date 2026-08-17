@@ -1,0 +1,9 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkHostImageCopyFlagBits
+    {
+        VK_HOST_IMAGE_COPY_MEMCPY = 0x00000001,
+        VK_HOST_IMAGE_COPY_MEMCPY_EXT = VK_HOST_IMAGE_COPY_MEMCPY,
+        VK_HOST_IMAGE_COPY_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF,
+    }
+}

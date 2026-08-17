@@ -1,0 +1,12 @@
+namespace Massini.Bindings.Vulkan
+{
+    public unsafe partial struct VkPhysicalDeviceVideoMaintenance2FeaturesKHR
+    {
+        public VkStructureType sType;
+
+        public void* pNext;
+
+        [NativeTypeName("VkBool32")]
+        public uint videoMaintenance2;
+    }
+}

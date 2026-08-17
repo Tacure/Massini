@@ -1,0 +1,21 @@
+# Heavy binary formats
+Examples/**/*.glb filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.fbx filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.obj filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.ply filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.blend filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.exr filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.hdr filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.png filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.ktx filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.ktx2 filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.dds filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.wav filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.ogg filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.svg filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.swf filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.ttf filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.dll filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.so filter=lfs diff=lfs merge=lfs -text
+Examples/**/*.af filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,5 @@
+# Affinity Designer files.
+*.af filter=lfs diff=lfs merge=lfs -text
+
+# Other.
+*.png filter=lfs diff=lfs merge=lfs -text

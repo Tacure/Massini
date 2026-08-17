@@ -1,0 +1,20 @@
+namespace Massini.Bindings.Vulkan
+{
+    public partial struct VkCopyMemoryToImageIndirectCommandNV
+    {
+        [NativeTypeName("VkDeviceAddress")]
+        public ulong srcAddress;
+
+        [NativeTypeName("uint32_t")]
+        public uint bufferRowLength;
+
+        [NativeTypeName("uint32_t")]
+        public uint bufferImageHeight;
+
+        public VkImageSubresourceLayers imageSubresource;
+
+        public VkOffset3D imageOffset;
+
+        public VkExtent3D imageExtent;
+    }
+}

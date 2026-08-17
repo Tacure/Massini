@@ -1,0 +1,9 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkCoverageReductionModeNV
+    {
+        VK_COVERAGE_REDUCTION_MODE_MERGE_NV = 0,
+        VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV = 1,
+        VK_COVERAGE_REDUCTION_MODE_MAX_ENUM_NV = 0x7FFFFFFF,
+    }
+}

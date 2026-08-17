@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Massini.Bindings.Vulkan\Massini.Bindings.Vulkan.csproj" />
+    <ProjectReference Include="..\Massini.Bindings.Vma\Massini.Bindings.Vma.csproj" />
+    <ProjectReference Include="..\Massini\Massini.csproj" />
+    <ProjectReference Include="..\Massini.Math\Massini.Math.csproj" />
+    <ProjectReference Include="..\Massini.Collections\Massini.Collections.csproj" />
+    <ProjectReference Include="..\Massini.Graphics.Color\Massini.Graphics.Color.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+</Project>

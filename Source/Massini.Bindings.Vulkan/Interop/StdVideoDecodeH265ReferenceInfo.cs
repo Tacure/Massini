@@ -1,0 +1,10 @@
+namespace Massini.Bindings.Vulkan
+{
+    public partial struct StdVideoDecodeH265ReferenceInfo
+    {
+        public StdVideoDecodeH265ReferenceInfoFlags flags;
+
+        [NativeTypeName("int32_t")]
+        public int PicOrderCntVal;
+    }
+}

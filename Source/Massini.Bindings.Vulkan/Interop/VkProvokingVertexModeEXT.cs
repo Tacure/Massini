@@ -1,0 +1,9 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkProvokingVertexModeEXT
+    {
+        VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT = 0,
+        VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT = 1,
+        VK_PROVOKING_VERTEX_MODE_MAX_ENUM_EXT = 0x7FFFFFFF,
+    }
+}

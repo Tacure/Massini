@@ -1,0 +1,9 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkBlockMatchWindowCompareModeQCOM
+    {
+        VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM = 0,
+        VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM = 1,
+        VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_ENUM_QCOM = 0x7FFFFFFF,
+    }
+}

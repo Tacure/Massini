@@ -1,0 +1,8 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkInstanceCreateFlagBits
+    {
+        VK_INSTANCE_CREATE_ENUMERATE_PORTABILITY_BIT_KHR = 0x00000001,
+        VK_INSTANCE_CREATE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF,
+    }
+}

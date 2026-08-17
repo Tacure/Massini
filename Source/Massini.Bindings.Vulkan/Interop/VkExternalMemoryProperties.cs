@@ -1,0 +1,14 @@
+namespace Massini.Bindings.Vulkan
+{
+    public partial struct VkExternalMemoryProperties
+    {
+        [NativeTypeName("VkExternalMemoryFeatureFlags")]
+        public uint externalMemoryFeatures;
+
+        [NativeTypeName("VkExternalMemoryHandleTypeFlags")]
+        public uint exportFromImportedHandleTypes;
+
+        [NativeTypeName("VkExternalMemoryHandleTypeFlags")]
+        public uint compatibleHandleTypes;
+    }
+}

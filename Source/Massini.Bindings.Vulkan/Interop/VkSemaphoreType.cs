@@ -1,0 +1,11 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkSemaphoreType
+    {
+        VK_SEMAPHORE_TYPE_BINARY = 0,
+        VK_SEMAPHORE_TYPE_TIMELINE = 1,
+        VK_SEMAPHORE_TYPE_BINARY_KHR = VK_SEMAPHORE_TYPE_BINARY,
+        VK_SEMAPHORE_TYPE_TIMELINE_KHR = VK_SEMAPHORE_TYPE_TIMELINE,
+        VK_SEMAPHORE_TYPE_MAX_ENUM = 0x7FFFFFFF,
+    }
+}

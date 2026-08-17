@@ -1,0 +1,16 @@
+namespace Massini.Bindings.Vulkan
+{
+    public unsafe partial struct VkSwapchainPresentFenceInfoEXT
+    {
+        public VkStructureType sType;
+
+        [NativeTypeName("const void *")]
+        public void* pNext;
+
+        [NativeTypeName("uint32_t")]
+        public uint swapchainCount;
+
+        [NativeTypeName("const VkFence *")]
+        public VkFence_T** pFences;
+    }
+}

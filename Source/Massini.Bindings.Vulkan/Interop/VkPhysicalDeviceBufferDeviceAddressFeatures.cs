@@ -1,0 +1,18 @@
+namespace Massini.Bindings.Vulkan
+{
+    public unsafe partial struct VkPhysicalDeviceBufferDeviceAddressFeatures
+    {
+        public VkStructureType sType;
+
+        public void* pNext;
+
+        [NativeTypeName("VkBool32")]
+        public uint bufferDeviceAddress;
+
+        [NativeTypeName("VkBool32")]
+        public uint bufferDeviceAddressCaptureReplay;
+
+        [NativeTypeName("VkBool32")]
+        public uint bufferDeviceAddressMultiDevice;
+    }
+}

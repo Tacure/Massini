@@ -1,0 +1,11 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum StdVideoH264SliceType
+    {
+        STD_VIDEO_H264_SLICE_TYPE_P = 0,
+        STD_VIDEO_H264_SLICE_TYPE_B = 1,
+        STD_VIDEO_H264_SLICE_TYPE_I = 2,
+        STD_VIDEO_H264_SLICE_TYPE_INVALID = 0x7FFFFFFF,
+        STD_VIDEO_H264_SLICE_TYPE_MAX_ENUM = 0x7FFFFFFF,
+    }
+}

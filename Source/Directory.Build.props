@@ -1,0 +1,15 @@
+<Project>
+	<PropertyGroup>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+
+		<PackageOutputPath>$(MSBuildThisFileDirectory)..\nuget\</PackageOutputPath>
+
+		<!-- Generate documentation [.xml] files. -->
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<!-- Copy dependencies to output. -->
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+		
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+</Project>

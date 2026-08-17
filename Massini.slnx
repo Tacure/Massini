@@ -1,0 +1,30 @@
+<Solution>
+  <Folder Name="/Source/">
+    <Project Path="Source/Massini.Graphics.VkAL/Massini.Graphics.VkAL.csproj"/>
+    <Project Path="Source/Massini.Bindings.Vulkan/Massini.Bindings.Vulkan.csproj"/>
+    <Project Path="Source/Massini.Bindings.Vma/Massini.Bindings.Vma.csproj"/>
+    <Project Path="Source/Massini/Massini.csproj"/>
+    <Project Path="Source/Massini.Math/Massini.Math.csproj"/>
+    <Project Path="Source/Massini.Collections/Massini.Collections.csproj"/>
+    <Project Path="Source/Massini.Graphics.Color/Massini.Graphics.Color.csproj"/>
+    <Project Path="Source/Massini.Graphics.VkAL.Sugar/Massini.Graphics.VkAL.Sugar.csproj"/>
+    <Project Path="Source/Massini.Entities/Massini.Entities.csproj"/>
+    <Project Path="Source/Massini.runtime.linux-x64.vma/Massini.runtime.linux-x64.vma.csproj"/>
+    <Project Path="Source/Massini.runtime.linux-x64.vulkan/Massini.runtime.linux-x64.vulkan.csproj"/>
+    <Project Path="Source/Massini.runtime.win-x64.vma/Massini.runtime.win-x64.vma.csproj"/>
+    <Project Path="Source/Massini.runtime.win-x64.vulkan/Massini.runtime.win-x64.vulkan.csproj"/>
+    <File Path="Source/Directory.Build.props"/>
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/Massini.Math.Tests/Massini.Math.Tests.csproj"/>
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="nuget.ps1"/>
+    <File Path="LICENSE"/>
+    <File Path="Directory.Build.props"/>
+    <File Path="dotnet-tools.json"/>
+    <File Path="nuget.sh"/>
+    <File Path="README.md"/>
+    <File Path=".gitignore"/>
+  </Folder>
+</Solution>

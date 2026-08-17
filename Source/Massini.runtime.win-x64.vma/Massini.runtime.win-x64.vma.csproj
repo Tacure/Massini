@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <RootNamespace>Atomic.runtime.win_x64.vma</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Native\Binaries\win-x64\VMAExporter.dll" Pack="true">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <RelativeRuntimePath>runtimes/win-x64/native/VMAExporter.dll</RelativeRuntimePath>
+
+      <PackagePath>%(RelativeRuntimePath)</PackagePath>
+      <TargetPath>%(RelativeRuntimePath)</TargetPath>
+    </None>
+  </ItemGroup>
+
+</Project>

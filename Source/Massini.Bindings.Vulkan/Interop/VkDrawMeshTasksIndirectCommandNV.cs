@@ -1,0 +1,11 @@
+namespace Massini.Bindings.Vulkan
+{
+    public partial struct VkDrawMeshTasksIndirectCommandNV
+    {
+        [NativeTypeName("uint32_t")]
+        public uint taskCount;
+
+        [NativeTypeName("uint32_t")]
+        public uint firstTask;
+    }
+}

@@ -1,0 +1,10 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkPresentGravityFlagBitsEXT
+    {
+        VK_PRESENT_GRAVITY_MIN_BIT_EXT = 0x00000001,
+        VK_PRESENT_GRAVITY_MAX_BIT_EXT = 0x00000002,
+        VK_PRESENT_GRAVITY_CENTERED_BIT_EXT = 0x00000004,
+        VK_PRESENT_GRAVITY_FLAG_BITS_MAX_ENUM_EXT = 0x7FFFFFFF,
+    }
+}

@@ -1,0 +1,2 @@
+- Add a folder named "include" with the Vulkan headers.
+- Run the generator script.

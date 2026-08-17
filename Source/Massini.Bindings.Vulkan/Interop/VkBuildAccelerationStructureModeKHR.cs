@@ -1,0 +1,9 @@
+namespace Massini.Bindings.Vulkan
+{
+    public enum VkBuildAccelerationStructureModeKHR
+    {
+        VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR = 0,
+        VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR = 1,
+        VK_BUILD_ACCELERATION_STRUCTURE_MODE_MAX_ENUM_KHR = 0x7FFFFFFF,
+    }
+}
