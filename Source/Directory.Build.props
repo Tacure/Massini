@@ -10,6 +10,13 @@
 		<!-- Copy dependencies to output. -->
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
-		
+	
+	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)THIRDPARTY_NOTICES.md" 
+			Pack="true" 
+			PackagePath="\" 
+			Visible="true" />
+  	</ItemGroup>
+
 	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
 </Project>

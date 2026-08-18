@@ -16,6 +16,7 @@ Massini is distributed under the Apache License, Version 2.0.
 
 Some parts of Massini might be distributed under other open source licenses if required by third-party code.
 
-# Third-party libraries:
+# Third-party libraries and apis:
 
-TODO: Add third-party libraries list. Create a "third-party licenses" text file for libraries that require ackowledgement according to their license.
+- [Vulkan](https://vulkan.lunarg.com/)
+- [Vulkan Memory Allocator](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator)
