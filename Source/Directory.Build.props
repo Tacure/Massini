@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageReadmeFile>NUGET_README.md</PackageReadmeFile>
 
 		<PackageOutputPath>$(MSBuildThisFileDirectory)..\nuget\</PackageOutputPath>
 
