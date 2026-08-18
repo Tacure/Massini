@@ -15,6 +15,7 @@
     <Project Path="Source/Massini.runtime.win-x64.vulkan/Massini.runtime.win-x64.vulkan.csproj"/>
     <File Path="Source/Directory.Build.props"/>
     <File Path="Source/THIRDPARTY_NOTICES.md"/>
+    <File Path="Source/NUGET_README.md"/>
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="Tests/Massini.Math.Tests/Massini.Math.Tests.csproj"/>

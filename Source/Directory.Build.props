@@ -12,6 +12,10 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)NUGET_README.md" 
+			Pack="true" 
+			PackagePath="\" 
+			Visible="true" />
 		<None Include="$(MSBuildThisFileDirectory)THIRDPARTY_NOTICES.md" 
 			Pack="true" 
 			PackagePath="\" 
