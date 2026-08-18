@@ -1,3 +1,5 @@
+[![Publish NuGet Packages](https://github.com/Tacure/Massini/actions/workflows/publish-nuget.yml/badge.svg)](https://github.com/Tacure/Massini/actions/workflows/publish-nuget.yml)
+
 # Massini
 
 Massini is a collection of open source libraries focused on game development and multimedia applications.
