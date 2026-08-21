@@ -13,6 +13,7 @@
     <Project Path="Source/Massini.runtime.linux-x64.vulkan/Massini.runtime.linux-x64.vulkan.csproj"/>
     <Project Path="Source/Massini.runtime.win-x64.vma/Massini.runtime.win-x64.vma.csproj"/>
     <Project Path="Source/Massini.runtime.win-x64.vulkan/Massini.runtime.win-x64.vulkan.csproj"/>
+    <Project Path="Source/Massini.IO.InputRouting/Massini.IO.InputRouting.csproj"/>
     <File Path="Source/Directory.Build.props"/>
     <File Path="Source/THIRDPARTY_NOTICES.md"/>
     <File Path="Source/NUGET_README.md"/>
