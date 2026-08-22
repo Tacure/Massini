@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Massini.Bindings.Vulkan\Massini.Bindings.Vulkan.csproj" />
-    <ProjectReference Include="..\Massini.Bindings.Vma\Massini.Bindings.Vma.csproj" />
-    <ProjectReference Include="..\Massini\Massini.csproj" />
-    <ProjectReference Include="..\Massini.Math\Massini.Math.csproj" />
-    <ProjectReference Include="..\Massini.Collections\Massini.Collections.csproj" />
+    <ProjectReference Include="..\Bindings\Massini.Bindings.Vulkan\Massini.Bindings.Vulkan.csproj" />
+    <ProjectReference Include="..\Bindings\Massini.Bindings.Vma\Massini.Bindings.Vma.csproj" />
+    <ProjectReference Include="..\Core\Massini.Core\Massini.Core.csproj" />
+    <ProjectReference Include="..\Core\Massini.Core.Math\Massini.Core.Math.csproj" />
+    <ProjectReference Include="..\Core\Massini.Core.Collections\Massini.Core.Collections.csproj" />
     <ProjectReference Include="..\Massini.Graphics.Color\Massini.Graphics.Color.csproj" />
   </ItemGroup>
 

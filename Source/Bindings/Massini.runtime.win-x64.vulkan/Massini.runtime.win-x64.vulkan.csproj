@@ -8,7 +8,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<None Include="..\..\Native\Binaries\win-x64\vulkan-1.dll" Pack="true">
+		<None Include="..\..\..\Native\Binaries\win-x64\vulkan-1.dll" Pack="true">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<RelativeRuntimePath>runtimes/win-x64/native/vulkan-1.dll</RelativeRuntimePath>
 

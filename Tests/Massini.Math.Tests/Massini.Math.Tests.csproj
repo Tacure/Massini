@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\Massini.Math\Massini.Math.csproj" />
+    <ProjectReference Include="..\..\Source\Core\Massini.Core.Math\Massini.Core.Math.csproj" />
   </ItemGroup>
 
 </Project>

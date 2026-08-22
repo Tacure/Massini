@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\Native\Binaries\win-x64\VMAExporter.dll" Pack="true">
+    <None Include="..\..\..\Native\Binaries\win-x64\VMAExporter.dll" Pack="true">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <RelativeRuntimePath>runtimes/win-x64/native/VMAExporter.dll</RelativeRuntimePath>
 

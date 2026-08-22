@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Massini\Massini.csproj" />
+    <ProjectReference Include="..\Massini.Core.Collections\Massini.Core.Collections.csproj" />
+    <ProjectReference Include="..\Massini.Core.Math\Massini.Core.Math.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
     <TargetFramework>net11.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
 </Project>

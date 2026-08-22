@@ -2,15 +2,15 @@
 
     <PropertyGroup>
         <TargetFramework>net11.0</TargetFramework>
-        <RootNamespace>Atomic.runtime.linux_x64.vma</RootNamespace>
+        <RootNamespace>Atomic.runtime.linux_x64.vulkan</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\Native\Binaries\linux-x64\libVmaExporter.so" Pack="true">
+        <None Include="..\..\..\Native\Binaries\linux-x64\libvulkan.so.1.4.341" Pack="true">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-            <RelativeRuntimePath>runtimes/linux-x64/native/libVmaExporter.so</RelativeRuntimePath>
+            <RelativeRuntimePath>runtimes/linux-x64/native/libvulkan.so.1.4.341</RelativeRuntimePath>
 
             <PackagePath>%(RelativeRuntimePath)</PackagePath>
             <TargetPath>%(RelativeRuntimePath)</TargetPath>

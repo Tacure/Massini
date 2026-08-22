@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Massini.Bindings.Vulkan\Massini.Bindings.Vulkan.csproj" />
-    <ProjectReference Include="..\Massini\Massini.csproj" />
+    <ProjectReference Include="..\..\Core\Massini.Core\Massini.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

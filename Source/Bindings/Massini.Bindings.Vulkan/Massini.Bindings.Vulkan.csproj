@@ -1,12 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Massini.Graphics.VkAL\Massini.Graphics.VkAL.csproj" />
-    <ProjectReference Include="..\Core\Massini.Core.Math\Massini.Core.Math.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Silk.NET.SPIRV.Reflect" Version="2.23.0" />
+    <ProjectReference Include="..\..\Core\Massini.Core\Massini.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
