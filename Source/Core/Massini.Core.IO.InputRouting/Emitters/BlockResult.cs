@@ -1,7 +1,7 @@
 ﻿
-using Massini.IO.InputRouting.Enums;
+using Massini.Core.IO.InputRouting.Enums;
 
-namespace Massini.IO.InputRouting.Emitters
+namespace Massini.Core.IO.InputRouting.Emitters
 {
     public struct BlockResult
     {

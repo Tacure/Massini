@@ -1,6 +1,6 @@
 ﻿
-using Massini.Interop;
-using Massini.Interop.Windows;
+using Massini.Core.Interop;
+using Massini.Core.Interop.Windows;
 
 namespace Massini.Bindings.Vulkan
 {

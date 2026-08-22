@@ -1,5 +1,5 @@
 ﻿
-namespace Massini.Entities
+namespace Massini.Core.Entities
 {
     public delegate void ForEachTable<T1>(Span<Entity> i_entities, Span<T1?> i_components1);
     public delegate void ForEachTable<T1, T2>(Span<Entity> i_entities, Span<T1?> i_components1, Span<T2?> i_components2);

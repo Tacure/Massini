@@ -1,5 +1,5 @@
 ﻿
-namespace Massini.IO.InputRouting
+namespace Massini.Core.IO.InputRouting
 {
     /// <summary>
     /// Stores the scancode of a key.

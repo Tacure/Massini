@@ -1,9 +1,9 @@
 ﻿
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.Math.Geometry
+namespace Massini.Core.Math.Geometry
 {
     /// <summary>
     /// Represents a 3D line segment. Defined by two points.

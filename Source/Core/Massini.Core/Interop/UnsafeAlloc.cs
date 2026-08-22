@@ -1,5 +1,5 @@
 
-namespace Massini.Interop
+namespace Massini.Core.Interop
 {
     /// <summary>
     /// Represents an unmanaged memory allocation.

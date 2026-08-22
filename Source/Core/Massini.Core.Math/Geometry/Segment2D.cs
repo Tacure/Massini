@@ -1,8 +1,8 @@
 
 using System.Numerics;
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.Math.Geometry
+namespace Massini.Core.Math.Geometry
 {
     public struct Segment2D<T>(Vec2<T> i_pointA, Vec2<T> i_pointB)
         where T : unmanaged, IFloatingPointIeee754<T>

@@ -1,7 +1,7 @@
 ﻿
-using Massini.IO.InputRouting.State;
+using Massini.Core.IO.InputRouting.State;
 
-namespace Massini.IO.InputRouting.Emitters
+namespace Massini.Core.IO.InputRouting.Emitters
 {
     /// <summary>
     /// Represents a logic step used for input handling.

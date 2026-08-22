@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Massini.Collections
+namespace Massini.Core.Collections
 {
     /// <summary>
     /// Represents a multi-dimensional flat array.

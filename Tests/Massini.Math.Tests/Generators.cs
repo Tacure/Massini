@@ -1,5 +1,5 @@
 
-using Massini.Math.Generators.Sequence;
+using Massini.Core.Math.Generators.Sequence;
 using Xunit.Abstractions;
 
 namespace Massini.Math.Tests

@@ -1,7 +1,7 @@
 
 using System.Numerics;
 
-namespace Massini.Math.Primitives
+namespace Massini.Core.Math.Primitives
 {
     public readonly partial struct Rad<T>(T i_value)
         where T : unmanaged, IFloatingPointIeee754<T>

@@ -1,9 +1,9 @@
 
 using System.Collections;
 using System.Numerics;
-using Massini.Math.Generators.Sequence;
+using Massini.Core.Math.Generators.Sequence;
 
-namespace Massini.Math.Generators.Sequence
+namespace Massini.Core.Math.Generators.Sequence
 {
     public readonly struct Range<T>(T i_start, T i_end, T i_step, bool i_includeStart = true, bool i_includeEnd = false) : ISequenceGenerator<T>
         where T : unmanaged, INumber<T>

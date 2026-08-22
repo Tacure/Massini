@@ -1,7 +1,7 @@
 ﻿
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.Math.Packing
+namespace Massini.Core.Math.Packing
 {
     /// <summary>
     /// Guillotine Rectangle Packing. Inspired by: https://www.david-colson.com/2020/03/10/exploring-rect-packing.html

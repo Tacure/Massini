@@ -1,7 +1,7 @@
 
 using System.Numerics;
 
-namespace Massini.Math
+namespace Massini.Core.Math
 {
     public static class Math<T>
         where T : unmanaged, INumber<T>

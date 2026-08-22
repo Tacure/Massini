@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Massini.Collections
+namespace Massini.Core.Collections
 {
     /// <summary>
     /// Represents a dynamically sized array of elements that can be accessed by index. Provides methods to add, remove,

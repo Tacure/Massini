@@ -1,11 +1,11 @@
 ﻿
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Massini.Math.Geometry;
-using Massini.Math.Primitives;
-using Massini.Math.Results;
+using Massini.Core.Math.Geometry;
+using Massini.Core.Math.Primitives;
+using Massini.Core.Math.Results;
 
-namespace Massini.Math.Geometry
+namespace Massini.Core.Math.Geometry
 {
     /// <summary>
     /// This structure defines a line in parametric form: P(t) = Origin + t * Direction.

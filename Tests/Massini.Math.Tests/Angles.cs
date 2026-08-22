@@ -1,6 +1,6 @@
 ﻿
-using Massini.Math;
-using Massini.Math.Primitives;
+using Massini.Core.Math;
+using Massini.Core.Math.Primitives;
 
 namespace Massini.Math.Tests;
 

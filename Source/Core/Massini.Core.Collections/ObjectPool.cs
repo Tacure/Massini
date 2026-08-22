@@ -1,4 +1,4 @@
-﻿namespace Massini.Collections
+﻿namespace Massini.Core.Collections
 {
     public class ObjectPool<T>(Func<T> i_factory)
         where T : class, IResettable

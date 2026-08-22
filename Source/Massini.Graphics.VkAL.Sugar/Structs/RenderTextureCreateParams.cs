@@ -1,6 +1,6 @@
 ﻿using Massini.Graphics.VkAL.Enums;
 using Massini.Graphics.VkAL.Interfaces;
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
 namespace Massini.Graphics.VkAL.Sugar.Structs
 {

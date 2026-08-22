@@ -1,4 +1,4 @@
-﻿namespace Massini.Interop.Windows
+﻿namespace Massini.Core.Interop.Windows
 {
     public struct Hwnd
     {

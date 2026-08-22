@@ -1,10 +1,10 @@
 ﻿
-using Massini.IO.InputRouting.Enums;
-using Massini.IO.InputRouting.State;
-using Massini.Math;
+using Massini.Core.IO.InputRouting.Enums;
+using Massini.Core.IO.InputRouting.State;
+using Massini.Core.Math;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Massini.IO.InputRouting.Emitters
+namespace Massini.Core.IO.InputRouting.Emitters
 {
     /// <summary>
     /// Provides input.

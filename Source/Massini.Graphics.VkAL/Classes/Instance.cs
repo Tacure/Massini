@@ -1,4 +1,4 @@
-﻿using System.Reflection.Emit;
+
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Massini.Bindings.Vma.Loader;
@@ -6,7 +6,7 @@ using Massini.Bindings.Vulkan;
 using Massini.Bindings.Vulkan.Loader;
 using Massini.Graphics.VkAL.Enums;
 using Massini.Graphics.VkAL.Structs;
-using Massini.Interop;
+using Massini.Core.Interop;
 
 namespace Massini.Graphics.VkAL.Classes
 {

@@ -1,4 +1,4 @@
-﻿namespace Massini.IO.InputRouting
+﻿namespace Massini.Core.IO.InputRouting
 {
     public readonly struct KeyboardId(int i_id = -1) : IEquatable<KeyboardId>, IComparable<KeyboardId>, IComparable
     {

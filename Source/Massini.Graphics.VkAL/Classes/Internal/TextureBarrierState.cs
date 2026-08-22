@@ -1,6 +1,6 @@
 
 using Massini.Bindings.Vulkan;
-using Massini.Collections;
+using Massini.Core.Collections;
 
 namespace Massini.Graphics.VkAL.Classes.Internal
 {

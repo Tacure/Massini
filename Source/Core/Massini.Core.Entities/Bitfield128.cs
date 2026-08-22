@@ -2,7 +2,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace Massini.Entities
+namespace Massini.Core.Entities
 {
     public struct Bitfield128 : IEquatable<Bitfield128>
     {

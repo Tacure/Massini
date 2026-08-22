@@ -1,5 +1,4 @@
 ﻿
-using System.Reflection.PortableExecutable;
 using Massini.Bindings.Vma;
 using Massini.Bindings.Vma.Handles;
 using Massini.Bindings.Vma.Structs;
@@ -8,7 +7,7 @@ using Massini.Graphics.VkAL.Classes.Internal;
 using Massini.Graphics.VkAL.Enums;
 using Massini.Graphics.VkAL.Structs;
 using Massini.Graphics.VkAL.Structs.Level1;
-using Massini.Interop;
+using Massini.Core.Interop;
 
 namespace Massini.Graphics.VkAL.Classes
 {

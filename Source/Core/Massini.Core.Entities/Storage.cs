@@ -1,5 +1,5 @@
 ﻿
-namespace Massini.Entities
+namespace Massini.Core.Entities
 {
     public partial class Storage
     {

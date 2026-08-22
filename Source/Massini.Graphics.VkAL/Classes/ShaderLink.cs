@@ -1,11 +1,11 @@
 
 using Massini.Bindings.Vulkan;
-using Massini.Collections;
+using Massini.Core.Collections;
 using Massini.Graphics.VkAL.Enums;
 using Massini.Graphics.VkAL.Interfaces;
 using Massini.Graphics.VkAL.Structs;
 using Massini.Graphics.VkAL.Structs.Level1;
-using Massini.Interop;
+using Massini.Core.Interop;
 
 namespace Massini.Graphics.VkAL.Classes
 {

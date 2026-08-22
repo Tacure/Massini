@@ -2,9 +2,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Massini.Math.Geometry;
+using Massini.Core.Math.Geometry;
 
-namespace Massini.Math.Primitives
+namespace Massini.Core.Math.Primitives
 {
     [StructLayout(LayoutKind.Sequential)]
     public partial struct Vec2<T> : IEquatable<Vec2<T>>

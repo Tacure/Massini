@@ -1,7 +1,7 @@
 
 using System.Numerics;
 
-namespace Massini.Math.Primitives
+namespace Massini.Core.Math.Primitives
 {
     /// <summary>
     /// Represents an angle in degrees.

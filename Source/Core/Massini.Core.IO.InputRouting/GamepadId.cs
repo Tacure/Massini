@@ -1,4 +1,4 @@
-﻿namespace Massini.IO.InputRouting
+﻿namespace Massini.Core.IO.InputRouting
 {
     public readonly struct GamepadId(int i_id = -1) : IEquatable<GamepadId>, IComparable<GamepadId>, IComparable
     {

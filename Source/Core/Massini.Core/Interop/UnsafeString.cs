@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Massini.Interop
+namespace Massini.Core.Interop
 {
     public unsafe static class UnsafeString
     {

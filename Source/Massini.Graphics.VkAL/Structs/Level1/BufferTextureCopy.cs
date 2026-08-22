@@ -1,5 +1,5 @@
 ﻿
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
 namespace Massini.Graphics.VkAL.Structs.Level1
 {

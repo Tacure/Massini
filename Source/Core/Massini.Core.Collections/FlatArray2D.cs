@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Massini.Collections
+namespace Massini.Core.Collections
 {
     /// <summary>
     /// Represents a 2D row-major flat array.

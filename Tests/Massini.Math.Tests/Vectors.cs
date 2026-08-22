@@ -1,7 +1,7 @@
 
 using Massini.Math;
-using Massini.Math.Geometry;
-using Massini.Math.Primitives;
+using Massini.Core.Math.Geometry;
+using Massini.Core.Math.Primitives;
 
 namespace Massini.Math.Tests
 {

@@ -1,7 +1,7 @@
 
-using Massini.Math;
+using Massini.Core.Math;
 
-namespace Massini.Entities
+namespace Massini.Core.Entities
 {
     public readonly partial struct Query
     {

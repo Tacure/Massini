@@ -1,9 +1,9 @@
 ﻿
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.Math.Primitives
+namespace Massini.Core.Math.Primitives
 {
     public partial struct Mat3x3<T>
         where T : unmanaged, IFloatingPointIeee754<T>

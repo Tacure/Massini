@@ -1,9 +1,9 @@
 ﻿
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.Math.Primitives
+namespace Massini.Core.Math.Primitives
 {
     [StructLayout(LayoutKind.Sequential)]
     public partial struct Mat4x4<T>

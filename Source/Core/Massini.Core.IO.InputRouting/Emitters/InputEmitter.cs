@@ -1,9 +1,9 @@
 ﻿
-using Massini.IO.InputRouting.Enums;
-using Massini.IO.InputRouting.State;
-using Massini.Math.Primitives;
+using Massini.Core.IO.InputRouting.Enums;
+using Massini.Core.IO.InputRouting.State;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.IO.InputRouting.Emitters
+namespace Massini.Core.IO.InputRouting.Emitters
 {
     /// <summary>
     /// A basic input emitter.

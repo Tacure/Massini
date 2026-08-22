@@ -1,8 +1,8 @@
 ﻿
 using System.Numerics;
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.Math.Geometry
+namespace Massini.Core.Math.Geometry
 {
     public struct Line2D<T>
         where T : unmanaged, IFloatingPointIeee754<T>

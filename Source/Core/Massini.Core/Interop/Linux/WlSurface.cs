@@ -1,6 +1,6 @@
 using System;
 
-namespace Massini.Interop.Linux
+namespace Massini.Core.Interop.Linux
 {
     public struct WlSurface
     {

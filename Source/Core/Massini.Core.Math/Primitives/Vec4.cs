@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.InteropServices;
 
-namespace Massini.Math.Primitives
+namespace Massini.Core.Math.Primitives
 {
     [StructLayout(LayoutKind.Sequential)]
     public partial struct Vec4<T> : IEquatable<Vec4<T>>

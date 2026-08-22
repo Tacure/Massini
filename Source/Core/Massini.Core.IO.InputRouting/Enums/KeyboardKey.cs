@@ -1,5 +1,5 @@
 ﻿
-namespace Massini.IO.InputRouting.Enums
+namespace Massini.Core.IO.InputRouting.Enums
 {
     public enum KeyboardKey
     {

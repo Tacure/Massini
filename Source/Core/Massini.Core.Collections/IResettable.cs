@@ -1,4 +1,4 @@
-﻿namespace Massini.Collections
+﻿namespace Massini.Core.Collections
 {
     public interface IResettable
     {

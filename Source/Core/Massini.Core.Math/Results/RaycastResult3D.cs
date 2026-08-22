@@ -1,7 +1,7 @@
 ﻿
 using System.Numerics;
 
-namespace Massini.Math.Results
+namespace Massini.Core.Math.Results
 {
     public readonly struct RaycastResult3D<T>(HitResult3D<T> i_hitA, HitResult3D<T> i_hitB, bool i_intersect, bool i_inside)
         where T : unmanaged, IFloatingPointIeee754<T>

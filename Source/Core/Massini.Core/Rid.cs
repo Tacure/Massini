@@ -1,7 +1,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-namespace Massini
+namespace Massini.Core
 {
     /// <summary>
     /// Runtime unique id.

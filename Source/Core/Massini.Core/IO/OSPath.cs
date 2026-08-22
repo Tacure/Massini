@@ -1,5 +1,5 @@
 ﻿
-namespace Massini.IO
+namespace Massini.Core.IO
 {
     public readonly struct OSPath : IEquatable<OSPath>
     {

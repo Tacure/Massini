@@ -1,9 +1,9 @@
 ﻿
-using Massini.Collections;
-using Massini.IO.InputRouting.Enums;
-using Massini.Math.Primitives;
+using Massini.Core.Collections;
+using Massini.Core.IO.InputRouting.Enums;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.IO.InputRouting.State
+namespace Massini.Core.IO.InputRouting.State
 {
     /// <summary>
     /// Stores all the meaningful data related to an action event.

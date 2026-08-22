@@ -1,6 +1,6 @@
 ﻿
 using Massini.Graphics.VkAL.Interfaces;
-using Massini.Interop.Windows;
+using Massini.Core.Interop.Windows;
 
 namespace Massini.Graphics.VkAL.Structs
 {

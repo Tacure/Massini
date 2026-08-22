@@ -2,9 +2,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using Massini.Math.Primitives;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.Math.Primitives
+namespace Massini.Core.Math.Primitives
 {
     /// <summary>
     /// Represents a 2x2 matrix.

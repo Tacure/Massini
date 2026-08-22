@@ -1,10 +1,10 @@
 ﻿
-using Massini.Collections;
-using Massini.IO.InputRouting.Emitters;
-using Massini.IO.InputRouting.State;
+using Massini.Core.Collections;
+using Massini.Core.IO.InputRouting.Emitters;
+using Massini.Core.IO.InputRouting.State;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Massini.IO.InputRouting
+namespace Massini.Core.IO.InputRouting
 {
     public delegate void OnActionCallback(ActionEventInfo i_eventInfo);
 

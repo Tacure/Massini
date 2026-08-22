@@ -1,8 +1,8 @@
 ﻿
-using Massini.IO.InputRouting.Enums;
-using Massini.IO.InputRouting.State;
+using Massini.Core.IO.InputRouting.Enums;
+using Massini.Core.IO.InputRouting.State;
 
-namespace Massini.IO.InputRouting.Emitters
+namespace Massini.Core.IO.InputRouting.Emitters
 {
     /// <summary>
     /// Process the input in a specific order.

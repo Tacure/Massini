@@ -4,7 +4,7 @@ using Massini.Graphics.VkAL.Interfaces;
 using Massini.Graphics.VkAL.Structs;
 using Massini.Graphics.VkAL.Structs.Level1;
 using Massini.Graphics.VkAL.Structs.Level1.Internal;
-using Massini.Math;
+using Massini.Core.Math;
 using System.Collections;
 
 namespace Massini.Graphics.VkAL.Classes

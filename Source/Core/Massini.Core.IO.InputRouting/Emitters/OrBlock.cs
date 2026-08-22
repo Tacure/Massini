@@ -1,6 +1,6 @@
-﻿using Massini.IO.InputRouting.State;
+﻿using Massini.Core.IO.InputRouting.State;
 
-namespace Massini.IO.InputRouting.Emitters
+namespace Massini.Core.IO.InputRouting.Emitters
 {
     /// <summary>
     /// An OR block combines the logic of two input blocks.

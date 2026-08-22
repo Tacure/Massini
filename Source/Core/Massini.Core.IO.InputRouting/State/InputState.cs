@@ -1,5 +1,5 @@
 ﻿
-namespace Massini.IO.InputRouting.State
+namespace Massini.Core.IO.InputRouting.State
 {
     public class InputState
     {

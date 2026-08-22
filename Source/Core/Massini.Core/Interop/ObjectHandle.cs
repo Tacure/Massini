@@ -1,7 +1,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Massini.Interop
+namespace Massini.Core.Interop
 {
     public unsafe readonly struct ObjectHandle
     {

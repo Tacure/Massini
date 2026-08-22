@@ -1,7 +1,7 @@
 ﻿
-using Massini.Collections;
+using Massini.Core.Collections;
 
-namespace Massini.Entities
+namespace Massini.Core.Entities
 {
     public sealed class Entity : IResettable, IComparable<Entity>
     {

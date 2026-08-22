@@ -1,6 +1,6 @@
-﻿using Massini.IO.InputRouting.Enums;
+﻿using Massini.Core.IO.InputRouting.Enums;
 
-namespace Massini.IO.InputRouting.State
+namespace Massini.Core.IO.InputRouting.State
 {
     public sealed class GamepadButtonState : InputState
     {

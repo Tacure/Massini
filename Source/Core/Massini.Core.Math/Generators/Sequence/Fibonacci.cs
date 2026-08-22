@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Numerics;
-using Massini.Math.Generators.Sequence;
+using Massini.Core.Math.Generators.Sequence;
 
-namespace Massini.Math.Generators.Sequence
+namespace Massini.Core.Math.Generators.Sequence
 {
     public readonly struct Fibonacci<T>(T i_start, T i_end, bool i_includeStart = true, bool i_includeEnd = false) : ISequenceGenerator<T>
         where T : unmanaged, INumber<T>

@@ -1,8 +1,8 @@
 ﻿
-using Massini.IO.InputRouting.Enums;
-using Massini.Math.Primitives;
+using Massini.Core.IO.InputRouting.Enums;
+using Massini.Core.Math.Primitives;
 
-namespace Massini.IO.InputRouting.State
+namespace Massini.Core.IO.InputRouting.State
 {
     public abstract class Gamepad
     {

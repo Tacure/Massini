@@ -1,5 +1,5 @@
 ﻿
-namespace Massini.Entities.Extensions
+namespace Massini.Core.Entities.Extensions
 {
     public static class EntityExtensions
     {
