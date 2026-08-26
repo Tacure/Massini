@@ -1,8 +1,5 @@
 <Solution>
   <Folder Name="/Source/">
-    <Project Path="Source/Massini.Graphics.VkAL/Massini.Graphics.VkAL.csproj"/>
-    <Project Path="Source/Massini.Graphics.Color/Massini.Graphics.Color.csproj"/>
-    <Project Path="Source/Massini.Graphics.VkAL.Sugar/Massini.Graphics.VkAL.Sugar.csproj"/>
     <File Path="Source/Directory.Build.props"/>
     <File Path="Source/THIRDPARTY_NOTICES.md"/>
     <File Path="Source/NUGET_README.md"/>
@@ -34,7 +31,8 @@
     <File Path="README.md"/>
     <File Path=".gitignore"/>
   </Folder>
-  <Folder Name="/Source/SIGL/">
-    <Project Path="Source/SIGL/Massini.SIGL/Massini.SIGL.csproj"/>
+  <Folder Name="/Source/Coat/">
+    <Project Path="Source/Coat/Massini.Coat/Massini.Coat.csproj"/>
+    <Project Path="Source/Coat/Massini.Coat.Sugar/Massini.Coat.Sugar.csproj"/>
   </Folder>
 </Solution>
