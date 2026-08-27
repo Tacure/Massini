@@ -5,9 +5,9 @@ namespace Massini.Core.Interop
 {
     public unsafe readonly struct ObjectHandle
     {
-        public static ObjectHandle Pin(object i_object)
+        public static ObjectHandle CreateHandle(object i_object)
         {
-            return new ObjectHandle((void*)GCHandle.Alloc(i_object, GCHandleType.Normal).AddrOfPinnedObject());
+            return new ObjectHandle((void*)GCHandle.ToIntPtr(GCHandle.Alloc(i_object, GCHandleType.Normal)));
         }
 
         public static ObjectHandle FromRawPtr(void* i_ptr)
@@ -15,7 +15,7 @@ namespace Massini.Core.Interop
             return new ObjectHandle(i_ptr);
         }
 
-        public void Unpin()
+        public void Free()
         {
             GCHandle.FromIntPtr((nint)m_ptr).Free();
         }

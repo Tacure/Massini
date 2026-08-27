@@ -118,7 +118,7 @@ namespace Massini.Coat.Classes
             }
 
             m_label = i_createParams.p_label;
-            m_ptr_handle = ObjectHandle.Pin(this).ToRawPtr();
+            m_ptr_handle = ObjectHandle.CreateHandle(this).ToRawPtr();
             m_apiVersion = apiVersion;
             m_ptr_instance = vkInstance;
 
@@ -153,7 +153,7 @@ namespace Massini.Coat.Classes
             {
                 m_isDisposed = true;
                 GC.SuppressFinalize(this);
-                ObjectHandle.FromRawPtr(m_ptr_handle).Unpin();
+                ObjectHandle.FromRawPtr(m_ptr_handle).Free();
 
                 if (m_ptr_debugUtilsMessenger != null)
                 {
