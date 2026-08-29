@@ -25,17 +25,21 @@ namespace Massini.Bindings.Vma.Loader
             string runtimesFolder = "";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                runtimesFolder = "./runtimes/win-x64/native/";
+                runtimesFolder = "runtimes/win-x64/native/";
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                runtimesFolder = "./runtimes/linux-x64/native/";
+                runtimesFolder = "runtimes/linux-x64/native/";
             }
-            
-            string[] candidates = GetPlatformVulkanNames();
+            else
+            {
+                throw new PlatformNotSupportedException(RuntimeInformation.OSDescription);
+            }
+
+            string[] candidates = GetPlatformVmaNames();
             foreach (var name in candidates)
             {
-                if (NativeLibrary.TryLoad(Path.GetFullPath(Path.Combine(runtimesFolder, name)), i_assembly, i_searchPath, out var handle))
+                if (NativeLibrary.TryLoad(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, runtimesFolder, name), i_assembly, i_searchPath, out var handle))
                 {
                     m_vmaLibHandle = handle;
                     return handle;
@@ -45,14 +49,14 @@ namespace Massini.Bindings.Vma.Loader
             throw new DllNotFoundException("Could not locate Vma native library.");
         }
 
-        private static string[] GetPlatformVulkanNames()
+        private static string[] GetPlatformVmaNames()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 return ["VmaExporter.dll"];
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 return ["libVmaExporter.so"];
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                throw new PlatformNotSupportedException();
+            else
+                throw new PlatformNotSupportedException(RuntimeInformation.OSDescription);
             return [];
         }
 

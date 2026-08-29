@@ -41,9 +41,9 @@ namespace Massini.Bindings.Vulkan.Loader
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 return ["vulkan-1.dll"];
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                return ["libvulkan.so.1", "libvulkan.so"];
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                return ["libvulkan.1.dylib", "libvulkan.dylib"];
+                return ["libvulkan.so"];
+            else
+                throw new PlatformNotSupportedException(RuntimeInformation.OSDescription);
             return [];
         }
 
