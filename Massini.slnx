@@ -1,38 +1,41 @@
 <Solution>
   <Folder Name="/Source/">
-    <File Path="Source/Directory.Build.props"/>
-    <File Path="Source/THIRDPARTY_NOTICES.md"/>
-    <File Path="Source/NUGET_README.md"/>
+    <File Path="Source/Directory.Build.props" />
+    <File Path="Source/THIRDPARTY_NOTICES.md" />
+    <File Path="Source/NUGET_README.md" />
   </Folder>
   <Folder Name="/Source/Core/">
-    <Project Path="Source/Core/Massini.Core/Massini.Core.csproj"/>
-    <Project Path="Source/Core/Massini.Core.Math/Massini.Core.Math.csproj"/>
-    <Project Path="Source/Core/Massini.Core.Collections/Massini.Core.Collections.csproj"/>
-    <Project Path="Source/Core/Massini.Core.Entities/Massini.Core.Entities.csproj"/>
-    <Project Path="Source/Core/Massini.Core.IO.InputRouting/Massini.Core.IO.InputRouting.csproj"/>
+    <Project Path="Source/Core/Massini.Core/Massini.Core.csproj" />
+    <Project Path="Source/Core/Massini.Core.Math/Massini.Core.Math.csproj" />
+    <Project Path="Source/Core/Massini.Core.Collections/Massini.Core.Collections.csproj" />
+    <Project Path="Source/Core/Massini.Core.Entities/Massini.Core.Entities.csproj" />
+    <Project Path="Source/Core/Massini.Core.IO.InputRouting/Massini.Core.IO.InputRouting.csproj" />
   </Folder>
   <Folder Name="/Source/Bindings/">
-    <Project Path="Source/Bindings/Massini.Bindings.Vulkan/Massini.Bindings.Vulkan.csproj"/>
-    <Project Path="Source/Bindings/Massini.Bindings.Vma/Massini.Bindings.Vma.csproj"/>
-    <Project Path="Source/Bindings/Massini.runtime.linux-x64.vma/Massini.runtime.linux-x64.vma.csproj"/>
-    <Project Path="Source/Bindings/Massini.runtime.linux-x64.vulkan/Massini.runtime.linux-x64.vulkan.csproj"/>
-    <Project Path="Source/Bindings/Massini.runtime.win-x64.vma/Massini.runtime.win-x64.vma.csproj"/>
-    <Project Path="Source/Bindings/Massini.runtime.win-x64.vulkan/Massini.runtime.win-x64.vulkan.csproj"/>
+    <Project Path="Source/Bindings/Massini.Bindings.Vulkan/Massini.Bindings.Vulkan.csproj" />
+    <Project Path="Source/Bindings/Massini.Bindings.Vma/Massini.Bindings.Vma.csproj" />
+    <Project Path="Source/Bindings/Massini.runtime.linux-x64.vma/Massini.runtime.linux-x64.vma.csproj" />
+    <Project Path="Source/Bindings/Massini.runtime.linux-x64.vulkan/Massini.runtime.linux-x64.vulkan.csproj" />
+    <Project Path="Source/Bindings/Massini.runtime.win-x64.vma/Massini.runtime.win-x64.vma.csproj" />
+    <Project Path="Source/Bindings/Massini.runtime.win-x64.vulkan/Massini.runtime.win-x64.vulkan.csproj" />
+  </Folder>
+  <Folder Name="/Source/Tools/">
+    <Project Path="Source/Tools/Massini.Tools.SLArchitect/Massini.Tools.SLArchitect.csproj" />
   </Folder>
   <Folder Name="/Tests/">
-    <Project Path="Tests/Massini.Math.Tests/Massini.Math.Tests.csproj"/>
+    <Project Path="Tests/Massini.Math.Tests/Massini.Math.Tests.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
-    <File Path="nuget.ps1"/>
-    <File Path="LICENSE"/>
-    <File Path="Directory.Build.props"/>
-    <File Path="dotnet-tools.json"/>
-    <File Path="nuget.sh"/>
-    <File Path="README.md"/>
-    <File Path=".gitignore"/>
+    <File Path="nuget.ps1" />
+    <File Path="LICENSE" />
+    <File Path="Directory.Build.props" />
+    <File Path="dotnet-tools.json" />
+    <File Path="nuget.sh" />
+    <File Path="README.md" />
+    <File Path=".gitignore" />
   </Folder>
   <Folder Name="/Source/Coat/">
-    <Project Path="Source/Coat/Massini.Coat/Massini.Coat.csproj"/>
-    <Project Path="Source/Coat/Massini.Coat.Sugar/Massini.Coat.Sugar.csproj"/>
+    <Project Path="Source/Coat/Massini.Coat/Massini.Coat.csproj" />
+    <Project Path="Source/Coat/Massini.Coat.Sugar/Massini.Coat.Sugar.csproj" />
   </Folder>
 </Solution>
