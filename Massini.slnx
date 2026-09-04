@@ -18,12 +18,19 @@
     <Project Path="Source/Bindings/Massini.runtime.linux-x64.vulkan/Massini.runtime.linux-x64.vulkan.csproj" />
     <Project Path="Source/Bindings/Massini.runtime.win-x64.vma/Massini.runtime.win-x64.vma.csproj" />
     <Project Path="Source/Bindings/Massini.runtime.win-x64.vulkan/Massini.runtime.win-x64.vulkan.csproj" />
+  </Folder> 
+  <Folder Name="/Source/Flamet/">
+    <Project Path="Source\Flamet\Massini.Flamet.Sugar\Massini.Flamet.Sugar.csproj" />
+    <Project Path="Source\Flamet\Massini.Flamet\Massini.Flamet.csproj" />
   </Folder>
   <Folder Name="/Source/Tools/">
     <Project Path="Source/Tools/Massini.Tools.SLArchitect/Massini.Tools.SLArchitect.csproj" />
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="Tests/Massini.Math.Tests/Massini.Math.Tests.csproj" />
+  </Folder>
+  <Folder Name="/Samples/">
+    <Project Path="Samples/Massini.Flamet.HelloTriangle/Massini.Flamet.HelloTriangle.csproj" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path="nuget.ps1" />
@@ -33,9 +40,5 @@
     <File Path="nuget.sh" />
     <File Path="README.md" />
     <File Path=".gitignore" />
-  </Folder>
-  <Folder Name="/Source/Coat/">
-    <Project Path="Source/Coat/Massini.Coat/Massini.Coat.csproj" />
-    <Project Path="Source/Coat/Massini.Coat.Sugar/Massini.Coat.Sugar.csproj" />
   </Folder>
 </Solution>

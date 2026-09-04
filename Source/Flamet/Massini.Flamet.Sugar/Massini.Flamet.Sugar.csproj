@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Massini.Flamet\Massini.Flamet.csproj" />
+    <ProjectReference Include="..\..\Core\Massini.Core.Math\Massini.Core.Math.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>Massini.Coat.Sugar</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Silk.NET.SPIRV.Reflect" Version="2.23.0" />
+  </ItemGroup>
+
+</Project>

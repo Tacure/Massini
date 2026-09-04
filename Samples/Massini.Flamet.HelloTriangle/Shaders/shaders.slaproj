@@ -1,0 +1,10 @@
+{
+    "files": [
+        {
+            "name": "hello_triangle.vert"
+        },
+        {
+            "name": "hello_triangle.frag"
+        }
+    ]
+}

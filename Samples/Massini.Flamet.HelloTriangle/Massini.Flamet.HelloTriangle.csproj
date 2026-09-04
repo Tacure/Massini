@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net11.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Source\Bindings\Massini.runtime.linux-x64.vma\Massini.runtime.linux-x64.vma.csproj" />
+      <ProjectReference Include="..\..\Source\Bindings\Massini.runtime.win-x64.vma\Massini.runtime.win-x64.vma.csproj" />
+      <ProjectReference Include="..\..\Source\Flamet\Massini.Flamet.Sugar\Massini.Flamet.Sugar.csproj" />
+      <ProjectReference Include="..\..\Source\Flamet\Massini.Flamet\Massini.Flamet.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="SDL3-CS" Version="3.4.16" />
+        <PackageReference Include="SDL3-CS.Linux" Version="3.4.16" />
+        <PackageReference Include="SDL3-CS.Windows" Version="3.4.16" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include=".\Shaders\output\**\*">
+            <Link>%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <SlangCompiler>Atomic.Tools.SLArchitect</SlangCompiler>
+    </PropertyGroup>
+
+    <Target Name="CompileSlangShaders" BeforeTargets="Build">
+        <ItemGroup>
+            <SlangProjectFiles Include="./Shaders/*.slaproj" />
+        </ItemGroup>
+
+        <Message Importance="high" Text="Running Slang compiler on: @(SlangProjectFiles)" />
+
+        <Exec Command="$(SlangCompiler) build &quot;%(SlangProjectFiles.Identity)&quot;" WorkingDirectory="$(MSBuildProjectDirectory)" />
+    </Target>
+
+</Project>
