@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using Massini.Core.Interop;
 using Massini.Flamet.Classes;
 using Massini.Flamet.Classes.Encoders;
 using Massini.Flamet.Enums;
@@ -29,10 +30,12 @@ namespace Massini.Flamet.HelloTriangle
         private static Queue? m_queue = null;
         private static Surface? m_surface = null;
         private static Swapchain? m_swapchain = null;
-        private static Layout? m_layout = null;
-        private static ShaderLink? m_shaderLink = null;
+        private static Kernel? m_kernel = null;
         private static VertexBuffer<Vertex>? m_vertexBuffer = null;
         private static IndexBuffer<uint>? m_indexBuffer = null;
+        
+        private static Layout? m_layout = null;
+        private static Pipeline? m_pipeline = null;
         
         private static Vec2<uint> m_viewport = new(800, 600);
         
@@ -57,10 +60,12 @@ namespace Massini.Flamet.HelloTriangle
             var adapters = m_instance.GetAdapters(default);
             Adapter adapter = adapters[0];
 
+            AdapterInfo adapterInfo = adapter.GetInfo();
+            
             m_device = adapter.CreateDevice(new DeviceCreateParams()
             {
                 p_next = null,
-                p_featureLevel = Massini.Flamet.Enums.FeatureLevel.Level1,
+                p_featureLevel = adapterInfo.p_featureLevel,
                 p_features = new AdapterFeatures()
                 {
                     p_depthClamp = true,
@@ -100,36 +105,27 @@ namespace Massini.Flamet.HelloTriangle
                 p_colorSpace = Massini.Flamet.Enums.ColorSpace.SrgbNonLinear,
                 p_compositeAlphaMode = Massini.Flamet.Enums.CompositeAlphaModeFlags.Opaque,
                 p_enableDepthBuffer = false,
-                p_depthFormat = Massini.Flamet.Enums.TextureFormat.None,
+                p_depthStencilFormat = Massini.Flamet.Enums.TextureFormat.None,
                 p_maxFramesInFlight = 3,
             });
 
-            m_layout = m_device.CreateLayout(new LayoutCreateParams
-            {
-                p_next = null,
-                p_label = "Layout",
-                p_pushConstant = null,
-                p_sets = [],
-            });
-            
             byte[] vertexShader = File.ReadAllBytes("./hello_triangle.vert.spv");
             byte[] fragmentShader = File.ReadAllBytes("./hello_triangle.frag.spv");
             
-            m_shaderLink = m_device.CreateShaderLink(new ShaderLinkCreateParams()
+            m_kernel = m_device.CreateKernel(new KernelCreateParams()
             {
                 p_next = null,
                 p_label = "ShaderLink",
-                p_layout = m_layout,
                 p_stages = 
                 [
-                    new ShaderLinkStage()
+                    new ShaderStage()
                     {
                         p_next = null,
                         p_stage = ShaderStageFlags.Vertex,
                         p_entryPoint = "main",
                         p_code = vertexShader,
                     },
-                    new ShaderLinkStage()
+                    new ShaderStage()
                     {
                         p_next = null,
                         p_stage = ShaderStageFlags.Fragment,
@@ -139,6 +135,43 @@ namespace Massini.Flamet.HelloTriangle
                 ],
             });
 
+            m_layout = m_device.CreateLayout(new LayoutCreateParams()
+            {
+                p_next = null,
+                p_label = "Layout",
+                p_sets = [],
+                p_pushConstant = null,
+            });
+            
+            m_pipeline = m_device.CreatePipeline(new PipelineCreateParams()
+            {
+                p_next = new GraphicsPipelineCreateParams()
+                {
+                    p_next = null,
+                    p_topology = PrimitiveTopology.TriangleList,
+                    p_colorAttachmentFormats = [TextureFormat.BGRA8UnormSrgb],
+                    p_depthStencilAttachmentFormat = TextureFormat.None,
+                },
+                p_layout = m_layout,
+                p_stages = 
+                [
+                    new ShaderStage()
+                    {
+                        p_next = null,
+                        p_stage = ShaderStageFlags.Vertex,
+                        p_entryPoint = "main",
+                        p_code = vertexShader,
+                    },
+                    new ShaderStage()
+                    {
+                        p_next = null,
+                        p_stage = ShaderStageFlags.Fragment,
+                        p_entryPoint = "main",
+                        p_code = fragmentShader,
+                    },
+                ],
+            });
+            
             m_vertexBuffer = m_device.CreateVertexBuffer<Vertex>(new TypedBufferCreateParams()
             {
                 p_next = null,
@@ -210,7 +243,7 @@ namespace Massini.Flamet.HelloTriangle
                             p_colorSpace = Massini.Flamet.Enums.ColorSpace.SrgbNonLinear,
                             p_compositeAlphaMode = Massini.Flamet.Enums.CompositeAlphaModeFlags.Opaque,
                             p_enableDepthBuffer = false,
-                            p_depthFormat = Massini.Flamet.Enums.TextureFormat.None,
+                            p_depthStencilFormat = Massini.Flamet.Enums.TextureFormat.None,
                             p_maxFramesInFlight = 3,
                         });
                     }
@@ -225,11 +258,13 @@ namespace Massini.Flamet.HelloTriangle
 
             m_device.WaitIdle();
             
-            m_indexBuffer?.Dispose();
-            m_vertexBuffer?.Dispose();
+            m_indexBuffer.Dispose();
+            m_vertexBuffer.Dispose();
 
-            m_shaderLink?.Dispose();
-            m_layout?.Dispose();
+            m_kernel.Dispose();
+            
+            m_pipeline.Dispose();
+            m_layout.Dispose();
             
             m_swapchain.Dispose();
             m_surface.Dispose();
@@ -248,7 +283,7 @@ namespace Massini.Flamet.HelloTriangle
                 p_presentQueue = m_queue!,
                 p_waitCommandLists = [],
             }, out var cmdList, out var colorView, out var depthStencilView);
-
+            
             MainEncoder mainEncoder = cmdList.Open(default);
 
             RenderPassEncoder renderPassEncoder = mainEncoder.CmdRenderPass(new RenderPassBeginParams
@@ -269,7 +304,45 @@ namespace Massini.Flamet.HelloTriangle
                 p_depthStencilAttachment = null,
             });
             
-            renderPassEncoder.CmdBindShaderLink(m_shaderLink!);
+            renderPassEncoder.CmdBindPipeline(m_pipeline!);
+            renderPassEncoder.CmdSetCullMode(CullMode.Back);
+            renderPassEncoder.CmdSetPolygonMode(PolygonMode.Fill);
+            renderPassEncoder.CmdSetFrontFace(FrontFace.CounterClockwise);
+            renderPassEncoder.CmdSetPrimitiveTopology(PrimitiveTopology.TriangleList);
+            renderPassEncoder.CmdSetPrimitiveRestartEnable(false);
+            renderPassEncoder.CmdSetRasterizerDiscardEnable(false);
+            renderPassEncoder.CmdSetRasterizationSamples(SampleCount.SampleCount1);
+            renderPassEncoder.CmdSetLineWidth(1.0f);
+            renderPassEncoder.CmdSetDepthTestEnable(false);
+            renderPassEncoder.CmdSetDepthBiasEnable(false);
+            renderPassEncoder.CmdSetDepthClampEnable(false);
+            renderPassEncoder.CmdSetDepthCompareOp(CompareOp.LessOrEqual);
+            renderPassEncoder.CmdSetStencilTestEnable(false);
+            renderPassEncoder.CmdSetAlphaToCoverageEnable(false);
+            
+            
+            //renderPassEncoder.CmdBindKernel(m_kernel!, new KernelBindParams
+            //{
+            //    p_next = new GraphicsKernelBindConfig
+            //    {
+            //        p_next = null,
+            //        p_cullMode = CullMode.Back,
+            //        p_polygonMode = PolygonMode.Fill,
+            //        p_frontFace = FrontFace.CounterClockwise,
+            //        p_primitiveTopology = PrimitiveTopology.TriangleList,
+            //        p_primitiveRestartEnable = false,
+            //        p_rasterizerDiscardEnable = false,
+            //        p_rasterizationSamples = SampleCount.SampleCount1,
+            //        p_lineWidth = 1.0f,
+            //        p_depthTestEnable = false,
+            //        p_depthBiasEnable = false,
+            //        p_depthClampEnable = false,
+            //        p_depthCompareOp = CompareOp.LessOrEqual,
+            //        p_stencilTestEnable = false,
+            //        p_alphaToCoverageEnable = false,
+            //    },
+            //    p_params = [],
+            //});
             renderPassEncoder.CmdSetVertexInput(
             [
                 new VertexAttributesLayout()
@@ -306,23 +379,9 @@ namespace Massini.Flamet.HelloTriangle
 
         static void SetDefaultShaderLinkParams(RenderPassEncoder i_encoder, Vec2<uint> i_viewport)
         {
-            i_encoder.CmdSetCullMode(CullMode.Back);
-            i_encoder.CmdSetDepthBiasEnable(false);
-            i_encoder.CmdSetDepthClampEnable(false);
-            i_encoder.CmdSetPolygonMode(PolygonMode.Fill);
-            i_encoder.CmdSetStencilTestEnable(false);
             i_encoder.CmdSetColorBlendEnable(0, [true]);
-            i_encoder.CmdSetFrontFace(FrontFace.CounterClockwise);
-            i_encoder.CmdSetPrimitiveRestartEnable(false);
-            i_encoder.CmdSetPrimitiveTopology(PrimitiveTopology.TriangleList);
-            i_encoder.CmdSetDepthTestEnable(false);
             i_encoder.CmdSetColorWriteMask(0, [ColorComponentFlags.All]);
-            i_encoder.CmdSetLineWidth(1.0f);
-            i_encoder.CmdSetRasterizerDiscardEnable(false);
-            i_encoder.CmdSetDepthCompareOp(CompareOp.LessOrEqual);
             i_encoder.CmdSetSampleMask(0, [0xFFFFFFFF]);
-            i_encoder.CmdSetRasterizationSamples(SampleCount.SampleCount1);
-            i_encoder.CmdSetAlphaToCoverageEnable(false);
             i_encoder.CmdSetColorBlendEquation(new SetColorBlendEquationCmdParams()
             {
                 p_next = null,

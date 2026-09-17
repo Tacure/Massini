@@ -10,9 +10,9 @@ namespace Massini.Flamet.Sugar.Extensions
     {
         extension(CommonEncoder i_encoder)
         {
-            public void CmdBindSmartShaderLink(SmartShaderLink i_smartShaderLink, SmartShaderLinkParams i_params)
+            public void CmdBindKernel(Kernel i_kernel, KernelBindParams i_params)
             {
-                i_smartShaderLink.Bind(i_encoder, i_params);
+                i_kernel.Bind(i_encoder, i_params);
             }
 
             public unsafe void CmdPushConstant<T>(ShaderStageFlags i_stageFlags, T i_data)

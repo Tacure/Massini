@@ -22,6 +22,22 @@ namespace Massini.Core.Interop
         }
 
         /// <summary>
+        /// Returns a new instance of <see cref="MemorySize"/> representing the given number of kilobytes.
+        /// </summary>
+        public static MemorySize FromKilobytes(nuint i_kilobytes)
+        {
+            return FromBytes(i_kilobytes * 1024);
+        }
+
+        /// <summary>
+        /// Returns a new instance of <see cref="MemorySize"/> representing the given number of megabytes.
+        /// </summary>
+        public static MemorySize FromMegabytes(nuint i_megabytes)
+        {
+            return FromKilobytes(i_megabytes * 1024);
+        }
+
+        /// <summary>
         /// Returns the number of bytes represented by this instance.
         /// </summary>
         public nuint ToBytes()

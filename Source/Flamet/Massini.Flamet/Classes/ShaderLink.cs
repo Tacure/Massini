@@ -57,7 +57,7 @@ namespace Massini.Flamet.Classes
             DynamicArray<byte> spirvCode = [];
             for (uint i = 0; i < i_createParams.p_stages.Length; i++)
             {
-                ref ShaderLinkStage stage = ref i_createParams.p_stages[i];
+                ref ShaderStage stage = ref i_createParams.p_stages[i];
 
                 // Copy code.
                 for (int j = 0; j < stage.p_code.Length; j++)
@@ -107,7 +107,7 @@ namespace Massini.Flamet.Classes
 
                     for (int i = 0; i < i_createParams.p_stages.Length; i++)
                     {
-                        ref ShaderLinkStage stage = ref i_createParams.p_stages[i];
+                        ref ShaderStage stage = ref i_createParams.p_stages[i];
                         ShaderStageFlags nextStage = shadersNextStage[i];
                         sbyte* entryPoint = entryPointNames[i];
 

@@ -23,6 +23,9 @@ namespace Massini.Flamet.Classes
 
         public IReadOnlyList<QueueFamily> QueueFamilies => m_queueFamilies;
 
+        /// <summary>
+        /// Create a new device.
+        /// </summary>
         public Device(Adapter i_adapter, in DeviceCreateParams i_createParams)
         {
             Adapter adapter = i_adapter;
@@ -95,15 +98,56 @@ namespace Massini.Flamet.Classes
 
             // TODO: Update api to reflect to new level style api using features instead of some extensions.
 
-            //extensionNamesNativeStringsList.AddRange(QuNativeString.CreateUTF8(Vk.VK_KHR_SYNCHRONIZATION_2));
             extensionNamesNativeStringsList.AddRange(HeapString.CreateUTF8(Vk.VK_EXT_SHADER_OBJECT));
-            //extensionNamesNativeStringsList.AddRange(QuNativeString.CreateUTF8(Vk.VK_KHR_MAINTENANCE_6));
+            extensionNamesNativeStringsList.AddRange(HeapString.CreateUTF8(Vk.VK_EXT_EXTENDED_DYNAMIC_STATE));
+            extensionNamesNativeStringsList.AddRange(HeapString.CreateUTF8(Vk.VK_EXT_EXTENDED_DYNAMIC_STATE_2));
+            extensionNamesNativeStringsList.AddRange(HeapString.CreateUTF8(Vk.VK_EXT_EXTENDED_DYNAMIC_STATE_3));
+            extensionNamesNativeStringsList.AddRange(HeapString.CreateUTF8(Vk.VK_EXT_VERTEX_INPUT_DYNAMIC_STATE));
 
+            VkPhysicalDeviceVertexInputDynamicStateFeaturesEXT deviceVertexInputDynamicStateFeatures = new()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_INPUT_DYNAMIC_STATE_FEATURES_EXT,
+                pNext = null,
+                vertexInputDynamicState = Vk.VK_TRUE,
+            };
+            
+            VkPhysicalDeviceExtendedDynamicStateFeaturesEXT deviceExtendedDynamicStateFeatures = new()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT,
+                pNext = &deviceVertexInputDynamicStateFeatures,
+                extendedDynamicState = Vk.VK_TRUE,
+            };
+
+            VkPhysicalDeviceExtendedDynamicState2FeaturesEXT deviceExtendedDynamicState2Features = new()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT,
+                pNext = &deviceExtendedDynamicStateFeatures,
+                extendedDynamicState2 = Vk.VK_TRUE,
+                extendedDynamicState2LogicOp = Vk.VK_TRUE,
+                extendedDynamicState2PatchControlPoints = Vk.VK_TRUE,
+            };
+
+            VkPhysicalDeviceExtendedDynamicState3FeaturesEXT deviceExtendedDynamicState3Features = new()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT,
+                pNext = &deviceExtendedDynamicState2Features,
+                extendedDynamicState3AlphaToCoverageEnable = Vk.VK_TRUE,
+                extendedDynamicState3ColorBlendEnable = Vk.VK_TRUE,
+                extendedDynamicState3ColorBlendEquation = Vk.VK_TRUE,
+                extendedDynamicState3ColorWriteMask = Vk.VK_TRUE,
+                extendedDynamicState3DepthClampEnable = Vk.VK_TRUE,
+                extendedDynamicState3DepthClipEnable = Vk.VK_TRUE,
+                extendedDynamicState3LogicOpEnable = Vk.VK_TRUE,
+                extendedDynamicState3RasterizationSamples = Vk.VK_TRUE,
+                extendedDynamicState3SampleMask = Vk.VK_TRUE,
+                extendedDynamicState3PolygonMode = Vk.VK_TRUE,
+            };
+            
             VkPhysicalDeviceShaderObjectFeaturesEXT shaderObjectFeatures = new()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_OBJECT_FEATURES_EXT,
-                pNext = null,
-                shaderObject = 1,
+                pNext = &deviceExtendedDynamicState3Features,
+                shaderObject = Vk.VK_TRUE,
             };
 
             // Device features.
@@ -112,40 +156,42 @@ namespace Massini.Flamet.Classes
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_FEATURES,
                 pNext = &shaderObjectFeatures,
-                pushDescriptor = 1,
+                pushDescriptor = Vk.VK_TRUE,
+                maintenance5 = Vk.VK_TRUE,
             };
 
             VkPhysicalDeviceVulkan13Features deviceVulkan13Features = new()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES,
                 pNext = &deviceVulkan14Features,
-                dynamicRendering = 1,
-                synchronization2 = 1,
+                dynamicRendering = Vk.VK_TRUE,
+                synchronization2 = Vk.VK_TRUE,
             };
 
             VkPhysicalDeviceVulkan12Features deviceVulkan12Features = new()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES,
                 pNext = &deviceVulkan13Features,
-                timelineSemaphore = 1,
-                bufferDeviceAddress = 1,
+                timelineSemaphore = Vk.VK_TRUE,
+                bufferDeviceAddress = Vk.VK_TRUE,
             };
 
             VkPhysicalDeviceVulkan11Features deviceVulkan11Features = new()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_FEATURES,
                 pNext = &deviceVulkan12Features,
-                shaderDrawParameters = 1,
+                shaderDrawParameters = Vk.VK_TRUE,
             };
 
             VkPhysicalDeviceFeatures deviceFeatures = new()
             {
-                fillModeNonSolid = i_createParams.p_features.p_fillModeNonSolid ? 1U : 0U,
-                depthClamp = i_createParams.p_features.p_depthClamp ? 1U : 0U,
-                fragmentStoresAndAtomics = i_createParams.p_features.p_fragmentStoresAndAtomics ? 1U : 0U,
-                samplerAnisotropy = i_createParams.p_features.p_samplerAnisotropy ? 1U : 0U,
-                wideLines = i_createParams.p_features.p_wideLines ? 1U : 0U,
-                shaderInt64 = 1,
+                fillModeNonSolid = i_createParams.p_features.p_fillModeNonSolid ? Vk.VK_TRUE : Vk.VK_FALSE,
+                depthClamp = i_createParams.p_features.p_depthClamp ? Vk.VK_TRUE : Vk.VK_FALSE,
+                fragmentStoresAndAtomics = i_createParams.p_features.p_fragmentStoresAndAtomics ? Vk.VK_TRUE : Vk.VK_FALSE,
+                samplerAnisotropy = i_createParams.p_features.p_samplerAnisotropy ? Vk.VK_TRUE : Vk.VK_FALSE,
+                wideLines = i_createParams.p_features.p_wideLines ? Vk.VK_TRUE : Vk.VK_FALSE,
+                shaderInt64 = Vk.VK_TRUE,
+                shaderFloat64 = Vk.VK_TRUE,
             };
 
             VkPhysicalDeviceFeatures2 deviceFeatures2 = new()
@@ -360,6 +406,14 @@ namespace Massini.Flamet.Classes
         public Layout CreateLayout(in LayoutCreateParams i_createParams)
         {
             return new Layout(this, i_createParams);
+        }
+
+        /// <summary>
+        /// Creates a pipeline.
+        /// </summary>
+        public Pipeline CreatePipeline(in PipelineCreateParams i_createParams)
+        {
+            return new Pipeline(this, i_createParams);
         }
     }
 

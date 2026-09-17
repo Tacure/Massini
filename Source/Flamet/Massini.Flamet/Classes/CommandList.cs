@@ -568,16 +568,16 @@ namespace Massini.Flamet.Classes
 
                 TextureView textureView = (TextureView)renderPassDepthStencilAttachment.p_textureView;
 
-                stencilAttachment = new()
+                stencilAttachment = new VkRenderingAttachmentInfo
                 {
                     sType = VkStructureType.VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_INFO,
                     imageView = textureView.VkImageViewPtr,
                     imageLayout = VkImageLayout.VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL,
                     loadOp = IntSharedCvs.LoadOpToVkAttachmentLoadOp(renderPassDepthStencilAttachment.p_stencilLoadOp),
                     storeOp = IntSharedCvs.StoreOpToVkAttachmentStoreOp(renderPassDepthStencilAttachment.p_stencilStoreOp),
-                    clearValue = new()
+                    clearValue = new VkClearValue
                     {
-                        depthStencil = new()
+                        depthStencil = new VkClearDepthStencilValue
                         {
                             depth = 1.0f,
                             stencil = 0,
@@ -670,6 +670,9 @@ namespace Massini.Flamet.Classes
                         break;
                     case VirtualCommandKind.CmdBindShaderLink:
                         HandleCmdBindShaderLink((CmdBindShaderLink)command);
+                        break;
+                    case VirtualCommandKind.CmdBindPipeline:
+                        HandleCmdBindPipeline((CmdBindPipeline)command, false);
                         break;
                     case VirtualCommandKind.CmdSetCullMode:
                         HandleCmdSetCullMode((CmdSetCullMode)command);
@@ -780,6 +783,9 @@ namespace Massini.Flamet.Classes
                 {
                     case VirtualCommandKind.CmdBindShaderLink:
                         HandleCmdBindShaderLink((CmdBindShaderLink)command);
+                        break;
+                    case VirtualCommandKind.CmdBindPipeline:
+                        HandleCmdBindPipeline((CmdBindPipeline)command, true);
                         break;
                     case VirtualCommandKind.CmdBindSets:
                         HandleCmdBindSets((CmdBindSets)command, true);
@@ -1528,6 +1534,14 @@ namespace Massini.Flamet.Classes
             }
         }
 
+        private void HandleCmdBindPipeline(CmdBindPipeline i_cmdBindPipeline, bool i_isComputePass)
+        {
+            Vk.vkCmdBindPipeline(m_ptr_commandBuffer,
+                i_isComputePass
+                    ? VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_COMPUTE
+                    : VkPipelineBindPoint.VK_PIPELINE_BIND_POINT_GRAPHICS, i_cmdBindPipeline.p_pipeline!.VkPipelinePtr);
+        }
+        
         private void HandleCmdSetCullMode(CmdSetCullMode i_cmdSetCullMode)
         {
             Vk.vkCmdSetCullMode(m_ptr_commandBuffer, (uint)IntSharedCvs.CullModeFlagsToVkCullModeFlagBits(i_cmdSetCullMode.p_cullMode));

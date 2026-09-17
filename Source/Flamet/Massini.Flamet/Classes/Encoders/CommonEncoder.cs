@@ -11,6 +11,11 @@ namespace Massini.Flamet.Classes.Encoders
             Push<CmdBindShaderLink>(cmd => { cmd.p_shaderLink = i_shaderLink; });
         }
 
+        public void CmdBindPipeline(Pipeline i_pipeline)
+        {
+            Push<CmdBindPipeline>(cmd => { cmd.p_pipeline = i_pipeline; });
+        }
+
         public void CmdBindSets(uint i_firstSet, Set[] i_pipelineSets)
         {
             Push<CmdBindSets>(cmd =>

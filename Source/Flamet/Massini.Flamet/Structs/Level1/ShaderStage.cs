@@ -3,7 +3,7 @@ using Massini.Flamet.Interfaces;
 
 namespace Massini.Flamet.Structs.Level1
 {
-    public struct ShaderLinkStage : INext
+    public struct ShaderStage : INext
     {
         public required INext? p_next;
         public required ShaderStageFlags p_stage;

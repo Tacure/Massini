@@ -41,5 +41,6 @@ namespace Massini.Flamet.Enums.Internal
         CmdSetDepthCompareOp,
         CmdSetDepthWriteEnable,
         CmdSetLineWidth,
+        CmdBindPipeline,
     }
 }

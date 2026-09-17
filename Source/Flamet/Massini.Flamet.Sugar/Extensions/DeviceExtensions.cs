@@ -42,9 +42,9 @@ namespace Massini.Flamet.Sugar.Extensions
                 return new Texture2D(i_device, in i_createParams);
             }
 
-            public SmartShaderLink CreateSmartShaderLink(in SmartShaderLinkCreateParams i_createParams)
+            public Kernel CreateKernel(in KernelCreateParams i_createParams)
             {
-                return new SmartShaderLink(i_device, in i_createParams);
+                return new Kernel(i_device, in i_createParams);
             }
         }
     }

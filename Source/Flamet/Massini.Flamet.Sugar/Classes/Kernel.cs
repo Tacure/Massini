@@ -4,17 +4,19 @@ using Massini.Core;
 using Massini.Flamet.Classes;
 using Massini.Flamet.Classes.Encoders;
 using Massini.Flamet.Enums;
+using Massini.Flamet.Extensions;
 using Massini.Flamet.Interfaces;
 using Massini.Flamet.Structs.Level1;
 using Massini.Flamet.Sugar.Classes.Internal;
 using Massini.Flamet.Sugar.Classes.Reflection;
 using Massini.Flamet.Sugar.Structs;
 using Massini.Flamet.Sugar.Structs.Internal;
+using Massini.Flamet.Sugar.Structs.Reflection;
 using Buffer = Massini.Flamet.Classes.Buffer;
 
 namespace Massini.Flamet.Sugar.Classes
 {
-    public unsafe class SmartShaderLink : IResource, IDisposable
+    public unsafe class Kernel : IResource, IDisposable
     {
         public Rid Id => m_id;
 
@@ -22,9 +24,9 @@ namespace Massini.Flamet.Sugar.Classes
 
         public Device Device => m_shaderLink.Device;
 
-        public SmartShaderLink(Device i_device, in SmartShaderLinkCreateParams i_createParams)
+        public Kernel(Device i_device, in KernelCreateParams i_createParams)
         {
-            m_reflection = new ShadersReflection(new()
+            m_reflection = new ShadersReflection(new ShadersReflectionSource
             {
                 p_code = [.. i_createParams.p_stages.Select(s => s.p_code)],
             });
@@ -55,14 +57,14 @@ namespace Massini.Flamet.Sugar.Classes
                     };
                 }
 
-                sets[i] = new()
+                sets[i] = new SetDeclaration
                 {
                     p_pushSet = false, 
                     p_entries = entries,
                 };
             }
 
-            m_layout = i_device.CreateLayout(new()
+            m_layout = i_device.CreateLayout(new LayoutCreateParams
             {
                 p_next = null,
                 p_label = i_createParams.p_label,
@@ -70,7 +72,7 @@ namespace Massini.Flamet.Sugar.Classes
                 p_sets = sets, 
             });
 
-            m_shaderLink = i_device.CreateShaderLink(new()
+            m_shaderLink = i_device.CreateShaderLink(new ShaderLinkCreateParams
             {
                 p_next = null,
                 p_label = i_createParams.p_label,
@@ -98,7 +100,7 @@ namespace Massini.Flamet.Sugar.Classes
             }
         }
 
-        public void Bind(CommonEncoder i_encoder, SmartShaderLinkParams i_params)
+        public void Bind(CommonEncoder i_encoder, KernelBindParams i_params)
         {
             // Bind shader link.
             i_encoder.CmdBindShaderLink(m_shaderLink);
@@ -122,7 +124,7 @@ namespace Massini.Flamet.Sugar.Classes
                 // Get or create set state.
                 if (!m_sets.TryGetValue(setFingerprint, out SetState? state))
                 {
-                    state = new();
+                    state = new SetState();
                     m_sets.Add(setFingerprint, state);
 
                     Console.WriteLine($"Creating set with fingerprint: {setFingerprint.GetHashCode()}"); // DEBUG
@@ -282,6 +284,30 @@ namespace Massini.Flamet.Sugar.Classes
                     Console.WriteLine($"Destroyed set with fingerprint: {setFingerprint.GetHashCode()}"); // DEBUG
                 }
             }
+            
+            // Set configs.
+            if (i_encoder is RenderPassEncoder renderPassEncoder)
+            {
+                if (!i_params.TryGetNext<GraphicsKernelBindConfig>(out var config))
+                {
+                    throw new Exception("Graphics kernel bind config not found.");
+                }
+                
+                renderPassEncoder.CmdSetCullMode(config.p_cullMode);
+                renderPassEncoder.CmdSetPolygonMode(config.p_polygonMode);
+                renderPassEncoder.CmdSetFrontFace(config.p_frontFace);
+                renderPassEncoder.CmdSetPrimitiveTopology(config.p_primitiveTopology);
+                renderPassEncoder.CmdSetLineWidth(config.p_lineWidth);
+                renderPassEncoder.CmdSetDepthTestEnable(config.p_depthTestEnable);
+                renderPassEncoder.CmdSetStencilTestEnable(config.p_stencilTestEnable);
+                renderPassEncoder.CmdSetPrimitiveRestartEnable(config.p_primitiveRestartEnable);
+                renderPassEncoder.CmdSetRasterizerDiscardEnable(config.p_rasterizerDiscardEnable);
+                renderPassEncoder.CmdSetRasterizationSamples(config.p_rasterizationSamples);
+                renderPassEncoder.CmdSetDepthBiasEnable(config.p_depthBiasEnable);
+                renderPassEncoder.CmdSetDepthClampEnable(config.p_depthClampEnable);
+                renderPassEncoder.CmdSetDepthCompareOp(config.p_depthCompareOp);
+                renderPassEncoder.CmdSetAlphaToCoverageEnable(config.p_alphaToCoverageEnable);
+            }
         }
 
         internal ShaderLink ShaderLink => m_shaderLink;
@@ -303,30 +329,30 @@ namespace Massini.Flamet.Sugar.Classes
         private readonly List<Rid> m_commandListsToRemove = [];
         private readonly List<SetFingerprint> m_setsToRemove = [];
 
-        private void TakeFingerprints(SmartShaderLinkParams i_params, SetFingerprint[] i_fingerprints, List<object> i_resources)
+        private void TakeFingerprints(KernelBindParams i_params, SetFingerprint[] i_fingerprints, List<object> i_resources)
         {
             for (int i = 0; i < i_params.p_params.Length; i++)
             {
-                ref SmartShaderLinkParam param = ref i_params.p_params[i];
-                SetBindingReflection? bindingReflection = m_reflection.GetBinding(param.p_name);
+                ref KernelBindParam bindParam = ref i_params.p_params[i];
+                SetBindingReflection? bindingReflection = m_reflection.GetBinding(bindParam.p_name);
 
                 if (bindingReflection == null)
                 {
-                    throw new Exception($"Binding '{param.p_name}' not found.");
+                    throw new Exception($"Binding '{bindParam.p_name}' not found.");
                 }
 
-                if (param.p_textureBindingDescription != null && 
+                if (bindParam.p_textureBindingDescription != null && 
                     (bindingReflection.EntryType == EntryType.StorageBuffer ||
                      bindingReflection.EntryType == EntryType.UniformBuffer))
                 {
-                    throw new Exception($"Binding '{param.p_name}' is not a texture.");
+                    throw new Exception($"Binding '{bindParam.p_name}' is not a texture.");
                 }
 
-                if (param.p_bufferBindingDescription != null && 
+                if (bindParam.p_bufferBindingDescription != null && 
                     (bindingReflection.EntryType == EntryType.Texture ||
                      bindingReflection.EntryType == EntryType.Sampler))
                 {
-                    throw new Exception($"Binding '{param.p_name}' is not a buffer.");
+                    throw new Exception($"Binding '{bindParam.p_name}' is not a buffer.");
                 }
 
                 ref SetFingerprint setFingerprint = ref i_fingerprints[bindingReflection.SetNumber];
@@ -339,42 +365,42 @@ namespace Massini.Flamet.Sugar.Classes
 
                 if (bindingFingerprint.p_used == 1)
                 {
-                    throw new Exception($"Binding '{param.p_name}' was already assigned.");
+                    throw new Exception($"Binding '{bindParam.p_name}' was already assigned.");
                 }
 
                 bindingFingerprint.p_used = 1;
                 bindingFingerprint.p_bindingNumber = (int)bindingReflection.BindingNumber;
                 bindingFingerprint.p_resourceIndex = i_resources.Count;
 
-                if (param.p_bufferBindingDescription.HasValue)
+                if (bindParam.p_bufferBindingDescription.HasValue)
                 {
-                    if (param.p_bufferBindingDescription.Value.p_buffer == null)
+                    if (bindParam.p_bufferBindingDescription.Value.p_buffer == null)
                     {
                         throw new Exception($"Buffer cannot be null.");
                     }
                     
-                    bindingFingerprint.p_resourceHash = param.p_bufferBindingDescription.Value.p_buffer.GetHashCode();
-                    bindingFingerprint.p_bufferOffset = param.p_bufferBindingDescription.Value.p_offset;
-                    bindingFingerprint.p_bufferRange = param.p_bufferBindingDescription.Value.p_range;
+                    bindingFingerprint.p_resourceHash = bindParam.p_bufferBindingDescription.Value.p_buffer.GetHashCode();
+                    bindingFingerprint.p_bufferOffset = bindParam.p_bufferBindingDescription.Value.p_offset;
+                    bindingFingerprint.p_bufferRange = bindParam.p_bufferBindingDescription.Value.p_range;
 
                     // Add resource to the list.
-                    i_resources.Add(param.p_bufferBindingDescription.Value.p_buffer);
+                    i_resources.Add(bindParam.p_bufferBindingDescription.Value.p_buffer);
                 }
-                else if (param.p_textureBindingDescription.HasValue)
+                else if (bindParam.p_textureBindingDescription.HasValue)
                 {
-                    if (param.p_textureBindingDescription.Value.p_textureView != null)
+                    if (bindParam.p_textureBindingDescription.Value.p_textureView != null)
                     {
-                        bindingFingerprint.p_resourceHash = param.p_textureBindingDescription.Value.p_textureView.GetHashCode();
+                        bindingFingerprint.p_resourceHash = bindParam.p_textureBindingDescription.Value.p_textureView.GetHashCode();
 
                         // Add resource to the list.
-                        i_resources.Add(param.p_textureBindingDescription.Value.p_textureView);
+                        i_resources.Add(bindParam.p_textureBindingDescription.Value.p_textureView);
                     }
-                    else if (param.p_textureBindingDescription.Value.p_sampler != null)
+                    else if (bindParam.p_textureBindingDescription.Value.p_sampler != null)
                     {
-                        bindingFingerprint.p_resourceHash = param.p_textureBindingDescription.Value.p_sampler.GetHashCode();
+                        bindingFingerprint.p_resourceHash = bindParam.p_textureBindingDescription.Value.p_sampler.GetHashCode();
 
                         // Add resource to the list.
-                        i_resources.Add(param.p_textureBindingDescription.Value.p_sampler);
+                        i_resources.Add(bindParam.p_textureBindingDescription.Value.p_sampler);
                     }
                     else
                     {

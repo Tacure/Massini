@@ -4,14 +4,14 @@ using System.Text;
 namespace Massini.Core.Interop
 {
     /// <summary>
-    /// Represents a string allocated on the heap.
+    /// Represents a string allocated on an arena.
     /// </summary>
-    public readonly unsafe struct HeapString : IDisposable
+    public readonly unsafe struct ArenaString
     {
         /// <summary>
         /// Creates a new UTF8 encoded string.
         /// </summary>
-        public static HeapString CreateUTF8(string i_string)
+        public static ArenaString CreateUTF8(string i_string, ArenaAllocator i_allocator)
         {
             // Get the required buffer size.
             int byteCount = Encoding.UTF8.GetByteCount(i_string);
@@ -20,7 +20,7 @@ namespace Massini.Core.Interop
             nuint totalSize = (nuint)byteCount + 1;
 
             // Create buffer.
-            HeapAlloc bufferAlloc = HeapAllocator.Alloc(MemorySize.FromBytes(totalSize));
+            ArenaAlloc bufferAlloc = i_allocator.Alloc(MemorySize.FromBytes(totalSize), MemorySize.FromBytes(1));
             byte* buffer = (byte*)bufferAlloc.RawPtr();
             Span<byte> destination = new(buffer, byteCount);
 
@@ -30,7 +30,7 @@ namespace Massini.Core.Interop
             // Add the null terminator.
             buffer[byteCount] = 0;
 
-            return new HeapString(bufferAlloc, Encoding.UTF8);
+            return new ArenaString(bufferAlloc, Encoding.UTF8);
         }
         
         /// <summary>
@@ -44,19 +44,13 @@ namespace Massini.Core.Interop
             return m_encoding.GetString((byte*)m_alloc.RawPtr(), (int)m_alloc.Size.ToBytes());
         }
 
-        /// <inheritdoc />
-        public void Dispose()
-        {
-            m_alloc.Dispose();
-        }
-
-        private HeapString(HeapAlloc i_alloc, Encoding i_encoding)
+        private ArenaString(ArenaAlloc i_alloc, Encoding i_encoding)
         {
             m_alloc = i_alloc;
             m_encoding = i_encoding;
         }
         
-        private readonly HeapAlloc m_alloc;
+        private readonly ArenaAlloc m_alloc;
         private readonly Encoding m_encoding;
-    }
+    }   
 }

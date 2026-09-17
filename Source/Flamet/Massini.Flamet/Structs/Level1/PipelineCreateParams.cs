@@ -1,17 +1,15 @@
-using System;
+
 using Massini.Flamet.Classes;
 using Massini.Flamet.Interfaces;
 
 namespace Massini.Flamet.Structs.Level1
 {
-    public struct ShaderLinkCreateParams : INext
+    public struct PipelineCreateParams : INext
     {
         public required INext? p_next;
-        public required string p_label;
-        public required ShaderStage[] p_stages;
         public required Layout p_layout;
-        
-        /// <inheritdoc/>
+        public required ShaderStage[] p_stages;
+
         public readonly INext? Next => p_next;
     }
 }

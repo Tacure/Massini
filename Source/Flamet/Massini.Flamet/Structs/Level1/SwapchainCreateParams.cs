@@ -15,7 +15,7 @@ namespace Massini.Flamet.Structs.Level1
         public required PresentModeFlags p_presentMode;
         public required TextureFormat p_colorFormat;
         public required CompositeAlphaModeFlags p_compositeAlphaMode;
-        public required TextureFormat p_depthFormat;
+        public required TextureFormat p_depthStencilFormat;
         public required bool p_enableDepthBuffer;
         public required ColorSpace p_colorSpace;
 

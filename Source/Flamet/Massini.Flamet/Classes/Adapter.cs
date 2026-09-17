@@ -33,10 +33,27 @@ namespace Massini.Flamet.Classes
 
             // Get features.
 
+            VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicStateFeatures3 = new()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT,
+            };
+            
+            VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extendedDynamicStateFeatures2 = new()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_2_FEATURES_EXT,  
+                pNext = &extendedDynamicStateFeatures3,
+            };
+            
+            VkPhysicalDeviceExtendedDynamicStateFeaturesEXT extendedDynamicStateFeatures = new()
+            {
+                sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT,  
+                pNext = &extendedDynamicStateFeatures2,
+            };
+
             VkPhysicalDeviceVulkan14Features vulkan14Features = new()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_4_FEATURES,  
-                pNext = null,
+                pNext = &extendedDynamicStateFeatures,
             };
 
             VkPhysicalDeviceVulkan13Features vulkan13Features = new()
@@ -61,7 +78,7 @@ namespace Massini.Flamet.Classes
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2,
                 pNext = &vulkan11Features,
-                features = new(),  
+                features = new VkPhysicalDeviceFeatures(),  
             };
 
             Vk.vkGetPhysicalDeviceFeatures2(VkPhysicalDevicePtr, &features2);
@@ -137,30 +154,58 @@ namespace Massini.Flamet.Classes
             // Check the feature level.
             FeatureLevel level = FeatureLevel.None;
             
+            #region Level 1
+            
             // Level 1 requires at least Vulkan 1.4.
-            bool level1Supported = properties2.properties.apiVersion >= Vk.ApiVersion0140;
-            level1Supported = level1Supported && extensions.Contains(Vk.VK_EXT_SHADER_OBJECT);
-            level1Supported = level1Supported && extensions.Contains(Vk.VK_KHR_MAINTENANCE_6);
+            bool level1Supported = true;
+            LevelSupportCheckApiVersion(ref level1Supported, properties2.properties.apiVersion, Vk.ApiVersion0140);
 
             // Core 1.0
-            level1Supported = level1Supported && features2.features.shaderInt64 == 1;
+            LevelSupportCheckBool(ref level1Supported, features2.features.shaderInt64);
+            LevelSupportCheckBool(ref level1Supported, features2.features.shaderFloat64);
             // Core 1.1
-            level1Supported = level1Supported && vulkan11Features.shaderDrawParameters == 1;
+            LevelSupportCheckBool(ref level1Supported, vulkan11Features.shaderDrawParameters);
             // Core 1.2
-            level1Supported = level1Supported && vulkan12Features.timelineSemaphore == 1;
-            level1Supported = level1Supported && vulkan12Features.bufferDeviceAddress == 1;
+            LevelSupportCheckBool(ref level1Supported, vulkan12Features.timelineSemaphore);
+            LevelSupportCheckBool(ref level1Supported, vulkan12Features.bufferDeviceAddress);
             // Core 1.3
-            level1Supported = level1Supported && vulkan13Features.dynamicRendering == 1;
-            level1Supported = level1Supported && vulkan13Features.synchronization2 == 1;
+            LevelSupportCheckBool(ref level1Supported, vulkan13Features.dynamicRendering);
+            LevelSupportCheckBool(ref level1Supported, vulkan13Features.synchronization2);
             // Core 1.4
-            level1Supported = level1Supported && vulkan14Features.pushDescriptor == 1;
+            LevelSupportCheckBool(ref level1Supported, vulkan14Features.pushDescriptor);
+            LevelSupportCheckBool(ref level1Supported, vulkan14Features.maintenance5);
+            
+            // Check extensions.
+            LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_SHADER_OBJECT);
+            LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_EXTENDED_DYNAMIC_STATE);
+            LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_EXTENDED_DYNAMIC_STATE_2);
+            LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_EXTENDED_DYNAMIC_STATE_3);
+            LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_VERTEX_INPUT_DYNAMIC_STATE);
+            
+            // Check extensions features.
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures.extendedDynamicState);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures2.extendedDynamicState2);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures2.extendedDynamicState2LogicOp);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures2.extendedDynamicState2PatchControlPoints);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3AlphaToCoverageEnable);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3ColorBlendEnable);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3ColorBlendEquation);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3ColorWriteMask);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3DepthClampEnable);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3DepthClipEnable);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3LogicOpEnable);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3RasterizationSamples);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3SampleMask);
+            LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures3.extendedDynamicState3PolygonMode);
 
             if (level1Supported) 
             {
                 level = FeatureLevel.Level1;
             }
             
-            return new() 
+            #endregion
+            
+            return new AdapterInfo
             {
                 p_name = name,
                 p_apiVersion = properties2.properties.apiVersion,
@@ -203,6 +248,21 @@ namespace Massini.Flamet.Classes
         {
             m_instance = i_instance;
             m_ptr_physicalDevice = i_ptr_physicalDevice;
+        }
+
+        private static void LevelSupportCheckApiVersion(ref bool r_support, uint i_value, uint i_minVersion)
+        {
+            r_support = r_support && (i_value >= i_minVersion);
+        }
+
+        private static void LevelSupportCheckBool(ref bool r_support, uint i_value)
+        {
+            r_support = r_support && (i_value == 1);
+        }
+
+        private static void LevelSupportCheckExtension(ref bool r_support, string[] i_extensions, string i_extension)
+        {
+            r_support = r_support && i_extensions.Contains(i_extension);
         }
     }
 }
