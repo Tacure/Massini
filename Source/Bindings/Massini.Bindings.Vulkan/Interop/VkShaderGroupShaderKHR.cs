@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkShaderGroupShaderKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkShaderGroupShaderKHR : uint
     {
         VK_SHADER_GROUP_SHADER_GENERAL_KHR = 0,
         VK_SHADER_GROUP_SHADER_CLOSEST_HIT_KHR = 1,

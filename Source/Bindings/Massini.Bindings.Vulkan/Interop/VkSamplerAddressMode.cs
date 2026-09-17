@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSamplerAddressMode
+    [NativeTypeName("unsigned int")]
+    public enum VkSamplerAddressMode : uint
     {
         VK_SAMPLER_ADDRESS_MODE_REPEAT = 0,
         VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT = 1,

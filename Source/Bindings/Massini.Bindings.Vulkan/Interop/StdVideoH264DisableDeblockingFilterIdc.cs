@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH264DisableDeblockingFilterIdc
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH264DisableDeblockingFilterIdc : uint
     {
         STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_DISABLED = 0,
         STD_VIDEO_H264_DISABLE_DEBLOCKING_FILTER_IDC_ENABLED = 1,

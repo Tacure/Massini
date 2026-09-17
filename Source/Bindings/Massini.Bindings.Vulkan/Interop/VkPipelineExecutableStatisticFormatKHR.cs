@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPipelineExecutableStatisticFormatKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkPipelineExecutableStatisticFormatKHR : uint
     {
         VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_BOOL32_KHR = 0,
         VK_PIPELINE_EXECUTABLE_STATISTIC_FORMAT_INT64_KHR = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoEncodeRateControlModeFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeRateControlModeFlagBitsKHR : uint
     {
         VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DEFAULT_KHR = 0,
         VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR = 0x00000001,

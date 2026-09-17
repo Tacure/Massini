@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH264MemMgmtControlOp
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH264MemMgmtControlOp : uint
     {
         STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_END = 0,
         STD_VIDEO_H264_MEM_MGMT_CONTROL_OP_UNMARK_SHORT_TERM = 1,

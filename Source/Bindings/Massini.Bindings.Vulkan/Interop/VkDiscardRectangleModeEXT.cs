@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDiscardRectangleModeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkDiscardRectangleModeEXT : uint
     {
         VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT = 0,
         VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT = 1,

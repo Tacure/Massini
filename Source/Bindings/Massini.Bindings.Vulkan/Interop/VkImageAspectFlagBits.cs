@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkImageAspectFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkImageAspectFlagBits : uint
     {
         VK_IMAGE_ASPECT_COLOR_BIT = 0x00000001,
         VK_IMAGE_ASPECT_DEPTH_BIT = 0x00000002,

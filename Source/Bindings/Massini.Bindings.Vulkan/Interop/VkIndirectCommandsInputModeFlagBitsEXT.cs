@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkIndirectCommandsInputModeFlagBitsEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkIndirectCommandsInputModeFlagBitsEXT : uint
     {
         VK_INDIRECT_COMMANDS_INPUT_MODE_VULKAN_INDEX_BUFFER_EXT = 0x00000001,
         VK_INDIRECT_COMMANDS_INPUT_MODE_DXGI_INDEX_BUFFER_EXT = 0x00000002,

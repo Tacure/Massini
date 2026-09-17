@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkLogicOp
+    [NativeTypeName("unsigned int")]
+    public enum VkLogicOp : uint
     {
         VK_LOGIC_OP_CLEAR = 0,
         VK_LOGIC_OP_AND = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDeviceFaultAddressTypeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkDeviceFaultAddressTypeEXT : uint
     {
         VK_DEVICE_FAULT_ADDRESS_TYPE_NONE_EXT = 0,
         VK_DEVICE_FAULT_ADDRESS_TYPE_READ_INVALID_EXT = 1,

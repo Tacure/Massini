@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkBuildAccelerationStructureModeKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkBuildAccelerationStructureModeKHR : uint
     {
         VK_BUILD_ACCELERATION_STRUCTURE_MODE_BUILD_KHR = 0,
         VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR = 1,

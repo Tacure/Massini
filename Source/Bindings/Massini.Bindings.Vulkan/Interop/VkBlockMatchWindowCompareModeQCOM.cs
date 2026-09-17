@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkBlockMatchWindowCompareModeQCOM
+    [NativeTypeName("unsigned int")]
+    public enum VkBlockMatchWindowCompareModeQCOM : uint
     {
         VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM = 0,
         VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM = 1,

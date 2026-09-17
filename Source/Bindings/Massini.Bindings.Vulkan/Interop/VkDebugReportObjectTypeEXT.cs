@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDebugReportObjectTypeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkDebugReportObjectTypeEXT : uint
     {
         VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT = 0,
         VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT = 1,

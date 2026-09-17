@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoEncodeAV1RateControlGroupKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeAV1RateControlGroupKHR : uint
     {
         VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_INTRA_KHR = 0,
         VK_VIDEO_ENCODE_AV1_RATE_CONTROL_GROUP_PREDICTIVE_KHR = 1,

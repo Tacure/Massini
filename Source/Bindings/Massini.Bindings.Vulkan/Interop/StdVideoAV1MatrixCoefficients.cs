@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1MatrixCoefficients
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1MatrixCoefficients : uint
     {
         STD_VIDEO_AV1_MATRIX_COEFFICIENTS_IDENTITY = 0,
         STD_VIDEO_AV1_MATRIX_COEFFICIENTS_BT_709 = 1,

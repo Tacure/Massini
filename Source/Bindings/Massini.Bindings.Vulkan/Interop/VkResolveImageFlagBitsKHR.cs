@@ -1,0 +1,10 @@
+namespace Massini.Bindings.Vulkan
+{
+    [NativeTypeName("unsigned int")]
+    public enum VkResolveImageFlagBitsKHR : uint
+    {
+        VK_RESOLVE_IMAGE_SKIP_TRANSFER_FUNCTION_BIT_KHR = 0x00000001,
+        VK_RESOLVE_IMAGE_ENABLE_TRANSFER_FUNCTION_BIT_KHR = 0x00000002,
+        VK_RESOLVE_IMAGE_FLAG_BITS_MAX_ENUM_KHR = 0x7FFFFFFF,
+    }
+}

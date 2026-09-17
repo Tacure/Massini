@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPhysicalDeviceType
+    [NativeTypeName("unsigned int")]
+    public enum VkPhysicalDeviceType : uint
     {
         VK_PHYSICAL_DEVICE_TYPE_OTHER = 0,
         VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU = 1,

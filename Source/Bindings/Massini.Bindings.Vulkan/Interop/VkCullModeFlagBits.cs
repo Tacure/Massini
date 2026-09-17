@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCullModeFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkCullModeFlagBits : uint
     {
         VK_CULL_MODE_NONE = 0,
         VK_CULL_MODE_FRONT_BIT = 0x00000001,

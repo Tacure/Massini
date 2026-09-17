@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkViewportCoordinateSwizzleNV
+    [NativeTypeName("unsigned int")]
+    public enum VkViewportCoordinateSwizzleNV : uint
     {
         VK_VIEWPORT_COORDINATE_SWIZZLE_POSITIVE_X_NV = 0,
         VK_VIEWPORT_COORDINATE_SWIZZLE_NEGATIVE_X_NV = 1,

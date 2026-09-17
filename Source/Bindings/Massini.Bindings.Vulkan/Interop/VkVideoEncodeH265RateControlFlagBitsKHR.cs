@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoEncodeH265RateControlFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeH265RateControlFlagBitsKHR : uint
     {
         VK_VIDEO_ENCODE_H265_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR = 0x00000001,
         VK_VIDEO_ENCODE_H265_RATE_CONTROL_REGULAR_GOP_BIT_KHR = 0x00000002,

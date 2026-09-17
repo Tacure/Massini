@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCommandBufferUsageFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkCommandBufferUsageFlagBits : uint
     {
         VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT = 0x00000001,
         VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT = 0x00000002,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSemaphoreImportFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkSemaphoreImportFlagBits : uint
     {
         VK_SEMAPHORE_IMPORT_TEMPORARY_BIT = 0x00000001,
         VK_SEMAPHORE_IMPORT_TEMPORARY_BIT_KHR = VK_SEMAPHORE_IMPORT_TEMPORARY_BIT,

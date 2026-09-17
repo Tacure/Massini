@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkOpticalFlowUsageFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkOpticalFlowUsageFlagBitsNV : uint
     {
         VK_OPTICAL_FLOW_USAGE_UNKNOWN_NV = 0,
         VK_OPTICAL_FLOW_USAGE_INPUT_BIT_NV = 0x00000001,

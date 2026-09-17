@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1TxMode
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1TxMode : uint
     {
         STD_VIDEO_AV1_TX_MODE_ONLY_4X4 = 0,
         STD_VIDEO_AV1_TX_MODE_LARGEST = 1,

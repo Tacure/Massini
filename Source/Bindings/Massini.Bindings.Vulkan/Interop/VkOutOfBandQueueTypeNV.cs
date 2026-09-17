@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkOutOfBandQueueTypeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkOutOfBandQueueTypeNV : uint
     {
         VK_OUT_OF_BAND_QUEUE_TYPE_RENDER_NV = 0,
         VK_OUT_OF_BAND_QUEUE_TYPE_PRESENT_NV = 1,

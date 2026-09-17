@@ -32,7 +32,7 @@ namespace Massini.Flamet.Classes
             Vk.vkGetPhysicalDeviceProperties2(VkPhysicalDevicePtr, &properties2);
 
             // Get features.
-
+            
             VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicStateFeatures3 = new()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_3_FEATURES_EXT,
@@ -181,6 +181,7 @@ namespace Massini.Flamet.Classes
             LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_EXTENDED_DYNAMIC_STATE_2);
             LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_EXTENDED_DYNAMIC_STATE_3);
             LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_VERTEX_INPUT_DYNAMIC_STATE);
+            LevelSupportCheckExtension(ref level1Supported, extensions, Vk.VK_EXT_DESCRIPTOR_HEAP);
             
             // Check extensions features.
             LevelSupportCheckBool(ref level1Supported, extendedDynamicStateFeatures.extendedDynamicState);

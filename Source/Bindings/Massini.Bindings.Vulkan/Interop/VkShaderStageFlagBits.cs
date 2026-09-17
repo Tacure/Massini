@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkShaderStageFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkShaderStageFlagBits : uint
     {
         VK_SHADER_STAGE_VERTEX_BIT = 0x00000001,
         VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT = 0x00000002,

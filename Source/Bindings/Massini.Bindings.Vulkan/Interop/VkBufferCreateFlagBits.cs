@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkBufferCreateFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkBufferCreateFlagBits : uint
     {
         VK_BUFFER_CREATE_SPARSE_BINDING_BIT = 0x00000001,
         VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT = 0x00000002,

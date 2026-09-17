@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSamplerCreateFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkSamplerCreateFlagBits : uint
     {
         VK_SAMPLER_CREATE_SUBSAMPLED_BIT_EXT = 0x00000001,
         VK_SAMPLER_CREATE_SUBSAMPLED_COARSE_RECONSTRUCTION_BIT_EXT = 0x00000002,

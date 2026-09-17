@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPartitionedAccelerationStructureOpTypeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkPartitionedAccelerationStructureOpTypeNV : uint
     {
         VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_WRITE_INSTANCE_NV = 0,
         VK_PARTITIONED_ACCELERATION_STRUCTURE_OP_TYPE_UPDATE_INSTANCE_NV = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkFormatFeatureFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkFormatFeatureFlagBits : uint
     {
         VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = 0x00000001,
         VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT = 0x00000002,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkImageViewType
+    [NativeTypeName("unsigned int")]
+    public enum VkImageViewType : uint
     {
         VK_IMAGE_VIEW_TYPE_1D = 0,
         VK_IMAGE_VIEW_TYPE_2D = 1,

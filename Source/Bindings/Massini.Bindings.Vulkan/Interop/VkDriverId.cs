@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDriverId
+    [NativeTypeName("unsigned int")]
+    public enum VkDriverId : uint
     {
         VK_DRIVER_ID_AMD_PROPRIETARY = 1,
         VK_DRIVER_ID_AMD_OPEN_SOURCE = 2,
@@ -29,6 +30,7 @@ namespace Massini.Bindings.Vulkan
         VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA = 25,
         VK_DRIVER_ID_MESA_HONEYKRISP = 26,
         VK_DRIVER_ID_VULKAN_SC_EMULATION_ON_VULKAN = 27,
+        VK_DRIVER_ID_MESA_KOSMICKRISP = 28,
         VK_DRIVER_ID_AMD_PROPRIETARY_KHR = VK_DRIVER_ID_AMD_PROPRIETARY,
         VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR = VK_DRIVER_ID_AMD_OPEN_SOURCE,
         VK_DRIVER_ID_MESA_RADV_KHR = VK_DRIVER_ID_MESA_RADV,

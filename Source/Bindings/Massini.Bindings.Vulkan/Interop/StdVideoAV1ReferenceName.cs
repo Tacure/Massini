@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1ReferenceName
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1ReferenceName : uint
     {
         STD_VIDEO_AV1_REFERENCE_NAME_INTRA_FRAME = 0,
         STD_VIDEO_AV1_REFERENCE_NAME_LAST_FRAME = 1,

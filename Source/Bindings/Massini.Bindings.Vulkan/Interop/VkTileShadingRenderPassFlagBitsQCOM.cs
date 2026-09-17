@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkTileShadingRenderPassFlagBitsQCOM
+    [NativeTypeName("unsigned int")]
+    public enum VkTileShadingRenderPassFlagBitsQCOM : uint
     {
         VK_TILE_SHADING_RENDER_PASS_ENABLE_BIT_QCOM = 0x00000001,
         VK_TILE_SHADING_RENDER_PASS_PER_TILE_EXECUTION_BIT_QCOM = 0x00000002,

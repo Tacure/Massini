@@ -1,8 +1,10 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDeviceQueueCreateFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkDeviceQueueCreateFlagBits : uint
     {
         VK_DEVICE_QUEUE_CREATE_PROTECTED_BIT = 0x00000001,
+        VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR = 0x00000004,
         VK_DEVICE_QUEUE_CREATE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF,
     }
 }

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkGraphicsPipelineLibraryFlagBitsEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkGraphicsPipelineLibraryFlagBitsEXT : uint
     {
         VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT = 0x00000001,
         VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT = 0x00000002,

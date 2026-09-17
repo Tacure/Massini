@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkFrontFace
+    [NativeTypeName("unsigned int")]
+    public enum VkFrontFace : uint
     {
         VK_FRONT_FACE_COUNTER_CLOCKWISE = 0,
         VK_FRONT_FACE_CLOCKWISE = 1,

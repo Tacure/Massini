@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1TransferCharacteristics
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1TransferCharacteristics : uint
     {
         STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_RESERVED_0 = 0,
         STD_VIDEO_AV1_TRANSFER_CHARACTERISTICS_BT_709 = 1,

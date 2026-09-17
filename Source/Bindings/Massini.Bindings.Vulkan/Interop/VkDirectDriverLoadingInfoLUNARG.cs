@@ -10,6 +10,6 @@ namespace Massini.Bindings.Vulkan
         public uint flags;
 
         [NativeTypeName("PFN_vkGetInstanceProcAddrLUNARG")]
-        public delegate* unmanaged[Stdcall]<VkInstance_T*, sbyte*, delegate* unmanaged[Stdcall]<void>> pfnGetInstanceProcAddr;
+        public delegate* unmanaged[Cdecl]<VkInstance_T*, sbyte*, delegate* unmanaged[Cdecl]<void>> pfnGetInstanceProcAddr;
     }
 }

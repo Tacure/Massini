@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH264NonVclNaluType
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH264NonVclNaluType : uint
     {
         STD_VIDEO_H264_NON_VCL_NALU_TYPE_SPS = 0,
         STD_VIDEO_H264_NON_VCL_NALU_TYPE_PPS = 1,

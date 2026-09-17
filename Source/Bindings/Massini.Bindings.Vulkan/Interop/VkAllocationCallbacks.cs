@@ -5,18 +5,18 @@ namespace Massini.Bindings.Vulkan
         public void* pUserData;
 
         [NativeTypeName("PFN_vkAllocationFunction")]
-        public delegate* unmanaged[Stdcall]<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
+        public delegate* unmanaged[Cdecl]<void*, nuint, nuint, VkSystemAllocationScope, void*> pfnAllocation;
 
         [NativeTypeName("PFN_vkReallocationFunction")]
-        public delegate* unmanaged[Stdcall]<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
+        public delegate* unmanaged[Cdecl]<void*, void*, nuint, nuint, VkSystemAllocationScope, void*> pfnReallocation;
 
         [NativeTypeName("PFN_vkFreeFunction")]
-        public delegate* unmanaged[Stdcall]<void*, void*, void> pfnFree;
+        public delegate* unmanaged[Cdecl]<void*, void*, void> pfnFree;
 
         [NativeTypeName("PFN_vkInternalAllocationNotification")]
-        public delegate* unmanaged[Stdcall]<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
+        public delegate* unmanaged[Cdecl]<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalAllocation;
 
         [NativeTypeName("PFN_vkInternalFreeNotification")]
-        public delegate* unmanaged[Stdcall]<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
+        public delegate* unmanaged[Cdecl]<void*, nuint, VkInternalAllocationType, VkSystemAllocationScope, void> pfnInternalFree;
     }
 }

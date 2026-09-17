@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoDecodeUsageFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoDecodeUsageFlagBitsKHR : uint
     {
         VK_VIDEO_DECODE_USAGE_DEFAULT_KHR = 0,
         VK_VIDEO_DECODE_USAGE_TRANSCODING_BIT_KHR = 0x00000001,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDeviceMemoryReportEventTypeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkDeviceMemoryReportEventTypeEXT : uint
     {
         VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT = 0,
         VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT = 1,

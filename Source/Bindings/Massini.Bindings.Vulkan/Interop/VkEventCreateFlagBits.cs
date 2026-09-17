@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkEventCreateFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkEventCreateFlagBits : uint
     {
         VK_EVENT_CREATE_DEVICE_ONLY_BIT = 0x00000001,
         VK_EVENT_CREATE_DEVICE_ONLY_BIT_KHR = VK_EVENT_CREATE_DEVICE_ONLY_BIT,

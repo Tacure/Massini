@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH264ModificationOfPicNumsIdc
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH264ModificationOfPicNumsIdc : uint
     {
         STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_SHORT_TERM_SUBTRACT = 0,
         STD_VIDEO_H264_MODIFICATION_OF_PIC_NUMS_IDC_SHORT_TERM_ADD = 1,

@@ -1,0 +1,10 @@
+namespace Massini.Bindings.Vulkan
+{
+    [NativeTypeName("unsigned int")]
+    public enum VkPastPresentationTimingFlagBitsEXT : uint
+    {
+        VK_PAST_PRESENTATION_TIMING_ALLOW_PARTIAL_RESULTS_BIT_EXT = 0x00000001,
+        VK_PAST_PRESENTATION_TIMING_ALLOW_OUT_OF_ORDER_RESULTS_BIT_EXT = 0x00000002,
+        VK_PAST_PRESENTATION_TIMING_FLAG_BITS_MAX_ENUM_EXT = 0x7FFFFFFF,
+    }
+}

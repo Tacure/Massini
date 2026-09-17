@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSamplerYcbcrModelConversion
+    [NativeTypeName("unsigned int")]
+    public enum VkSamplerYcbcrModelConversion : uint
     {
         VK_SAMPLER_YCBCR_MODEL_CONVERSION_RGB_IDENTITY = 0,
         VK_SAMPLER_YCBCR_MODEL_CONVERSION_YCBCR_IDENTITY = 1,

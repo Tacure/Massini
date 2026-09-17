@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoEncodeTuningModeKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeTuningModeKHR : uint
     {
         VK_VIDEO_ENCODE_TUNING_MODE_DEFAULT_KHR = 0,
         VK_VIDEO_ENCODE_TUNING_MODE_HIGH_QUALITY_KHR = 1,

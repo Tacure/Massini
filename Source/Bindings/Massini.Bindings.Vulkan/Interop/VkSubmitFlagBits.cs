@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSubmitFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkSubmitFlagBits : uint
     {
         VK_SUBMIT_PROTECTED_BIT = 0x00000001,
         VK_SUBMIT_PROTECTED_BIT_KHR = VK_SUBMIT_PROTECTED_BIT,

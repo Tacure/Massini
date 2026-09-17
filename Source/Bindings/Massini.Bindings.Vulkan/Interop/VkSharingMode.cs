@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSharingMode
+    [NativeTypeName("unsigned int")]
+    public enum VkSharingMode : uint
     {
         VK_SHARING_MODE_EXCLUSIVE = 0,
         VK_SHARING_MODE_CONCURRENT = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPresentModeKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkPresentModeKHR : uint
     {
         VK_PRESENT_MODE_IMMEDIATE_KHR = 0,
         VK_PRESENT_MODE_MAILBOX_KHR = 1,
@@ -8,7 +9,8 @@ namespace Massini.Bindings.Vulkan
         VK_PRESENT_MODE_FIFO_RELAXED_KHR = 3,
         VK_PRESENT_MODE_SHARED_DEMAND_REFRESH_KHR = 1000111000,
         VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR = 1000111001,
-        VK_PRESENT_MODE_FIFO_LATEST_READY_EXT = 1000361000,
+        VK_PRESENT_MODE_FIFO_LATEST_READY_KHR = 1000361000,
+        VK_PRESENT_MODE_FIFO_LATEST_READY_EXT = VK_PRESENT_MODE_FIFO_LATEST_READY_KHR,
         VK_PRESENT_MODE_MAX_ENUM_KHR = 0x7FFFFFFF,
     }
 }

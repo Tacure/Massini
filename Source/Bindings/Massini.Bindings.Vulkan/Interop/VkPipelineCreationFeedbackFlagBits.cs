@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPipelineCreationFeedbackFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkPipelineCreationFeedbackFlagBits : uint
     {
         VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT = 0x00000001,
         VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT = 0x00000002,

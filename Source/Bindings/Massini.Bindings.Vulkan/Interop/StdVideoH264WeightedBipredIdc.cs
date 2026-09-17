@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH264WeightedBipredIdc
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH264WeightedBipredIdc : uint
     {
         STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_DEFAULT = 0,
         STD_VIDEO_H264_WEIGHTED_BIPRED_IDC_EXPLICIT = 1,

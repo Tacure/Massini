@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkValidationFeatureEnableEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkValidationFeatureEnableEXT : uint
     {
         VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_EXT = 0,
         VK_VALIDATION_FEATURE_ENABLE_GPU_ASSISTED_RESERVE_BINDING_SLOT_EXT = 1,

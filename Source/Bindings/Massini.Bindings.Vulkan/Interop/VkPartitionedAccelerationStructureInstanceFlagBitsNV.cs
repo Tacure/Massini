@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPartitionedAccelerationStructureInstanceFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkPartitionedAccelerationStructureInstanceFlagBitsNV : uint
     {
         VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_TRIANGLE_FACING_CULL_DISABLE_BIT_NV = 0x00000001,
         VK_PARTITIONED_ACCELERATION_STRUCTURE_INSTANCE_FLAG_TRIANGLE_FLIP_FACING_BIT_NV = 0x00000002,

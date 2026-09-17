@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkTessellationDomainOrigin
+    [NativeTypeName("unsigned int")]
+    public enum VkTessellationDomainOrigin : uint
     {
         VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT = 0,
         VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT = 1,

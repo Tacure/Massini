@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkFragmentShadingRateCombinerOpKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkFragmentShadingRateCombinerOpKHR : uint
     {
         VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR = 0,
         VK_FRAGMENT_SHADING_RATE_COMBINER_OP_REPLACE_KHR = 1,

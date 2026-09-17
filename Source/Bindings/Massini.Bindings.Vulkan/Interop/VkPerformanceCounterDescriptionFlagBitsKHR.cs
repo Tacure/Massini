@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPerformanceCounterDescriptionFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkPerformanceCounterDescriptionFlagBitsKHR : uint
     {
         VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR = 0x00000001,
         VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR = 0x00000002,

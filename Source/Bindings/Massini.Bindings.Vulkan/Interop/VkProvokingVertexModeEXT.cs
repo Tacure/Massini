@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkProvokingVertexModeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkProvokingVertexModeEXT : uint
     {
         VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT = 0,
         VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT = 1,

@@ -6,6 +6,6 @@ namespace Massini.Bindings.Vulkan
 
         public void* pNext;
 
-        public VkRayTracingInvocationReorderModeNV rayTracingInvocationReorderReorderingHint;
+        public VkRayTracingInvocationReorderModeEXT rayTracingInvocationReorderReorderingHint;
     }
 }

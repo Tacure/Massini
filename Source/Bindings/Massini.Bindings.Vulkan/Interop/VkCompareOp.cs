@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCompareOp
+    [NativeTypeName("unsigned int")]
+    public enum VkCompareOp : uint
     {
         VK_COMPARE_OP_NEVER = 0,
         VK_COMPARE_OP_LESS = 1,

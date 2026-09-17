@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkShaderFloatControlsIndependence
+    [NativeTypeName("unsigned int")]
+    public enum VkShaderFloatControlsIndependence : uint
     {
         VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_32_BIT_ONLY = 0,
         VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL = 1,

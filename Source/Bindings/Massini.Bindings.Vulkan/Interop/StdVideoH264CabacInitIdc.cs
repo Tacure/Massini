@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH264CabacInitIdc
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH264CabacInitIdc : uint
     {
         STD_VIDEO_H264_CABAC_INIT_IDC_0 = 0,
         STD_VIDEO_H264_CABAC_INIT_IDC_1 = 1,

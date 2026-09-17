@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDeviceDiagnosticsConfigFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkDeviceDiagnosticsConfigFlagBitsNV : uint
     {
         VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV = 0x00000001,
         VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV = 0x00000002,

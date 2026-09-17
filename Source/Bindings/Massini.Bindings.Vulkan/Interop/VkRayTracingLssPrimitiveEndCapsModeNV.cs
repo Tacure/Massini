@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkRayTracingLssPrimitiveEndCapsModeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkRayTracingLssPrimitiveEndCapsModeNV : uint
     {
         VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_NONE_NV = 0,
         VK_RAY_TRACING_LSS_PRIMITIVE_END_CAPS_MODE_CHAINED_NV = 1,

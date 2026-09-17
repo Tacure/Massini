@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkAccelerationStructureMotionInstanceTypeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkAccelerationStructureMotionInstanceTypeNV : uint
     {
         VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_STATIC_NV = 0,
         VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV = 1,

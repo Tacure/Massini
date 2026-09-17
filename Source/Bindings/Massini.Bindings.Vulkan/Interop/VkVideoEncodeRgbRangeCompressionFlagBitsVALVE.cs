@@ -1,0 +1,10 @@
+namespace Massini.Bindings.Vulkan
+{
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeRgbRangeCompressionFlagBitsVALVE : uint
+    {
+        VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FULL_RANGE_BIT_VALVE = 0x00000001,
+        VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_NARROW_RANGE_BIT_VALVE = 0x00000002,
+        VK_VIDEO_ENCODE_RGB_RANGE_COMPRESSION_FLAG_BITS_MAX_ENUM_VALVE = 0x7FFFFFFF,
+    }
+}

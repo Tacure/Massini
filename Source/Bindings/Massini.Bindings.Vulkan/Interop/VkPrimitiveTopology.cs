@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPrimitiveTopology
+    [NativeTypeName("unsigned int")]
+    public enum VkPrimitiveTopology : uint
     {
         VK_PRIMITIVE_TOPOLOGY_POINT_LIST = 0,
         VK_PRIMITIVE_TOPOLOGY_LINE_LIST = 1,

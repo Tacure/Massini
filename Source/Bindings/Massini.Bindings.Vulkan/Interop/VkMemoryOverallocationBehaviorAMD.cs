@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkMemoryOverallocationBehaviorAMD
+    [NativeTypeName("unsigned int")]
+    public enum VkMemoryOverallocationBehaviorAMD : uint
     {
         VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD = 0,
         VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD = 1,

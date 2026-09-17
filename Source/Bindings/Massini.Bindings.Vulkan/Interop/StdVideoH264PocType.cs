@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH264PocType
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH264PocType : uint
     {
         STD_VIDEO_H264_POC_TYPE_0 = 0,
         STD_VIDEO_H264_POC_TYPE_1 = 1,

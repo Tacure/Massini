@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoCodecOperationFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoCodecOperationFlagBitsKHR : uint
     {
         VK_VIDEO_CODEC_OPERATION_NONE_KHR = 0,
         VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR = 0x00010000,
@@ -9,6 +10,7 @@ namespace Massini.Bindings.Vulkan
         VK_VIDEO_CODEC_OPERATION_DECODE_H265_BIT_KHR = 0x00000002,
         VK_VIDEO_CODEC_OPERATION_DECODE_AV1_BIT_KHR = 0x00000004,
         VK_VIDEO_CODEC_OPERATION_ENCODE_AV1_BIT_KHR = 0x00040000,
+        VK_VIDEO_CODEC_OPERATION_DECODE_VP9_BIT_KHR = 0x00000008,
         VK_VIDEO_CODEC_OPERATION_FLAG_BITS_MAX_ENUM_KHR = 0x7FFFFFFF,
     }
 }

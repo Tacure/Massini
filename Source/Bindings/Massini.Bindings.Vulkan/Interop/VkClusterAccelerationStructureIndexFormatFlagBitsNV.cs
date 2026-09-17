@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkClusterAccelerationStructureIndexFormatFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkClusterAccelerationStructureIndexFormatFlagBitsNV : uint
     {
         VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_8BIT_NV = 0x00000001,
         VK_CLUSTER_ACCELERATION_STRUCTURE_INDEX_FORMAT_16BIT_NV = 0x00000002,

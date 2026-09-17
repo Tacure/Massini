@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkGeometryFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkGeometryFlagBitsKHR : uint
     {
         VK_GEOMETRY_OPAQUE_BIT_KHR = 0x00000001,
         VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_KHR = 0x00000002,

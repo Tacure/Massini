@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDepthClampModeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkDepthClampModeEXT : uint
     {
         VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT = 0,
         VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCoarseSampleOrderTypeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkCoarseSampleOrderTypeNV : uint
     {
         VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV = 0,
         VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV = 1,

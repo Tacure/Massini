@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDebugReportFlagBitsEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkDebugReportFlagBitsEXT : uint
     {
         VK_DEBUG_REPORT_INFORMATION_BIT_EXT = 0x00000001,
         VK_DEBUG_REPORT_WARNING_BIT_EXT = 0x00000002,

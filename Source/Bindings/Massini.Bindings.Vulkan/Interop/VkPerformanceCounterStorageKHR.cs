@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPerformanceCounterStorageKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkPerformanceCounterStorageKHR : uint
     {
         VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR = 0,
         VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR = 1,

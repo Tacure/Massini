@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkImageTiling
+    [NativeTypeName("unsigned int")]
+    public enum VkImageTiling : uint
     {
         VK_IMAGE_TILING_OPTIMAL = 0,
         VK_IMAGE_TILING_LINEAR = 1,

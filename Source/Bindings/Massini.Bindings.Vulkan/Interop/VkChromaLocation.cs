@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkChromaLocation
+    [NativeTypeName("unsigned int")]
+    public enum VkChromaLocation : uint
     {
         VK_CHROMA_LOCATION_COSITED_EVEN = 0,
         VK_CHROMA_LOCATION_MIDPOINT = 1,

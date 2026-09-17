@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkExternalMemoryHandleTypeFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkExternalMemoryHandleTypeFlagBitsNV : uint
     {
         VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_BIT_NV = 0x00000001,
         VK_EXTERNAL_MEMORY_HANDLE_TYPE_OPAQUE_WIN32_KMT_BIT_NV = 0x00000002,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSystemAllocationScope
+    [NativeTypeName("unsigned int")]
+    public enum VkSystemAllocationScope : uint
     {
         VK_SYSTEM_ALLOCATION_SCOPE_COMMAND = 0,
         VK_SYSTEM_ALLOCATION_SCOPE_OBJECT = 1,

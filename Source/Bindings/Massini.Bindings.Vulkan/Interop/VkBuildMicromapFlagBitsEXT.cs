@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkBuildMicromapFlagBitsEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkBuildMicromapFlagBitsEXT : uint
     {
         VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT = 0x00000001,
         VK_BUILD_MICROMAP_PREFER_FAST_BUILD_BIT_EXT = 0x00000002,

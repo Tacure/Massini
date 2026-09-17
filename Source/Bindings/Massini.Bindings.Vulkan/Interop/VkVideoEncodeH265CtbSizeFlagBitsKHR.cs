@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoEncodeH265CtbSizeFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeH265CtbSizeFlagBitsKHR : uint
     {
         VK_VIDEO_ENCODE_H265_CTB_SIZE_16_BIT_KHR = 0x00000001,
         VK_VIDEO_ENCODE_H265_CTB_SIZE_32_BIT_KHR = 0x00000002,

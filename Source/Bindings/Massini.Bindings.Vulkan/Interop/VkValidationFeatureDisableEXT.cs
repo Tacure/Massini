@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkValidationFeatureDisableEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkValidationFeatureDisableEXT : uint
     {
         VK_VALIDATION_FEATURE_DISABLE_ALL_EXT = 0,
         VK_VALIDATION_FEATURE_DISABLE_SHADERS_EXT = 1,

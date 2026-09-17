@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkQueryResultFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkQueryResultFlagBits : uint
     {
         VK_QUERY_RESULT_64_BIT = 0x00000001,
         VK_QUERY_RESULT_WAIT_BIT = 0x00000002,

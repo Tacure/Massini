@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkOpticalFlowGridSizeFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkOpticalFlowGridSizeFlagBitsNV : uint
     {
         VK_OPTICAL_FLOW_GRID_SIZE_UNKNOWN_NV = 0,
         VK_OPTICAL_FLOW_GRID_SIZE_1X1_BIT_NV = 0x00000001,

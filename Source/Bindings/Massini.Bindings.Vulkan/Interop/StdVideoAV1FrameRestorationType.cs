@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1FrameRestorationType
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1FrameRestorationType : uint
     {
         STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_NONE = 0,
         STD_VIDEO_AV1_FRAME_RESTORATION_TYPE_WIENER = 1,

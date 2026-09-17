@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkClusterAccelerationStructureOpModeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkClusterAccelerationStructureOpModeNV : uint
     {
         VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_IMPLICIT_DESTINATIONS_NV = 0,
         VK_CLUSTER_ACCELERATION_STRUCTURE_OP_MODE_EXPLICIT_DESTINATIONS_NV = 1,

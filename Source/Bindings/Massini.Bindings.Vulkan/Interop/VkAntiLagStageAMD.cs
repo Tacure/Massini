@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkAntiLagStageAMD
+    [NativeTypeName("unsigned int")]
+    public enum VkAntiLagStageAMD : uint
     {
         VK_ANTI_LAG_STAGE_INPUT_AMD = 0,
         VK_ANTI_LAG_STAGE_PRESENT_AMD = 1,

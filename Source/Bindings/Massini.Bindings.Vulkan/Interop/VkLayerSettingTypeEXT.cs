@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkLayerSettingTypeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkLayerSettingTypeEXT : uint
     {
         VK_LAYER_SETTING_TYPE_BOOL32_EXT = 0,
         VK_LAYER_SETTING_TYPE_INT32_EXT = 1,

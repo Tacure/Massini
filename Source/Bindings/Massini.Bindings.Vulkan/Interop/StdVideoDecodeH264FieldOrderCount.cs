@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoDecodeH264FieldOrderCount
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoDecodeH264FieldOrderCount : uint
     {
         STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_TOP = 0,
         STD_VIDEO_DECODE_H264_FIELD_ORDER_COUNT_BOTTOM = 1,

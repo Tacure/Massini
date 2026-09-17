@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkConservativeRasterizationModeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkConservativeRasterizationModeEXT : uint
     {
         VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT = 0,
         VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoDecodeH264PictureLayoutFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoDecodeH264PictureLayoutFlagBitsKHR : uint
     {
         VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR = 0,
         VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR = 0x00000001,

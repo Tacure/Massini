@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH265SliceType
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH265SliceType : uint
     {
         STD_VIDEO_H265_SLICE_TYPE_B = 0,
         STD_VIDEO_H265_SLICE_TYPE_P = 1,

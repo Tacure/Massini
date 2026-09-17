@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkLatencyMarkerNV
+    [NativeTypeName("unsigned int")]
+    public enum VkLatencyMarkerNV : uint
     {
         VK_LATENCY_MARKER_SIMULATION_START_NV = 0,
         VK_LATENCY_MARKER_SIMULATION_END_NV = 1,

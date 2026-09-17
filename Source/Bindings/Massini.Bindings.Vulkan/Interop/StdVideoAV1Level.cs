@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1Level
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1Level : uint
     {
         STD_VIDEO_AV1_LEVEL_2_0 = 0,
         STD_VIDEO_AV1_LEVEL_2_1 = 1,

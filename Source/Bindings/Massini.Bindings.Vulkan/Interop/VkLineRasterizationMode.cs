@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkLineRasterizationMode
+    [NativeTypeName("unsigned int")]
+    public enum VkLineRasterizationMode : uint
     {
         VK_LINE_RASTERIZATION_MODE_DEFAULT = 0,
         VK_LINE_RASTERIZATION_MODE_RECTANGULAR = 1,

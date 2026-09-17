@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkExternalFenceHandleTypeFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkExternalFenceHandleTypeFlagBits : uint
     {
         VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_FD_BIT = 0x00000001,
         VK_EXTERNAL_FENCE_HANDLE_TYPE_OPAQUE_WIN32_BIT = 0x00000002,

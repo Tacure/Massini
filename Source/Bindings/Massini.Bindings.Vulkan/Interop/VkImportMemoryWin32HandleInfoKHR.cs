@@ -13,6 +13,6 @@ namespace Massini.Bindings.Vulkan
         public void* handle;
 
         [NativeTypeName("LPCWSTR")]
-        public ushort* name;
+        public uint* name;
     }
 }

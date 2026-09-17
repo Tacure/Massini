@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkColorSpaceKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkColorSpaceKHR : uint
     {
         VK_COLOR_SPACE_SRGB_NONLINEAR_KHR = 0,
         VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT = 1000104001,

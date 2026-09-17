@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSemaphoreWaitFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkSemaphoreWaitFlagBits : uint
     {
         VK_SEMAPHORE_WAIT_ANY_BIT = 0x00000001,
         VK_SEMAPHORE_WAIT_ANY_BIT_KHR = VK_SEMAPHORE_WAIT_ANY_BIT,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkExternalSemaphoreFeatureFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkExternalSemaphoreFeatureFlagBits : uint
     {
         VK_EXTERNAL_SEMAPHORE_FEATURE_EXPORTABLE_BIT = 0x00000001,
         VK_EXTERNAL_SEMAPHORE_FEATURE_IMPORTABLE_BIT = 0x00000002,

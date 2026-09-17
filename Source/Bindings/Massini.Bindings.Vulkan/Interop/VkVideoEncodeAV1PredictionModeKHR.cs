@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoEncodeAV1PredictionModeKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeAV1PredictionModeKHR : uint
     {
         VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_INTRA_ONLY_KHR = 0,
         VK_VIDEO_ENCODE_AV1_PREDICTION_MODE_SINGLE_REFERENCE_KHR = 1,

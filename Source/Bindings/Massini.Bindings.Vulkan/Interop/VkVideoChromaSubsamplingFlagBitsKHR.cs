@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoChromaSubsamplingFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoChromaSubsamplingFlagBitsKHR : uint
     {
         VK_VIDEO_CHROMA_SUBSAMPLING_INVALID_KHR = 0,
         VK_VIDEO_CHROMA_SUBSAMPLING_MONOCHROME_BIT_KHR = 0x00000001,

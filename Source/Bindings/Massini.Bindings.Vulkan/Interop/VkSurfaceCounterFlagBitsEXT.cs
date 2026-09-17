@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSurfaceCounterFlagBitsEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkSurfaceCounterFlagBitsEXT : uint
     {
         VK_SURFACE_COUNTER_VBLANK_BIT_EXT = 0x00000001,
         VK_SURFACE_COUNTER_VBLANK_EXT = VK_SURFACE_COUNTER_VBLANK_BIT_EXT,

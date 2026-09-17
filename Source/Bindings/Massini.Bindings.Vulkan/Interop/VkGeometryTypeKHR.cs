@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkGeometryTypeKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkGeometryTypeKHR : uint
     {
         VK_GEOMETRY_TYPE_TRIANGLES_KHR = 0,
         VK_GEOMETRY_TYPE_AABBS_KHR = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkColorComponentFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkColorComponentFlagBits : uint
     {
         VK_COLOR_COMPONENT_R_BIT = 0x00000001,
         VK_COLOR_COMPONENT_G_BIT = 0x00000002,

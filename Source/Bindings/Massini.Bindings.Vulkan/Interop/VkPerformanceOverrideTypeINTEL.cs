@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPerformanceOverrideTypeINTEL
+    [NativeTypeName("unsigned int")]
+    public enum VkPerformanceOverrideTypeINTEL : uint
     {
         VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL = 0,
         VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL = 1,

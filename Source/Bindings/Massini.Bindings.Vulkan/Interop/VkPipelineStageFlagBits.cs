@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPipelineStageFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkPipelineStageFlagBits : uint
     {
         VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT = 0x00000001,
         VK_PIPELINE_STAGE_DRAW_INDIRECT_BIT = 0x00000002,

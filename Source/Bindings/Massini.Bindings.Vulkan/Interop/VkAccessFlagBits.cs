@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkAccessFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkAccessFlagBits : uint
     {
         VK_ACCESS_INDIRECT_COMMAND_READ_BIT = 0x00000001,
         VK_ACCESS_INDEX_READ_BIT = 0x00000002,

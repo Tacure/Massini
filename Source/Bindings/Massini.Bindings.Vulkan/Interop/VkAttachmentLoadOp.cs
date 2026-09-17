@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkAttachmentLoadOp
+    [NativeTypeName("unsigned int")]
+    public enum VkAttachmentLoadOp : uint
     {
         VK_ATTACHMENT_LOAD_OP_LOAD = 0,
         VK_ATTACHMENT_LOAD_OP_CLEAR = 1,

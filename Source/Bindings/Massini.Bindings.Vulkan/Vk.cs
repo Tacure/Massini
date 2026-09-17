@@ -45,7 +45,8 @@ namespace Massini.Bindings.Vulkan
         public const string VK_KHR_SYNCHRONIZATION_2 = "VK_KHR_synchronization2";
         public const string VK_KHR_MAINTENANCE_6 = "VK_KHR_maintenance6";
         public const string VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2 = "VK_KHR_get_physical_device_properties2";
-
+        public const string VK_EXT_DESCRIPTOR_HEAP = "VK_EXT_descriptor_heap";
+        
         // 
         //public const uint VK_QUEUE_FAMILY_IGNORED = ~0U;
 

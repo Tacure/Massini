@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkFilter
+    [NativeTypeName("unsigned int")]
+    public enum VkFilter : uint
     {
         VK_FILTER_NEAREST = 0,
         VK_FILTER_LINEAR = 1,

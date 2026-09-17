@@ -17,7 +17,7 @@ namespace Massini.Bindings.Vulkan
         public uint messageType;
 
         [NativeTypeName("PFN_vkDebugUtilsMessengerCallbackEXT")]
-        public delegate* unmanaged[Stdcall]<VkDebugUtilsMessageSeverityFlagBitsEXT, uint, VkDebugUtilsMessengerCallbackDataEXT*, void*, uint> pfnUserCallback;
+        public delegate* unmanaged[Cdecl]<VkDebugUtilsMessageSeverityFlagBitsEXT, uint, VkDebugUtilsMessengerCallbackDataEXT*, void*, uint> pfnUserCallback;
 
         public void* pUserData;
     }

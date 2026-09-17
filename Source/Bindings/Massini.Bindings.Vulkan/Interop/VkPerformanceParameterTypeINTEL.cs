@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPerformanceParameterTypeINTEL
+    [NativeTypeName("unsigned int")]
+    public enum VkPerformanceParameterTypeINTEL : uint
     {
         VK_PERFORMANCE_PARAMETER_TYPE_HW_COUNTERS_SUPPORTED_INTEL = 0,
         VK_PERFORMANCE_PARAMETER_TYPE_STREAM_MARKER_VALID_BITS_INTEL = 1,

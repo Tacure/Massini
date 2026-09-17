@@ -11,7 +11,7 @@ namespace Massini.Bindings.Vulkan
         public uint flags;
 
         [NativeTypeName("PFN_vkDebugReportCallbackEXT")]
-        public delegate* unmanaged[Stdcall]<uint, VkDebugReportObjectTypeEXT, ulong, nuint, int, sbyte*, sbyte*, void*, uint> pfnCallback;
+        public delegate* unmanaged[Cdecl]<uint, VkDebugReportObjectTypeEXT, ulong, nuint, int, sbyte*, sbyte*, void*, uint> pfnCallback;
 
         public void* pUserData;
     }

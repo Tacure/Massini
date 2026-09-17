@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkBlendOverlapEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkBlendOverlapEXT : uint
     {
         VK_BLEND_OVERLAP_UNCORRELATED_EXT = 0,
         VK_BLEND_OVERLAP_DISJOINT_EXT = 1,

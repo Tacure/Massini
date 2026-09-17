@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkClusterAccelerationStructureGeometryFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkClusterAccelerationStructureGeometryFlagBitsNV : uint
     {
         VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_CULL_DISABLE_BIT_NV = 0x00000001,
         VK_CLUSTER_ACCELERATION_STRUCTURE_GEOMETRY_NO_DUPLICATE_ANYHIT_INVOCATION_BIT_NV = 0x00000002,

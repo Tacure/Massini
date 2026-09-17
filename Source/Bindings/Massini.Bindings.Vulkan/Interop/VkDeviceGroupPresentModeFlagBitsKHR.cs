@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDeviceGroupPresentModeFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkDeviceGroupPresentModeFlagBitsKHR : uint
     {
         VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR = 0x00000001,
         VK_DEVICE_GROUP_PRESENT_MODE_REMOTE_BIT_KHR = 0x00000002,

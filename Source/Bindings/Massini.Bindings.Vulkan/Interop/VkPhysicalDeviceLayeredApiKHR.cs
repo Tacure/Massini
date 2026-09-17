@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPhysicalDeviceLayeredApiKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkPhysicalDeviceLayeredApiKHR : uint
     {
         VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR = 0,
         VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR = 1,

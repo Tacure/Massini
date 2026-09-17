@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSamplerMipmapMode
+    [NativeTypeName("unsigned int")]
+    public enum VkSamplerMipmapMode : uint
     {
         VK_SAMPLER_MIPMAP_MODE_NEAREST = 0,
         VK_SAMPLER_MIPMAP_MODE_LINEAR = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSubpassContents
+    [NativeTypeName("unsigned int")]
+    public enum VkSubpassContents : uint
     {
         VK_SUBPASS_CONTENTS_INLINE = 0,
         VK_SUBPASS_CONTENTS_SECONDARY_COMMAND_BUFFERS = 1,

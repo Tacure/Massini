@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPipelineRobustnessBufferBehavior
+    [NativeTypeName("unsigned int")]
+    public enum VkPipelineRobustnessBufferBehavior : uint
     {
         VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DEVICE_DEFAULT = 0,
         VK_PIPELINE_ROBUSTNESS_BUFFER_BEHAVIOR_DISABLED = 1,

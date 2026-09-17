@@ -11,7 +11,7 @@ namespace Massini.Bindings.Vulkan
         public uint flags;
 
         [NativeTypeName("PFN_vkDeviceMemoryReportCallbackEXT")]
-        public delegate* unmanaged[Stdcall]<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
+        public delegate* unmanaged[Cdecl]<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
 
         public void* pUserData;
     }

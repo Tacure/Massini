@@ -1,0 +1,10 @@
+namespace Massini.Bindings.Vulkan
+{
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeRgbChromaOffsetFlagBitsVALVE : uint
+    {
+        VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_COSITED_EVEN_BIT_VALVE = 0x00000001,
+        VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_MIDPOINT_BIT_VALVE = 0x00000002,
+        VK_VIDEO_ENCODE_RGB_CHROMA_OFFSET_FLAG_BITS_MAX_ENUM_VALVE = 0x7FFFFFFF,
+    }
+}

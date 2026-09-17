@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCooperativeVectorMatrixLayoutNV
+    [NativeTypeName("unsigned int")]
+    public enum VkCooperativeVectorMatrixLayoutNV : uint
     {
         VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_ROW_MAJOR_NV = 0,
         VK_COOPERATIVE_VECTOR_MATRIX_LAYOUT_COLUMN_MAJOR_NV = 1,

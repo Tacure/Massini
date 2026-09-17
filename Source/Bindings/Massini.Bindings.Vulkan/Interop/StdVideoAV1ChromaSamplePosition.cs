@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1ChromaSamplePosition
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1ChromaSamplePosition : uint
     {
         STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_UNKNOWN = 0,
         STD_VIDEO_AV1_CHROMA_SAMPLE_POSITION_VERTICAL = 1,

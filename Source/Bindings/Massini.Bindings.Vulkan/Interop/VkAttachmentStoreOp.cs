@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkAttachmentStoreOp
+    [NativeTypeName("unsigned int")]
+    public enum VkAttachmentStoreOp : uint
     {
         VK_ATTACHMENT_STORE_OP_STORE = 0,
         VK_ATTACHMENT_STORE_OP_DONT_CARE = 1,

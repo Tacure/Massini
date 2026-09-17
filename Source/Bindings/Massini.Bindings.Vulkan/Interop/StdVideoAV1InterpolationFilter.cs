@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1InterpolationFilter
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1InterpolationFilter : uint
     {
         STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP = 0,
         STD_VIDEO_AV1_INTERPOLATION_FILTER_EIGHTTAP_SMOOTH = 1,

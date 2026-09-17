@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSamplerYcbcrRange
+    [NativeTypeName("unsigned int")]
+    public enum VkSamplerYcbcrRange : uint
     {
         VK_SAMPLER_YCBCR_RANGE_ITU_FULL = 0,
         VK_SAMPLER_YCBCR_RANGE_ITU_NARROW = 1,

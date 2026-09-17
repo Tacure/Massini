@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkFullScreenExclusiveEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkFullScreenExclusiveEXT : uint
     {
         VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT = 0,
         VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT = 1,

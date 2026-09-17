@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkBlendOp
+    [NativeTypeName("unsigned int")]
+    public enum VkBlendOp : uint
     {
         VK_BLEND_OP_ADD = 0,
         VK_BLEND_OP_SUBTRACT = 1,

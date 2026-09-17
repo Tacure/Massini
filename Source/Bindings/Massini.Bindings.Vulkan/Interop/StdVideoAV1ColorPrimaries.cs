@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1ColorPrimaries
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1ColorPrimaries : uint
     {
         STD_VIDEO_AV1_COLOR_PRIMARIES_BT_709 = 1,
         STD_VIDEO_AV1_COLOR_PRIMARIES_UNSPECIFIED = 2,

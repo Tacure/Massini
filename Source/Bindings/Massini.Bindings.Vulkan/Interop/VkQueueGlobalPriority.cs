@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkQueueGlobalPriority
+    [NativeTypeName("unsigned int")]
+    public enum VkQueueGlobalPriority : uint
     {
         VK_QUEUE_GLOBAL_PRIORITY_LOW = 128,
         VK_QUEUE_GLOBAL_PRIORITY_MEDIUM = 256,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkImageCompressionFlagBitsEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkImageCompressionFlagBitsEXT : uint
     {
         VK_IMAGE_COMPRESSION_DEFAULT_EXT = 0,
         VK_IMAGE_COMPRESSION_FIXED_RATE_DEFAULT_EXT = 0x00000001,

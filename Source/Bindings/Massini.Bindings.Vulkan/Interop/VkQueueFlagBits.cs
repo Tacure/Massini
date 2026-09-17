@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkQueueFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkQueueFlagBits : uint
     {
         VK_QUEUE_GRAPHICS_BIT = 0x00000001,
         VK_QUEUE_COMPUTE_BIT = 0x00000002,
@@ -10,6 +11,7 @@ namespace Massini.Bindings.Vulkan
         VK_QUEUE_VIDEO_DECODE_BIT_KHR = 0x00000020,
         VK_QUEUE_VIDEO_ENCODE_BIT_KHR = 0x00000040,
         VK_QUEUE_OPTICAL_FLOW_BIT_NV = 0x00000100,
+        VK_QUEUE_DATA_GRAPH_BIT_ARM = 0x00000400,
         VK_QUEUE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF,
     }
 }

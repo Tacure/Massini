@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkAccelerationStructureTypeKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkAccelerationStructureTypeKHR : uint
     {
         VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR = 0,
         VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkExternalMemoryFeatureFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkExternalMemoryFeatureFlagBits : uint
     {
         VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT = 0x00000001,
         VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT = 0x00000002,

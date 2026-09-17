@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkStencilFaceFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkStencilFaceFlagBits : uint
     {
         VK_STENCIL_FACE_FRONT_BIT = 0x00000001,
         VK_STENCIL_FACE_BACK_BIT = 0x00000002,

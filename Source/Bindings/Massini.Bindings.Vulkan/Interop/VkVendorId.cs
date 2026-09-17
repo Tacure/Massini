@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVendorId
+    [NativeTypeName("unsigned int")]
+    public enum VkVendorId : uint
     {
         VK_VENDOR_ID_KHRONOS = 0x10000,
         VK_VENDOR_ID_VIV = 0x10001,

@@ -3,27 +3,75 @@
 vulkan
 
 # Methods class name
---methodClassName
+--method-class-name
 Vk
 
-# Input header files
+# Additional includes
+--include-directory
+./Include
+
+--include-directory
+./HelperIncludes
+
+# Input header file
 --file
-./Include/vulkan/vulkan.h
+./HelperIncludes/vulkan_helper.h
+
+# Core types/functions.
+
+--traverse
 ./Include/vulkan/vulkan_core.h
+
+--traverse
 ./Include/vulkan/vulkan_win32.h
-./Include/vk_video/vulkan_video_codec_h265std.h
-./Include/vk_video/vulkan_video_codec_h265std_decode.h
-./Include/vk_video/vulkan_video_codec_h265std_encode.h
+
+--traverse
+./Include/vulkan/vulkan_xlib.h
+
+--traverse
+./Include/vulkan/vulkan_wayland.h
+
+# Video types/functions.
+
+--traverse
+./Include/vk_video/vulkan_video_codecs_common.h
+
+--traverse
 ./Include/vk_video/vulkan_video_codec_h264std.h
+
+--traverse
 ./Include/vk_video/vulkan_video_codec_h264std_decode.h
+
+--traverse
 ./Include/vk_video/vulkan_video_codec_h264std_encode.h
+
+--traverse
+./Include/vk_video/vulkan_video_codec_h265std.h
+
+--traverse
+./Include/vk_video/vulkan_video_codec_h265std_decode.h
+
+--traverse
+./Include/vk_video/vulkan_video_codec_h265std_encode.h
+
+--traverse
+./Include/vk_video/vulkan_video_codec_vp9std.h
+
+--traverse
+./Include/vk_video/vulkan_video_codec_vp9std_decode.h
+
+--traverse
 ./Include/vk_video/vulkan_video_codec_av1std.h
+
+--traverse
 ./Include/vk_video/vulkan_video_codec_av1std_decode.h
+
+--traverse
 ./Include/vk_video/vulkan_video_codec_av1std_encode.h
 
 # Output namespace for the generated C# code
 --namespace
-Atomic.Bindings.Vulkan
+Massini.Bindings.Vulkan
 
 # Output directory for the generated files
 --output
@@ -38,18 +86,21 @@ Atomic.Bindings.Vulkan
 c++
 
 # Optional: Configuration options
---config
-multi-file
-generate-helper-types
-generate-macro-bindings
 
-# Defines
--D VK_ENABLE_BETA_EXTENSIONS=1
--D VK_USE_PLATFORM_WIN32_KHR
--D _WIN32
--D VK_USE_PLATFORM_WIN32_KHR
-#-D VK_USE_PLATFORM_XCB_KHR
-#-D VK_USE_PLATFORM_XLIB_KHR
--D VK_USE_PLATFORM_WAYLAND_KHR
--D VK_USE_PLATFORM_METAL_EXT
--D VK_USE_PLATFORM_ANDROID_KHR
+--config
+file=multi
+
+--generate
+helper-types
+macro-bindings
+
+# Macro flags
+
+-D
+VK_USE_PLATFORM_XLIB_KHR
+
+-D
+VK_USE_PLATFORM_WAYLAND_KHR
+
+-D
+VK_USE_PLATFORM_WIN32_KHR

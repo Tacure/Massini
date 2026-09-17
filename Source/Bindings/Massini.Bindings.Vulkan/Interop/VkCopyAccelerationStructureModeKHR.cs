@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCopyAccelerationStructureModeKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkCopyAccelerationStructureModeKHR : uint
     {
         VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR = 0,
         VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDisplayPlaneAlphaFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkDisplayPlaneAlphaFlagBitsKHR : uint
     {
         VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR = 0x00000001,
         VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR = 0x00000002,

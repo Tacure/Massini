@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkToolPurposeFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkToolPurposeFlagBits : uint
     {
         VK_TOOL_PURPOSE_VALIDATION_BIT = 0x00000001,
         VK_TOOL_PURPOSE_PROFILING_BIT = 0x00000002,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkRasterizationOrderAMD
+    [NativeTypeName("unsigned int")]
+    public enum VkRasterizationOrderAMD : uint
     {
         VK_RASTERIZATION_ORDER_STRICT_AMD = 0,
         VK_RASTERIZATION_ORDER_RELAXED_AMD = 1,

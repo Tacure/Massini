@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoEncodeAV1SuperblockSizeFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeAV1SuperblockSizeFlagBitsKHR : uint
     {
         VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_64_BIT_KHR = 0x00000001,
         VK_VIDEO_ENCODE_AV1_SUPERBLOCK_SIZE_128_BIT_KHR = 0x00000002,

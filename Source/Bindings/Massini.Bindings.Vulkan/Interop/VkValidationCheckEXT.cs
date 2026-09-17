@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkValidationCheckEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkValidationCheckEXT : uint
     {
         VK_VALIDATION_CHECK_ALL_EXT = 0,
         VK_VALIDATION_CHECK_SHADERS_EXT = 1,

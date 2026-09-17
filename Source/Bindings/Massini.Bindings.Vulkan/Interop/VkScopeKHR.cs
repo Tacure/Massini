@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkScopeKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkScopeKHR : uint
     {
         VK_SCOPE_DEVICE_KHR = 1,
         VK_SCOPE_WORKGROUP_KHR = 2,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSubpassMergeStatusEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkSubpassMergeStatusEXT : uint
     {
         VK_SUBPASS_MERGE_STATUS_MERGED_EXT = 0,
         VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT = 1,

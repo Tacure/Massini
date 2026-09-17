@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCubicFilterWeightsQCOM
+    [NativeTypeName("unsigned int")]
+    public enum VkCubicFilterWeightsQCOM : uint
     {
         VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM = 0,
         VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM = 1,

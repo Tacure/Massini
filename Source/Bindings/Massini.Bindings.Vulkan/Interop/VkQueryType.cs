@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkQueryType
+    [NativeTypeName("unsigned int")]
+    public enum VkQueryType : uint
     {
         VK_QUERY_TYPE_OCCLUSION = 0,
         VK_QUERY_TYPE_PIPELINE_STATISTICS = 1,

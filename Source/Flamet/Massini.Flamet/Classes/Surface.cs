@@ -32,8 +32,8 @@ namespace Massini.Flamet.Classes
                 {
                     sType = VkStructureType.VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR,
                     pNext = null,
-                    display = renderSurfaceWaylandCreateParams.p_ptr_display,
-                    surface = renderSurfaceWaylandCreateParams.p_ptr_surface,
+                    display = (VkWaylandSurfaceCreateInfoKHR.wl_display*)renderSurfaceWaylandCreateParams.p_ptr_display,
+                    surface = (VkWaylandSurfaceCreateInfoKHR.wl_surface*)renderSurfaceWaylandCreateParams.p_ptr_surface,
                 };
 
                 Vk.vkCreateWaylandSurfaceKHR(i_instance.VkInstancePtr, &surfaceCreateInfoKhr, null, &vkSurface);
@@ -44,8 +44,8 @@ namespace Massini.Flamet.Classes
                 {
                     sType = VkStructureType.VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR,
                     pNext = null,
-                    dpy = renderSurfaceXlibCreateParams.p_ptr_display,
-                    window = renderSurfaceXlibCreateParams.p_window,
+                    dpy = (_XDisplay*)renderSurfaceXlibCreateParams.p_ptr_display,
+                    window = (UIntPtr)renderSurfaceXlibCreateParams.p_window,
                 };
 
                 Vk.vkCreateXlibSurfaceKHR(i_instance.VkInstancePtr, &surfaceCreateInfoKhr, null, &vkSurface);

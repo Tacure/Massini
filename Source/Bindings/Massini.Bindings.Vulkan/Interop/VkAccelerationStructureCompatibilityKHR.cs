@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkAccelerationStructureCompatibilityKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkAccelerationStructureCompatibilityKHR : uint
     {
         VK_ACCELERATION_STRUCTURE_COMPATIBILITY_COMPATIBLE_KHR = 0,
         VK_ACCELERATION_STRUCTURE_COMPATIBILITY_INCOMPATIBLE_KHR = 1,

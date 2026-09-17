@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkShadingRatePaletteEntryNV
+    [NativeTypeName("unsigned int")]
+    public enum VkShadingRatePaletteEntryNV : uint
     {
         VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV = 0,
         VK_SHADING_RATE_PALETTE_ENTRY_16_INVOCATIONS_PER_PIXEL_NV = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkStencilOp
+    [NativeTypeName("unsigned int")]
+    public enum VkStencilOp : uint
     {
         VK_STENCIL_OP_KEEP = 0,
         VK_STENCIL_OP_ZERO = 1,

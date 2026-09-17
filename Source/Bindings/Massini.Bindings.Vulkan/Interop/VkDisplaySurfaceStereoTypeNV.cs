@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDisplaySurfaceStereoTypeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkDisplaySurfaceStereoTypeNV : uint
     {
         VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV = 0,
         VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV = 1,

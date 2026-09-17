@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSamplerReductionMode
+    [NativeTypeName("unsigned int")]
+    public enum VkSamplerReductionMode : uint
     {
         VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE = 0,
         VK_SAMPLER_REDUCTION_MODE_MIN = 1,

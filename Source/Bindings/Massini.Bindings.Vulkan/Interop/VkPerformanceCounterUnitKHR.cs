@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPerformanceCounterUnitKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkPerformanceCounterUnitKHR : uint
     {
         VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR = 0,
         VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR = 1,

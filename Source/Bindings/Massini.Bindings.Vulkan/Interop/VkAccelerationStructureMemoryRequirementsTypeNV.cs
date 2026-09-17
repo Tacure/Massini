@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkAccelerationStructureMemoryRequirementsTypeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkAccelerationStructureMemoryRequirementsTypeNV : uint
     {
         VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_OBJECT_NV = 0,
         VK_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_TYPE_BUILD_SCRATCH_NV = 1,

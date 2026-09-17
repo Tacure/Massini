@@ -7,13 +7,13 @@ namespace Massini.Bindings.Vulkan
         [NativeTypeName("const void *")]
         public void* pNext;
 
-        [NativeTypeName("VkWin32SurfaceCreateFlagsKHR")]
+        [NativeTypeName("VkXlibSurfaceCreateFlagsKHR")]
         public uint flags;
 
-        [NativeTypeName("HINSTANCE")]
-        public void* dpy;
+        [NativeTypeName("Display *")]
+        public _XDisplay* dpy;
 
-        [NativeTypeName("HWND")]
-        public nint window;
+        [NativeTypeName("Window")]
+        public nuint window;
     }
 }

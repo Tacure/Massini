@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCoverageReductionModeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkCoverageReductionModeNV : uint
     {
         VK_COVERAGE_REDUCTION_MODE_MERGE_NV = 0,
         VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV = 1,

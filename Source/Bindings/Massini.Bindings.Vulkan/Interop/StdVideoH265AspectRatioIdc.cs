@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH265AspectRatioIdc
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH265AspectRatioIdc : uint
     {
         STD_VIDEO_H265_ASPECT_RATIO_IDC_UNSPECIFIED = 0,
         STD_VIDEO_H265_ASPECT_RATIO_IDC_SQUARE = 1,

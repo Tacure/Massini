@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCoverageModulationModeNV
+    [NativeTypeName("unsigned int")]
+    public enum VkCoverageModulationModeNV : uint
     {
         VK_COVERAGE_MODULATION_MODE_NONE_NV = 0,
         VK_COVERAGE_MODULATION_MODE_RGB_NV = 1,

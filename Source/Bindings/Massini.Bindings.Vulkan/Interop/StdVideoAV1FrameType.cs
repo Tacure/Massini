@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoAV1FrameType
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoAV1FrameType : uint
     {
         STD_VIDEO_AV1_FRAME_TYPE_KEY = 0,
         STD_VIDEO_AV1_FRAME_TYPE_INTER = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSurfaceTransformFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkSurfaceTransformFlagBitsKHR : uint
     {
         VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = 0x00000001,
         VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = 0x00000002,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkMemoryHeapFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkMemoryHeapFlagBits : uint
     {
         VK_MEMORY_HEAP_DEVICE_LOCAL_BIT = 0x00000001,
         VK_MEMORY_HEAP_MULTI_INSTANCE_BIT = 0x00000002,

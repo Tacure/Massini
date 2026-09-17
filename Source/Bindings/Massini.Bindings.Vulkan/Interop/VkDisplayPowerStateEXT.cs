@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDisplayPowerStateEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkDisplayPowerStateEXT : uint
     {
         VK_DISPLAY_POWER_STATE_OFF_EXT = 0,
         VK_DISPLAY_POWER_STATE_SUSPEND_EXT = 1,

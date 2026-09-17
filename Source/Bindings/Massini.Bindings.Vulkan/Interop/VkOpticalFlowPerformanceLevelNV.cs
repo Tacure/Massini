@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkOpticalFlowPerformanceLevelNV
+    [NativeTypeName("unsigned int")]
+    public enum VkOpticalFlowPerformanceLevelNV : uint
     {
         VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_UNKNOWN_NV = 0,
         VK_OPTICAL_FLOW_PERFORMANCE_LEVEL_SLOW_NV = 1,

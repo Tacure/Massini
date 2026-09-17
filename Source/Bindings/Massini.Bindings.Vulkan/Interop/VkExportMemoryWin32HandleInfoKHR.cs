@@ -11,9 +11,9 @@ namespace Massini.Bindings.Vulkan
         public _SECURITY_ATTRIBUTES* pAttributes;
 
         [NativeTypeName("DWORD")]
-        public uint dwAccess;
+        public nuint dwAccess;
 
         [NativeTypeName("LPCWSTR")]
-        public ushort* name;
+        public uint* name;
     }
 }

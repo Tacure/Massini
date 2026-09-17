@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkIndirectCommandsLayoutUsageFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkIndirectCommandsLayoutUsageFlagBitsNV : uint
     {
         VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EXPLICIT_PREPROCESS_BIT_NV = 0x00000001,
         VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NV = 0x00000002,

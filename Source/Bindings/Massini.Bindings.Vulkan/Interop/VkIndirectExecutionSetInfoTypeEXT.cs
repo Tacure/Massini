@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkIndirectExecutionSetInfoTypeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkIndirectExecutionSetInfoTypeEXT : uint
     {
         VK_INDIRECT_EXECUTION_SET_INFO_TYPE_PIPELINES_EXT = 0,
         VK_INDIRECT_EXECUTION_SET_INFO_TYPE_SHADER_OBJECTS_EXT = 1,

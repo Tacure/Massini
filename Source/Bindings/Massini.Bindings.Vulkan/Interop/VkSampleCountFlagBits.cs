@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSampleCountFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkSampleCountFlagBits : uint
     {
         VK_SAMPLE_COUNT_1_BIT = 0x00000001,
         VK_SAMPLE_COUNT_2_BIT = 0x00000002,

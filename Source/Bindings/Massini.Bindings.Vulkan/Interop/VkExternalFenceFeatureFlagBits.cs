@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkExternalFenceFeatureFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkExternalFenceFeatureFlagBits : uint
     {
         VK_EXTERNAL_FENCE_FEATURE_EXPORTABLE_BIT = 0x00000001,
         VK_EXTERNAL_FENCE_FEATURE_IMPORTABLE_BIT = 0x00000002,

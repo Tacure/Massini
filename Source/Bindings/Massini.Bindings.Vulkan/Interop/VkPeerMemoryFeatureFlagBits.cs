@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPeerMemoryFeatureFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkPeerMemoryFeatureFlagBits : uint
     {
         VK_PEER_MEMORY_FEATURE_COPY_SRC_BIT = 0x00000001,
         VK_PEER_MEMORY_FEATURE_COPY_DST_BIT = 0x00000002,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkOpticalFlowSessionCreateFlagBitsNV
+    [NativeTypeName("unsigned int")]
+    public enum VkOpticalFlowSessionCreateFlagBitsNV : uint
     {
         VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_HINT_BIT_NV = 0x00000001,
         VK_OPTICAL_FLOW_SESSION_CREATE_ENABLE_COST_BIT_NV = 0x00000002,

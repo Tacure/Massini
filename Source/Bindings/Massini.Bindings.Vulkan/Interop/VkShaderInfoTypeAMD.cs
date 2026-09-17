@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkShaderInfoTypeAMD
+    [NativeTypeName("unsigned int")]
+    public enum VkShaderInfoTypeAMD : uint
     {
         VK_SHADER_INFO_TYPE_STATISTICS_AMD = 0,
         VK_SHADER_INFO_TYPE_BINARY_AMD = 1,

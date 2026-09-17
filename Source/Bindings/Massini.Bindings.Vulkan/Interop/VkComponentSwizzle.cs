@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkComponentSwizzle
+    [NativeTypeName("unsigned int")]
+    public enum VkComponentSwizzle : uint
     {
         VK_COMPONENT_SWIZZLE_IDENTITY = 0,
         VK_COMPONENT_SWIZZLE_ZERO = 1,

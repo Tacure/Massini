@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoEncodeH265TransformBlockSizeFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoEncodeH265TransformBlockSizeFlagBitsKHR : uint
     {
         VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_4_BIT_KHR = 0x00000001,
         VK_VIDEO_ENCODE_H265_TRANSFORM_BLOCK_SIZE_8_BIT_KHR = 0x00000002,

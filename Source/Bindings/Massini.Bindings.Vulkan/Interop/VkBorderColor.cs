@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkBorderColor
+    [NativeTypeName("unsigned int")]
+    public enum VkBorderColor : uint
     {
         VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK = 0,
         VK_BORDER_COLOR_INT_TRANSPARENT_BLACK = 1,

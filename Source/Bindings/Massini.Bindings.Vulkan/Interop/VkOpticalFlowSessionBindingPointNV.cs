@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkOpticalFlowSessionBindingPointNV
+    [NativeTypeName("unsigned int")]
+    public enum VkOpticalFlowSessionBindingPointNV : uint
     {
         VK_OPTICAL_FLOW_SESSION_BINDING_POINT_UNKNOWN_NV = 0,
         VK_OPTICAL_FLOW_SESSION_BINDING_POINT_INPUT_NV = 1,

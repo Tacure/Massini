@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkBlendFactor
+    [NativeTypeName("unsigned int")]
+    public enum VkBlendFactor : uint
     {
         VK_BLEND_FACTOR_ZERO = 0,
         VK_BLEND_FACTOR_ONE = 1,

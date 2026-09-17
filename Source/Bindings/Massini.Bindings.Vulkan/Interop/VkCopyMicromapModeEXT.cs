@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkCopyMicromapModeEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkCopyMicromapModeEXT : uint
     {
         VK_COPY_MICROMAP_MODE_CLONE_EXT = 0,
         VK_COPY_MICROMAP_MODE_SERIALIZE_EXT = 1,

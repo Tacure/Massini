@@ -7,13 +7,21 @@ namespace Massini.Bindings.Vulkan
         [NativeTypeName("const void *")]
         public void* pNext;
 
-        [NativeTypeName("VkWin32SurfaceCreateFlagsKHR")]
+        [NativeTypeName("VkWaylandSurfaceCreateFlagsKHR")]
         public uint flags;
 
-        [NativeTypeName("HINSTANCE")]
-        public void* display;
+        [NativeTypeName("struct wl_display *")]
+        public wl_display* display;
 
-        [NativeTypeName("HWND")]
-        public void* surface;
+        [NativeTypeName("struct wl_surface *")]
+        public wl_surface* surface;
+
+        public partial struct wl_display
+        {
+        }
+
+        public partial struct wl_surface
+        {
+        }
     }
 }

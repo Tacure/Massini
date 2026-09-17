@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDirectDriverLoadingModeLUNARG
+    [NativeTypeName("unsigned int")]
+    public enum VkDirectDriverLoadingModeLUNARG : uint
     {
         VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG = 0,
         VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG = 1,

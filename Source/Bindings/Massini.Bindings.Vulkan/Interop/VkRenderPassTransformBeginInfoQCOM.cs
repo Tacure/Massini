@@ -4,6 +4,7 @@ namespace Massini.Bindings.Vulkan
     {
         public VkStructureType sType;
 
+        [NativeTypeName("const void *")]
         public void* pNext;
 
         public VkSurfaceTransformFlagBitsKHR transform;

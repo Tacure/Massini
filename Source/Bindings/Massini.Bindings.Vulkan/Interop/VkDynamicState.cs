@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDynamicState
+    [NativeTypeName("unsigned int")]
+    public enum VkDynamicState : uint
     {
         VK_DYNAMIC_STATE_VIEWPORT = 0,
         VK_DYNAMIC_STATE_SCISSOR = 1,

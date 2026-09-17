@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDebugUtilsMessageTypeFlagBitsEXT
+    [NativeTypeName("unsigned int")]
+    public enum VkDebugUtilsMessageTypeFlagBitsEXT : uint
     {
         VK_DEBUG_UTILS_MESSAGE_TYPE_GENERAL_BIT_EXT = 0x00000001,
         VK_DEBUG_UTILS_MESSAGE_TYPE_VALIDATION_BIT_EXT = 0x00000002,

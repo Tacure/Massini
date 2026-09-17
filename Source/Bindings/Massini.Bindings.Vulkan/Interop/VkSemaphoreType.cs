@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkSemaphoreType
+    [NativeTypeName("unsigned int")]
+    public enum VkSemaphoreType : uint
     {
         VK_SEMAPHORE_TYPE_BINARY = 0,
         VK_SEMAPHORE_TYPE_TIMELINE = 1,

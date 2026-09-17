@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPointClippingBehavior
+    [NativeTypeName("unsigned int")]
+    public enum VkPointClippingBehavior : uint
     {
         VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES = 0,
         VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY = 1,

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum StdVideoH264ChromaFormatIdc
+    [NativeTypeName("unsigned int")]
+    public enum StdVideoH264ChromaFormatIdc : uint
     {
         STD_VIDEO_H264_CHROMA_FORMAT_IDC_MONOCHROME = 0,
         STD_VIDEO_H264_CHROMA_FORMAT_IDC_420 = 1,

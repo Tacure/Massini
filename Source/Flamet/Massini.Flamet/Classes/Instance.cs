@@ -197,7 +197,7 @@ namespace Massini.Flamet.Classes
         private readonly VkDebugUtilsMessengerEXT_T* m_ptr_debugUtilsMessenger;
         private readonly List<Adapter> m_adapters = [];
 
-        [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvStdcall) })]
+        [UnmanagedCallersOnly(CallConvs = new[] { typeof(CallConvCdecl) })]
         private static uint DebugCallback(
             VkDebugUtilsMessageSeverityFlagBitsEXT i_messageSeverity,
             uint i_messageType,

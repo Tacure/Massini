@@ -1,14 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Core\Massini.Core\Massini.Core.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>net11.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Massini.Core\Massini.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Generator/**/*.cs" />
+    <EmbeddedResource Remove="Generator/**/*.resx" />
+    <None Remove="Generator/**/*.cs" />
+  </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkDescriptorPoolCreateFlagBits
+    [NativeTypeName("unsigned int")]
+    public enum VkDescriptorPoolCreateFlagBits : uint
     {
         VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT = 0x00000001,
         VK_DESCRIPTOR_POOL_CREATE_UPDATE_AFTER_BIND_BIT = 0x00000002,

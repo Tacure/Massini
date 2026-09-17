@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkPolygonMode
+    [NativeTypeName("unsigned int")]
+    public enum VkPolygonMode : uint
     {
         VK_POLYGON_MODE_FILL = 0,
         VK_POLYGON_MODE_LINE = 1,

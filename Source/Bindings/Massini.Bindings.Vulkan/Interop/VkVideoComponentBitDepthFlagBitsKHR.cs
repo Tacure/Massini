@@ -1,6 +1,7 @@
 namespace Massini.Bindings.Vulkan
 {
-    public enum VkVideoComponentBitDepthFlagBitsKHR
+    [NativeTypeName("unsigned int")]
+    public enum VkVideoComponentBitDepthFlagBitsKHR : uint
     {
         VK_VIDEO_COMPONENT_BIT_DEPTH_INVALID_KHR = 0,
         VK_VIDEO_COMPONENT_BIT_DEPTH_8_BIT_KHR = 0x00000001,
