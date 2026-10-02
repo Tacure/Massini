@@ -1,13 +1,13 @@
 ﻿
 namespace Massini.Flamet.Structs
 {
-    public struct AdapterFeatures
+    public class AdapterFeatures
     {
-        public bool p_fillModeNonSolid;
-        public bool p_wideLines;
-        public bool p_depthClamp;
-        public bool p_fragmentStoresAndAtomics;
-        public bool p_samplerAnisotropy;
-        public bool p_swapchain;
+        public bool FillModeNonSolid { get; init; }
+        public bool WideLines { get; init; }
+        public bool DepthClamp { get; init; }
+        public bool FragmentStoresAndAtomics { get; init; }
+        public bool SamplerAnisotropy { get; init; }
+        public bool Swapchain { get; init; }
     }
 }

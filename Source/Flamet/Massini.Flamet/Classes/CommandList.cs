@@ -1,6 +1,8 @@
 ﻿
 using Massini.Bindings.Vulkan;
+using Massini.Flamet.Structs.Internal;
 using Massini.Core;
+using Massini.Core.Interop;
 using Massini.Flamet.Extensions;
 using Massini.Flamet.Structs;
 using Massini.Flamet.Classes.Commands;
@@ -17,7 +19,7 @@ namespace Massini.Flamet.Classes
     /// <summary>
     /// Records and executes GPU commands on a queue.
     /// </summary>
-    public unsafe partial class CommandList : IResource, IDisposable
+    public unsafe partial class CommandList : IResource, IDisposable 
     {
         /// <inheritdoc/>
         public Rid Id => m_id;
@@ -90,6 +92,7 @@ namespace Massini.Flamet.Classes
             m_queueFamily = i_queueFamily;
             m_ptr_commandBuffer = commandBuffer;
             m_ptr_cbChainingTimelineSemaphore = semaphore;
+            m_barriersAllocator = new ArenaAllocator(MemorySize.FromKilobytes(512));
         }
         
         /// <inheritdoc />
@@ -104,6 +107,8 @@ namespace Massini.Flamet.Classes
                 Vk.vkDestroySemaphore(device.VkDevicePtr, m_ptr_cbChainingTimelineSemaphore, null);
                 VkCommandBuffer_T* commandBuffer = m_ptr_commandBuffer;
                 Vk.vkFreeCommandBuffers(device.VkDevicePtr, m_queueFamily.VkCommandPoolPtr, 1, &commandBuffer);
+                
+                m_barriersAllocator.Dispose();
             }
         }
 
@@ -137,7 +142,7 @@ namespace Massini.Flamet.Classes
         public MainEncoder Open(in CommandListBeginParams i_beginParams)
         {
             m_isFlushed = false;
-
+            
             if (m_mainEncoder != null)
             {
                 m_encoderPool.Return(m_mainEncoder);
@@ -194,7 +199,7 @@ namespace Massini.Flamet.Classes
             }
             for (int i = (int)waitBinarySemaphoreCount; i < waitBinarySemaphoreCount + waitCommandBufferCount; i++)
             {
-                CommandList commandBuffer = (CommandList)i_submitParams.p_waitCommandLists[i - (int)waitBinarySemaphoreCount];
+                CommandList commandBuffer = i_submitParams.p_waitCommandLists[i - (int)waitBinarySemaphoreCount];
                 waitStages[i] = VkPipelineStageFlagBits.VK_PIPELINE_STAGE_ALL_COMMANDS_BIT;
                 waitValues[i] = commandBuffer.m_cbChainingSemaphoreSignalValue;
                 waitSemaphores[i] = (nuint)commandBuffer.m_ptr_cbChainingTimelineSemaphore;
@@ -273,10 +278,13 @@ namespace Massini.Flamet.Classes
         private readonly EncoderPool m_encoderPool = new();
         private MainEncoder? m_mainEncoder = null;
         private ShaderLink? m_boundShaderLink = null;
+        private ArenaAllocator m_barriersAllocator;
+        private Dictionary<Rid, TextureBarrierState2> m_textureBarriers = [];
+        private Dictionary<Rid, BufferBarrierState> m_bufferBarriers = [];
 
         #region  Auxiliar methods
         
-        private void CmdImageBarrier(Texture i_texture, VkImageLayout i_newLayout, VkAccessFlagBits i_dstAccessMask, VkPipelineStageFlagBits i_dstStageMask, Span<ulong> i_layerMasks)
+        private void CmdImageBarrier(Texture i_texture, VkImageLayout i_newLayout, VkAccessFlagBits i_dstAccessMask, VkPipelineStageFlagBits i_dstStageMask, ReadOnlySpan<ulong> i_layerMasks)
         {
             Texture texture = i_texture;
 
@@ -284,6 +292,11 @@ namespace Massini.Flamet.Classes
             {
                 throw new ArgumentException("i_layerMasks.Length should be equal to texture.ArrayLayers.");
             }
+
+            //if (!m_textureBarriers.TryGetValue(i_texture.Id, out var barrierState))
+            //{
+            //    barrierState = new TextureBarrierState2(m_barriersAllocator, texture.ArrayLayersCount, texture.MipLevelCount);
+            //}
 
             VkImageMemoryBarrier2[] barriers = new VkImageMemoryBarrier2[texture.ArrayLayersCount * texture.MipLevelCount];
             uint usedBarriers = 0; // Keeps track of how many barriers are actually used.
@@ -304,7 +317,7 @@ namespace Massini.Flamet.Classes
                         subresourceState.p_accessMask == i_dstAccessMask &&
                         subresourceState.p_stageMask == i_dstStageMask) continue;
                     
-                    barriers[usedBarriers] = new()
+                    barriers[usedBarriers] = new VkImageMemoryBarrier2()
                     {
                         sType = VkStructureType.VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2,
                         srcStageMask = (ulong)subresourceState.p_stageMask,
@@ -316,7 +329,7 @@ namespace Massini.Flamet.Classes
                         srcQueueFamilyIndex = Vk.VK_QUEUE_FAMILY_IGNORED,
                         dstQueueFamilyIndex = Vk.VK_QUEUE_FAMILY_IGNORED,
                         image = texture.VkImagePtr,
-                        subresourceRange = new()
+                        subresourceRange = new VkImageSubresourceRange
                         {
                             aspectMask = (uint)IntSharedCvs.GuessVkImageAspectMask(texture.VkFormat),
                             baseArrayLayer = (uint)layerIdx,

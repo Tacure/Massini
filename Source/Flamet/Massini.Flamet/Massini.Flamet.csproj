@@ -13,7 +13,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <RootNamespace>Massini.Coat</RootNamespace>
+    <RootNamespace>Massini.Flamet</RootNamespace>
   </PropertyGroup>
 
 </Project>

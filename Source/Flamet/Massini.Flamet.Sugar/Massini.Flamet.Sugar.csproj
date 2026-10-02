@@ -10,7 +10,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <RootNamespace>Massini.Coat.Sugar</RootNamespace>
+    <RootNamespace>Massini.Flamet.Sugar</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

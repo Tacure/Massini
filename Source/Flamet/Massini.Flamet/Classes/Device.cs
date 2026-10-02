@@ -66,7 +66,7 @@ namespace Massini.Flamet.Classes
             float* queuePriorityPtr = stackalloc float[totalQueueCount];
             for (int i = 0; i < totalQueueCount; i++)
             {
-                queuePriorityPtr[i] = 1.0f;   
+                queuePriorityPtr[i] = 1.0f;
             }
 
             int offset = 0;
@@ -89,7 +89,7 @@ namespace Massini.Flamet.Classes
             List<HeapString> extensionNamesNativeStringsList = [];
 
             // Optional extensions.
-            if (i_createParams.p_features.p_swapchain)
+            if (i_createParams.p_features.Swapchain)
             {
                 extensionNamesNativeStringsList.AddRange(HeapString.CreateUTF8(Vk.VK_KHR_SWAPCHAIN));
             }
@@ -185,11 +185,11 @@ namespace Massini.Flamet.Classes
 
             VkPhysicalDeviceFeatures deviceFeatures = new()
             {
-                fillModeNonSolid = i_createParams.p_features.p_fillModeNonSolid ? Vk.VK_TRUE : Vk.VK_FALSE,
-                depthClamp = i_createParams.p_features.p_depthClamp ? Vk.VK_TRUE : Vk.VK_FALSE,
-                fragmentStoresAndAtomics = i_createParams.p_features.p_fragmentStoresAndAtomics ? Vk.VK_TRUE : Vk.VK_FALSE,
-                samplerAnisotropy = i_createParams.p_features.p_samplerAnisotropy ? Vk.VK_TRUE : Vk.VK_FALSE,
-                wideLines = i_createParams.p_features.p_wideLines ? Vk.VK_TRUE : Vk.VK_FALSE,
+                fillModeNonSolid = i_createParams.p_features.FillModeNonSolid ? Vk.VK_TRUE : Vk.VK_FALSE,
+                depthClamp = i_createParams.p_features.DepthClamp ? Vk.VK_TRUE : Vk.VK_FALSE,
+                fragmentStoresAndAtomics = i_createParams.p_features.FragmentStoresAndAtomics ? Vk.VK_TRUE : Vk.VK_FALSE,
+                samplerAnisotropy = i_createParams.p_features.SamplerAnisotropy ? Vk.VK_TRUE : Vk.VK_FALSE,
+                wideLines = i_createParams.p_features.WideLines ? Vk.VK_TRUE : Vk.VK_FALSE,
                 shaderInt64 = Vk.VK_TRUE,
                 shaderFloat64 = Vk.VK_TRUE,
             };

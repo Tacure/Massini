@@ -23,6 +23,11 @@ namespace Massini.Flamet.Classes
         /// <returns></returns>
         public AdapterInfo GetInfo()
         {
+            if (m_adapterInfo != null)
+            {
+                return m_adapterInfo;
+            }
+            
             VkPhysicalDeviceProperties2 properties2 = new()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2,  
@@ -206,25 +211,27 @@ namespace Massini.Flamet.Classes
             
             #endregion
             
-            return new AdapterInfo
+            m_adapterInfo = new AdapterInfo()
             {
-                p_name = name,
-                p_apiVersion = properties2.properties.apiVersion,
-                p_driverVersion = properties2.properties.driverVersion,
-                p_deviceID = properties2.properties.deviceID,
-                p_vendorID = properties2.properties.vendorID,
-                p_type = type,
-                p_features = new() 
+                Name = name,
+                ApiVersion = properties2.properties.apiVersion,
+                DriverVersion = properties2.properties.driverVersion,
+                VendorId = properties2.properties.vendorID,
+                DeviceId = properties2.properties.deviceID,
+                Type = type,
+                Level = level,
+                Features = new AdapterFeatures()
                 {
-                    p_depthClamp = features2.features.depthClamp is 1,
-                    p_fillModeNonSolid = features2.features.fillModeNonSolid is 1,
-                    p_wideLines = features2.features.wideLines is 1,
-                    p_fragmentStoresAndAtomics = features2.features.fragmentStoresAndAtomics is 1,
-                    p_samplerAnisotropy = features2.features.samplerAnisotropy is 1,
-                    p_swapchain = extensions.Contains(Vk.VK_KHR_SWAPCHAIN),
+                    DepthClamp = features2.features.depthClamp is 1,
+                    FillModeNonSolid = features2.features.fillModeNonSolid is 1,
+                    WideLines = features2.features.wideLines is 1,
+                    FragmentStoresAndAtomics = features2.features.fragmentStoresAndAtomics is 1,
+                    SamplerAnisotropy = features2.features.samplerAnisotropy is 1,
+                    Swapchain = extensions.Contains(Vk.VK_KHR_SWAPCHAIN),
                 },
-                p_featureLevel = level,
             };
+
+            return m_adapterInfo;
         }
 
         /// <summary>
@@ -244,6 +251,7 @@ namespace Massini.Flamet.Classes
 
         private readonly Instance m_instance;
         private readonly VkPhysicalDevice_T* m_ptr_physicalDevice;
+        private AdapterInfo? m_adapterInfo = null;
 
         private Adapter(Instance i_instance, VkPhysicalDevice_T* i_ptr_physicalDevice)
         {

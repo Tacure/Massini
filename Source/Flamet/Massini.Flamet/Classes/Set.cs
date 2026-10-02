@@ -18,7 +18,6 @@ namespace Massini.Flamet.Classes
 
         public Layout Layout => m_layout;
 
-
         public Set(Layout i_layout, in SetCreateParams i_createParams)
         {
             DescriptorAllocator allocator = i_layout.Device.DescriptorAllocator;

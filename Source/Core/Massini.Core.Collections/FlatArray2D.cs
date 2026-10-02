@@ -59,6 +59,8 @@ namespace Massini.Core.Collections
         /// </summary>
         public int Count => m_array.Length;
 
+        // TODO: Remove this method.
+        [Obsolete(message: "Use indexing operator instead.")]
         public ref T GetRefAt(int i_x, int i_y)
         {
             return ref m_array[GetIndex(i_x, i_y)];

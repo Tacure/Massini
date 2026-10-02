@@ -114,7 +114,7 @@ namespace Massini.Flamet.Classes
             m_mipLevelCount = mipLevelCount;
             m_arrayLayersCount = arrayLayers;
             m_sampleCount = sampleCount;
-            m_layerBarriers = new(arrayLayers, mipLevelCount);
+            m_layerBarriers = new TextureBarrierState(arrayLayers, mipLevelCount);
         }
 
         public void Dispose()
@@ -151,7 +151,8 @@ namespace Massini.Flamet.Classes
             VkFormat i_format,
             VkImageType i_imageType,
             uint i_mipLevelCount,
-            VkSampleCountFlagBits i_sampleCount)
+            VkSampleCountFlagBits i_sampleCount,
+            bool i_isSwapchainTexture)
         {
             if (i_mipLevelCount > 64)
             {
@@ -162,6 +163,7 @@ namespace Massini.Flamet.Classes
                 nameof(Texture),
                 i_device,
                 true,
+                i_isSwapchainTexture,
                 i_mipLevelCount,
                 i_sampleCount,
                 i_extent,
@@ -176,6 +178,7 @@ namespace Massini.Flamet.Classes
         private readonly Rid m_id;
         private readonly Device m_device;
         private readonly bool m_isWrapper;
+        private readonly bool m_isSwapchainTexture;
         private readonly uint m_mipLevelCount;
         private readonly uint m_arrayLayersCount;
         private readonly VkSampleCountFlagBits m_sampleCount;
@@ -191,6 +194,7 @@ namespace Massini.Flamet.Classes
             string i_label,
             Device i_device,
             bool i_isWrapper,
+            bool i_isSwapchainTexture,
             uint i_mipLevelCount,
             VkSampleCountFlagBits i_sampleCount,
             VkExtent3D i_extent,
@@ -203,6 +207,7 @@ namespace Massini.Flamet.Classes
             m_label = i_label;
             m_device = i_device;
             m_isWrapper = i_isWrapper;
+            m_isSwapchainTexture = i_isSwapchainTexture;
             m_mipLevelCount = i_mipLevelCount;
             m_arrayLayersCount = ONE;
             m_sampleCount = i_sampleCount;

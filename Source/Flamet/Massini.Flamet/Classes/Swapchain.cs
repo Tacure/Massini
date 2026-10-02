@@ -326,7 +326,8 @@ namespace Massini.Flamet.Classes
                     IntSharedCvs.TextureFormatToVkFormat(i_colorFormat),
                     VkImageType.VK_IMAGE_TYPE_2D,
                     1,
-                    VkSampleCountFlagBits.VK_SAMPLE_COUNT_1_BIT);
+                    VkSampleCountFlagBits.VK_SAMPLE_COUNT_1_BIT,
+                    true);
 
                 o_colorTextures.Add(colorTexture);
 

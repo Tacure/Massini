@@ -41,6 +41,9 @@ namespace Massini.Flamet.HelloTriangle
         
         private static unsafe void Main()
         {
+            Flamet2Test.Run();
+            return;
+            
             SDL3.SDL.Init(SDL3.SDL.InitFlags.Events | SDL3.SDL.InitFlags.Video);
             nint window = SDL3.SDL.CreateWindow("Test", (int)m_viewport.Width, (int)m_viewport.Height, SDL3.SDL.WindowFlags.Resizable);
 
@@ -65,15 +68,15 @@ namespace Massini.Flamet.HelloTriangle
             m_device = adapter.CreateDevice(new DeviceCreateParams()
             {
                 p_next = null,
-                p_featureLevel = adapterInfo.p_featureLevel,
+                p_featureLevel = adapterInfo.Level,
                 p_features = new AdapterFeatures()
                 {
-                    p_depthClamp = true,
-                    p_fillModeNonSolid = true,
-                    p_fragmentStoresAndAtomics = true,
-                    p_samplerAnisotropy = true,
-                    p_swapchain = true,
-                    p_wideLines = true,
+                    DepthClamp = true,
+                    FillModeNonSolid = true,
+                    FragmentStoresAndAtomics = true,
+                    SamplerAnisotropy = true,
+                    Swapchain = true,
+                    WideLines = true,
                 },
             });
 

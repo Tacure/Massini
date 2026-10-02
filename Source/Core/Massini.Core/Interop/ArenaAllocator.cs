@@ -74,6 +74,7 @@ namespace Massini.Core.Interop
         /// <summary>
         /// Allocates a new chunk of memory.
         /// </summary>
+        // TODO: Add an aligment enumerator instead of using the MemorySize type.
         public ArenaAlloc<T> Alloc<T>(int i_capacity, MemorySize i_alignment)
             where T : unmanaged
         {

@@ -12,6 +12,7 @@
       <ProjectReference Include="..\..\Source\Bindings\Massini.runtime.linux-x64.vma\Massini.runtime.linux-x64.vma.csproj" />
       <ProjectReference Include="..\..\Source\Bindings\Massini.runtime.win-x64.vma\Massini.runtime.win-x64.vma.csproj" />
       <ProjectReference Include="..\..\Source\Flamet\Massini.Flamet.Sugar\Massini.Flamet.Sugar.csproj" />
+      <ProjectReference Include="..\..\Source\Flamet\Massini.Flamet2\Massini.Flamet2.csproj" />
       <ProjectReference Include="..\..\Source\Flamet\Massini.Flamet\Massini.Flamet.csproj" />
     </ItemGroup>
 

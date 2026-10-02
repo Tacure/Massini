@@ -20,6 +20,7 @@
     <Project Path="Source/Bindings/Massini.runtime.win-x64.vulkan/Massini.runtime.win-x64.vulkan.csproj" />
   </Folder> 
   <Folder Name="/Source/Flamet/">
+    <Project Path="Source/Flamet/Massini.Flamet2/Massini.Flamet2.csproj" />
     <Project Path="Source\Flamet\Massini.Flamet.Sugar\Massini.Flamet.Sugar.csproj" />
     <Project Path="Source\Flamet\Massini.Flamet\Massini.Flamet.csproj" />
   </Folder>

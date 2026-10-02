@@ -18,7 +18,7 @@ namespace Massini.Flamet.Classes.Internal
             m_layerCount = i_layerCount;
             m_mipCount = i_mipCount;
 
-            m_states = new((int)i_layerCount, (int)i_mipCount);
+            m_states = [with((int)i_layerCount, (int)i_mipCount)];
 
             for (int i = 0; i < m_states.Count; i++)
             {

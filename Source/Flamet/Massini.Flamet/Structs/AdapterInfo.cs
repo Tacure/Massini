@@ -2,15 +2,15 @@
 
 namespace Massini.Flamet.Structs
 {
-    public struct AdapterInfo
+    public sealed class AdapterInfo
     {
-        public required string p_name;
-        public required uint p_apiVersion;
-        public required uint p_driverVersion;
-        public required uint p_vendorID;
-        public required uint p_deviceID;
-        public required AdapterType p_type;
-        public required FeatureLevel p_featureLevel;
-        public required AdapterFeatures p_features;
+        public string Name { get; init; }
+        public uint ApiVersion { get; init; }
+        public uint DriverVersion { get; init; }
+        public uint VendorId { get; init; }
+        public uint DeviceId { get; init; }
+        public AdapterType Type { get; init; }
+        public FeatureLevel Level { get; init; }
+        public AdapterFeatures Features { get; init; }
     }
 }
