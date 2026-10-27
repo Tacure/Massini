@@ -15,11 +15,13 @@ namespace Massini.Flamet2.Impl.Classes
 {
     internal sealed unsafe class Buffer : IBuffer1
     {
-        public Buffer(Lane i_lane, in BufferCreateParams i_createParams)
+        public Buffer(Device i_device, in BufferCreateParams i_createParams)
         {
-            Device device = (Device)i_lane.GetInfo().Device;
-
-            uint familyIndex = i_lane.FamilyIndex;
+            Lane lane = (Lane)i_createParams.p_initialLane;
+            uint queueFamilyCount = ONE;
+            VkSharingMode sharingMode = VkSharingMode.VK_SHARING_MODE_EXCLUSIVE;
+            uint queueFamilyIdx = lane.FamilyIndex;
+            
             VkBuffer_T* buffer = null;
             VmaAllocation* allocation = null;
             VmaAllocationInfo allocationInfo = new();
@@ -28,9 +30,9 @@ namespace Massini.Flamet2.Impl.Classes
                 sType = VkStructureType.VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO,
                 pNext = null,
                 flags = 0,
-                sharingMode = VkSharingMode.VK_SHARING_MODE_EXCLUSIVE,
-                queueFamilyIndexCount = ONE,
-                pQueueFamilyIndices = &familyIndex,
+                sharingMode = sharingMode,
+                queueFamilyIndexCount = queueFamilyCount,
+                pQueueFamilyIndices = &queueFamilyIdx,
                 size = i_createParams.p_size.ToBytes(),
                 usage = (uint)IntSharedCvs.BufferUsageFlagsToVkBufferUsageFlagBits(i_createParams.p_usage) |
                         IntSharedCvs.BufferTypeToVkBufferUsageFlags(i_createParams.p_type),
@@ -45,7 +47,7 @@ namespace Massini.Flamet2.Impl.Classes
             };
 
             // TODO: Check if VMA is thread safe, if not, create a wrapper class with locks.
-            VkResult result = Vma.vmaCreateBuffer(device.VmaAllocatorPtr, &bufferCreateInfo, &allocationCreateInfo, &buffer, &allocation, &allocationInfo);
+            VkResult result = Vma.vmaCreateBuffer(i_device.VmaAllocatorPtr, &bufferCreateInfo, &allocationCreateInfo, &buffer, &allocation, &allocationInfo);
             if (result != VkResult.VK_SUCCESS)
             {
                 throw new Exception("Failed to create buffer");
@@ -54,20 +56,20 @@ namespace Massini.Flamet2.Impl.Classes
             m_bufferInfo = new BufferInfo()
             {
                 Id = Rid.NewId(),
+                Device = i_device,
                 BufferType = i_createParams.p_type,
                 Size = i_createParams.p_size,
             };
-            m_lane = i_lane;
             m_ptr_buffer = buffer;
             m_ptr_allocation = allocation;
-            m_bufferBarrierState = new BufferBarrierState();
+            m_bufferBarrierState = new BufferBarrierState(queueFamilyIdx);
         }
         
         public void Dispose()
         {
             if (!m_isDisposed)
             {
-                Device device = (Device)m_lane.GetInfo().Device;
+                Device device = (Device)m_bufferInfo.Device;
                 
                 m_isDisposed = true;
                 // TODO: Check if VMA is thread safe, if not, create a wrapper class with locks.
@@ -84,13 +86,13 @@ namespace Massini.Flamet2.Impl.Classes
         {
             if (m_isDisposed) return;
             
-            Device device = (Device)m_lane.GetInfo().Device;
+            Device device = (Device)m_bufferInfo.Device;
             IntSharedFuncs.SetObjectLabel(device, m_ptr_buffer, VkObjectType.VK_OBJECT_TYPE_BUFFER, i_label);        
         }
         
         public ulong GetDeviceAddress()
         {
-            Device device = (Device)m_lane.GetInfo().Device;
+            Device device = (Device)m_bufferInfo.Device;
             
             VkBufferDeviceAddressInfo bufferAddressInfo = new()
             {
@@ -104,7 +106,7 @@ namespace Massini.Flamet2.Impl.Classes
 
         public void WriteBytes(ReadOnlySpan<byte> i_data, MemorySize i_bufferOffset = default)
         {
-            Device device = (Device)m_lane.GetInfo().Device;
+            Device device = (Device)m_bufferInfo.Device;
             
             nuint offset = i_bufferOffset.ToBytes();
             nuint size = m_bufferInfo.Size.ToBytes();
@@ -131,7 +133,7 @@ namespace Massini.Flamet2.Impl.Classes
 
         public void ReadBytes(Span<byte> i_data, MemorySize i_bufferOffset = default)
         {
-            Device device = (Device)m_lane.GetInfo().Device;
+            Device device = (Device)m_bufferInfo.Device;
             
             nuint offset = i_bufferOffset.ToBytes();
             nuint size = m_bufferInfo.Size.ToBytes();
@@ -157,11 +159,15 @@ namespace Massini.Flamet2.Impl.Classes
 
         internal VkBuffer_T* VkBufferPtr => m_ptr_buffer;
         
+        internal BufferBarrierState GetBufferBarrierState()
+        {
+            return m_bufferBarrierState;
+        }
+        
         private bool m_isDisposed = false;
         private readonly BufferInfo m_bufferInfo;
-        private readonly Lane m_lane;
         private readonly VkBuffer_T* m_ptr_buffer;
         private readonly VmaAllocation* m_ptr_allocation;
-        private BufferBarrierState m_bufferBarrierState;
+        private readonly BufferBarrierState m_bufferBarrierState;
     }   
 }

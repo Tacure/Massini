@@ -269,6 +269,7 @@ namespace Massini.Flamet2.Impl
             };
         }
         
+        [Obsolete]
         public static VkDescriptorType EntryTypeToVkDescriptorType(EntryType i_type)
         {
             return i_type switch
@@ -277,6 +278,16 @@ namespace Massini.Flamet2.Impl
                 EntryType.StorageBuffer => VkDescriptorType.VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
                 EntryType.Sampler => VkDescriptorType.VK_DESCRIPTOR_TYPE_SAMPLER,
                 EntryType.Texture => VkDescriptorType.VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
+                _ => throw new NotImplementedException(),
+            };
+        }
+        
+        public static VkDescriptorType BufferTypeToVkDescriptorType(BufferType i_type)
+        {
+            return i_type switch
+            {
+                BufferType.Uniform => VkDescriptorType.VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+                BufferType.Storage => VkDescriptorType.VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
                 _ => throw new NotImplementedException(),
             };
         }
@@ -297,6 +308,91 @@ namespace Massini.Flamet2.Impl
                 shaderStageFlagBits |= VkShaderStageFlagBits.VK_SHADER_STAGE_COMPUTE_BIT;
             }
             return shaderStageFlagBits;
+        }
+        
+        public static VkPrimitiveTopology PrimitiveTopologyToVkPrimitiveTopology(PrimitiveTopology i_topology)
+        {
+            return i_topology switch
+            {
+                PrimitiveTopology.TriangleList => VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST,
+                PrimitiveTopology.TriangleStrip => VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_TRIANGLE_STRIP,
+                PrimitiveTopology.LineList => VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_LINE_LIST,
+                PrimitiveTopology.LineStrip => VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_LINE_STRIP,
+                PrimitiveTopology.PointList => VkPrimitiveTopology.VK_PRIMITIVE_TOPOLOGY_POINT_LIST,
+                _ => throw new NotImplementedException(),
+            };
+        }
+        
+        public static VkPresentModeKHR PresentModeToVkPresentModeKhr(PresentMode i_presentMode)
+        {
+            return i_presentMode switch
+            {
+                PresentMode.Fifo => VkPresentModeKHR.VK_PRESENT_MODE_FIFO_KHR,
+                PresentMode.FifoRelaxed => VkPresentModeKHR.VK_PRESENT_MODE_FIFO_RELAXED_KHR,
+                PresentMode.Mailbox => VkPresentModeKHR.VK_PRESENT_MODE_MAILBOX_KHR,
+                PresentMode.Immediate => VkPresentModeKHR.VK_PRESENT_MODE_IMMEDIATE_KHR,
+                _ => throw new NotImplementedException(),
+            };
+        }
+        
+        public static VkColorSpaceKHR ColorSpaceToVkColorSpaceKhr(ColorSpace i_colorSpace)
+        {
+            return i_colorSpace switch
+            {
+                ColorSpace.SrgbNonLinear => VkColorSpaceKHR.VK_COLORSPACE_SRGB_NONLINEAR_KHR,
+                _ => throw new NotImplementedException(),
+            };
+        }
+        
+        public static VkCompositeAlphaFlagBitsKHR CompositeAlphaModeFlagsToVkCompositeAlphaFlagBitsKhr(CompositeAlphaModeFlags i_compositeAlphaMode)
+        {
+            VkCompositeAlphaFlagBitsKHR compositeAlphaFlagBitsKhr = 0;
+            if (i_compositeAlphaMode.HasFlag(CompositeAlphaModeFlags.Opaque))
+            {
+                compositeAlphaFlagBitsKhr |= VkCompositeAlphaFlagBitsKHR.VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+            }
+            if (i_compositeAlphaMode.HasFlag(CompositeAlphaModeFlags.Premultiplied))
+            {
+                compositeAlphaFlagBitsKhr |= VkCompositeAlphaFlagBitsKHR.VK_COMPOSITE_ALPHA_PRE_MULTIPLIED_BIT_KHR;
+            }
+            if (i_compositeAlphaMode.HasFlag(CompositeAlphaModeFlags.Unpremultiplied))
+            {
+                compositeAlphaFlagBitsKhr |= VkCompositeAlphaFlagBitsKHR.VK_COMPOSITE_ALPHA_POST_MULTIPLIED_BIT_KHR;
+            }
+            if (i_compositeAlphaMode.HasFlag(CompositeAlphaModeFlags.Inherit))
+            {
+                compositeAlphaFlagBitsKhr |= VkCompositeAlphaFlagBitsKHR.VK_COMPOSITE_ALPHA_INHERIT_BIT_KHR;
+            }
+            return compositeAlphaFlagBitsKhr;
+        }
+        
+        public static VkImageAspectFlagBits GuessVkImageAspectMask(VkFormat i_format)
+        {
+            return i_format switch
+            {
+                VkFormat.VK_FORMAT_D32_SFLOAT_S8_UINT => VkImageAspectFlagBits.VK_IMAGE_ASPECT_DEPTH_BIT | VkImageAspectFlagBits.VK_IMAGE_ASPECT_STENCIL_BIT,
+                _ => VkImageAspectFlagBits.VK_IMAGE_ASPECT_COLOR_BIT,
+            };
+        }
+        
+        public static VkAttachmentLoadOp LoadOpToVkAttachmentLoadOp(LoadOp i_loadOp)
+        {
+            return i_loadOp switch
+            {
+                LoadOp.Load => VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_LOAD,
+                LoadOp.Clear => VkAttachmentLoadOp.VK_ATTACHMENT_LOAD_OP_CLEAR,
+                _ => throw new NotImplementedException(),
+            };
+        }
+
+        public static VkAttachmentStoreOp StoreOpToVkAttachmentStoreOp(StoreOp i_storeOp)
+        {
+            return i_storeOp switch
+            {
+                StoreOp.Store => VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_STORE,
+                StoreOp.Discard => VkAttachmentStoreOp.VK_ATTACHMENT_STORE_OP_DONT_CARE,
+                _ => throw new NotImplementedException(),
+            };
         }
     }
 }

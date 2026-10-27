@@ -8,14 +8,11 @@ namespace Massini.Flamet2.Api.Level1.Interfaces
     {
         public LaneInfo GetInfo();
 
-        public ITexture1 CreateTexture(in TextureCreateParams i_createParams);
-
-        public IBuffer1 CreateBuffer(in BufferCreateParams i_createParams);
+        /// <summary>
+        /// Wait for the lane to become idle.
+        /// </summary>
+        public void WaitIdle();
         
-        public ISampler1 CreateSampler(in SamplerCreateParams i_createParams);
-        
-        public ILayout1 CreateLayout(in LayoutCreateParams i_createParams);
-        
-        public IKernel1 CreateGraphicsKernel(in GraphicsKernelCreateParams i_createParams);
+        public ICommandList1 CreateCommandList();
     }   
 }

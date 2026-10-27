@@ -11,7 +11,7 @@ namespace Massini.Flamet2.Impl.Classes
     {
         public TextureView(Texture i_texture, in TextureViewCreateParams i_createParams)
         {
-            Device device = (Device)i_texture.GetLane().GetInfo().Device;
+            Device device = (Device)i_texture.GetInfo().Device;
             
             VkImageViewCreateInfo imageViewCreateInfo = new()
             {
@@ -60,7 +60,7 @@ namespace Massini.Flamet2.Impl.Classes
         {
             if (!m_isDisposed)
             {
-                Device device = (Device)m_texture.GetLane().GetInfo().Device;
+                Device device = (Device)m_texture.GetInfo().Device;
                 
                 m_isDisposed = true;
                 Vk.vkDestroyImageView(device.VkDevicePtr, m_ptr_imageView, null);
@@ -76,10 +76,12 @@ namespace Massini.Flamet2.Impl.Classes
         {
             if (m_isDisposed) return;
             
-            Device device = (Device)m_texture.GetLane().GetInfo().Device;
+            Device device = (Device)m_texture.GetInfo().Device;
             IntSharedFuncs.SetObjectLabel(device, m_ptr_imageView, VkObjectType.VK_OBJECT_TYPE_IMAGE_VIEW, i_label);
         }
 
+        internal VkImageView_T* VkImageViewPtr => m_ptr_imageView;
+        
         private bool m_isDisposed = false;
         private readonly Texture m_texture;
         private readonly VkImageView_T* m_ptr_imageView;

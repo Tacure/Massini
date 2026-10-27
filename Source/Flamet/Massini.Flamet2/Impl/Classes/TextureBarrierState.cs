@@ -4,16 +4,17 @@ using Massini.Core.Collections;
 
 namespace Massini.Flamet2.Impl.Classes
 {
-    internal class TextureBarrierState
+    internal sealed class TextureBarrierState
     {
-        public struct TextureSubresourceBarrierState
+        internal struct TextureSubresourceBarrierState
         {
-            public VkImageLayout p_layout;
-            public VkAccessFlagBits p_accessMask;
-            public VkPipelineStageFlagBits p_stageMask;
+            internal VkImageLayout p_layout;
+            internal VkAccessFlagBits p_accessMask;
+            internal VkPipelineStageFlagBits p_stageMask;
+            internal uint p_queueFamilyIndex;
         }
 
-        public TextureBarrierState(uint i_layerCount, uint i_mipCount)
+        internal TextureBarrierState(uint i_layerCount, uint i_mipCount, uint i_queueFamilyIndex)
         {
             m_layerCount = i_layerCount;
             m_mipCount = i_mipCount;
@@ -22,13 +23,16 @@ namespace Massini.Flamet2.Impl.Classes
 
             for (int i = 0; i < m_states.Count; i++)
             {
-                m_states[i].p_layout = VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED;
-                m_states[i].p_accessMask = VkAccessFlagBits.VK_ACCESS_NONE;
-                m_states[i].p_stageMask = VkPipelineStageFlagBits.VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+                ref TextureSubresourceBarrierState state = ref m_states[i];
+                
+                state.p_layout = VkImageLayout.VK_IMAGE_LAYOUT_UNDEFINED;
+                state.p_accessMask = VkAccessFlagBits.VK_ACCESS_NONE;
+                state.p_stageMask = VkPipelineStageFlagBits.VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
+                state.p_queueFamilyIndex = i_queueFamilyIndex;
             }
         }
 
-        public ref TextureSubresourceBarrierState GetState(uint i_layer, uint i_mip)
+        internal ref TextureSubresourceBarrierState GetState(uint i_layer, uint i_mip)
         {
             return ref m_states[(int)i_layer, (int)i_mip];
         }

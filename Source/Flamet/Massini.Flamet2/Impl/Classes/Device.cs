@@ -330,7 +330,49 @@ namespace Massini.Flamet2.Impl.Classes
             return m_lanes;
         }
 
+        public ISetAllocator1 CreateSetAllocator(in SetAllocatorCreateParams i_createParams)
+        {
+            return new SetAllocator(this, in i_createParams);
+        }
+        
+        public IBuffer1 CreateBuffer(in BufferCreateParams i_createParams)
+        {
+            return new Buffer(this, in i_createParams);
+        }
+        
+        public ITexture1 CreateTexture(in TextureCreateParams i_createParams)
+        {
+            return new Texture(this, in i_createParams);
+        }
+        
+        public ISampler1 CreateSampler(in SamplerCreateParams i_createParams)
+        {
+            return new Sampler(this, in i_createParams);
+        }
+        
+        public ILayout1 CreateLayout(in LayoutCreateParams i_createParams)
+        {
+            return new Layout(this, in i_createParams);
+        }
+        
+        public IKernel1 CreateGraphicsKernel(in GraphicsKernelCreateParams i_createParams)
+        {
+            return new Kernel(this, in i_createParams);
+        }
+
+        public ISurface1 CreateSurface(in SurfaceCreateParams i_createParams)
+        {
+            return new Surface(this, in i_createParams);
+        }
+
+        public ISwapchain1 CreateSwapchain(in SwapchainCreateParams i_createParams)
+        {
+            return new Swapchain(this, in i_createParams);
+        }
+        
         internal Instance Instance => m_instance;
+        
+        internal Adapter Adapter => m_adapter;
         
         internal VkDevice_T* VkDevicePtr => m_ptr_device;
 

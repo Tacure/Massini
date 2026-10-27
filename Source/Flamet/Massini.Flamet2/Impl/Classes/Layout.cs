@@ -9,30 +9,28 @@ namespace Massini.Flamet2.Impl.Classes
 {
     internal sealed unsafe class Layout : ILayout1
     {
-        public Layout(Lane i_lane, in LayoutCreateParams i_createParams)
+        public Layout(Device i_device, in LayoutCreateParams i_createParams)
         {
-            Device device = (Device)i_lane.GetInfo().Device;
-            
             // Create descriptor set layouts.
             SetDeclaration[] setDeclarations = i_createParams.p_sets;
             VkDescriptorSetLayout_T*[] setLayouts = new VkDescriptorSetLayout_T*[setDeclarations.Length];
             for (int i = 0; i < setDeclarations.Length; i++)
             {
                 ref SetDeclaration setDeclaration = ref setDeclarations[i];
-                VkDescriptorSetLayout_T* descriptorSetLayout = CreateSetLayout(device, in setDeclaration);
+                VkDescriptorSetLayout_T* descriptorSetLayout = CreateSetLayout(i_device, in setDeclaration);
                 setLayouts[i] = descriptorSetLayout;
             }
 
             // Create layout.
-            VkPipelineLayout_T* pipelineLayout = CreateLayout(device, setLayouts, i_createParams.p_pushConstant, out m_pushConstantRange);
+            VkPipelineLayout_T* pipelineLayout = CreateLayout(i_device, setLayouts, i_createParams.p_pushConstant, out m_pushConstantRange);
 
-            m_lane = i_lane;
             m_setLayoutsPtrs = setLayouts;
             m_ptr_pipelineLayout = pipelineLayout;
             m_setDeclarations = setDeclarations;
             m_layoutInfo = new LayoutInfo()
             {
                 Id = Rid.NewId(),
+                Device = i_device,
             };
         }
         
@@ -40,7 +38,7 @@ namespace Massini.Flamet2.Impl.Classes
         {
             if (!m_isDisposed)
             {
-                Device device = (Device)m_lane.GetInfo().Device;
+                Device device = (Device)m_layoutInfo.Device;
                 
                 m_isDisposed = true;
                 for (int i = 0; i < m_setLayoutsPtrs.Length; i++)
@@ -60,12 +58,17 @@ namespace Massini.Flamet2.Impl.Classes
         {
             if (m_isDisposed) return;
             
-            Device device = (Device)m_lane.GetInfo().Device;
+            Device device = (Device)m_layoutInfo.Device;
             IntSharedFuncs.SetObjectLabel(device, m_ptr_pipelineLayout, VkObjectType.VK_OBJECT_TYPE_PIPELINE_LAYOUT, i_label);  
         }
 
+        internal VkPipelineLayout_T* VkPipelineLayoutPtr => m_ptr_pipelineLayout;
+        
+        internal VkDescriptorSetLayout_T*[] SetLayoutsPtrs => m_setLayoutsPtrs;
+        
+        internal SetDeclaration[] SetDeclarations => m_setDeclarations;
+        
         private bool m_isDisposed = false;
-        private readonly Lane m_lane;
         private readonly VkDescriptorSetLayout_T*[] m_setLayoutsPtrs;
         private readonly VkPipelineLayout_T* m_ptr_pipelineLayout;
         private readonly VkPushConstantRange? m_pushConstantRange;

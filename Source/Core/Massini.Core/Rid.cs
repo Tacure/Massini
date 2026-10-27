@@ -61,6 +61,12 @@ namespace Massini.Core
             return m_id.GetHashCode();
         }
 
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return m_id.ToString();
+        }
+
         private static ulong m_nextId = 1;
 
         private readonly ulong m_id = i_id;

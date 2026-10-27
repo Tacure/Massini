@@ -1,6 +1,5 @@
 
-using Massini.Core.Functional;
-using Massini.Core.Interop;
+using Massini.Core.Interop.Linux;
 using Massini.Core.Math;
 using Massini.Core.Math.Primitives;
 using Massini.Flamet2.Api;
@@ -8,7 +7,6 @@ using Massini.Flamet2.Api.Level1.Classes;
 using Massini.Flamet2.Api.Level1.Enums;
 using Massini.Flamet2.Api.Level1.Interfaces;
 using Massini.Flamet2.Api.Level1.Structs;
-using static Massini.Core.Functional.None;
 
 namespace Massini.Flamet.HelloTriangle
 {
@@ -75,82 +73,76 @@ namespace Massini.Flamet.HelloTriangle
                        info.Usage.HasFlag(LaneUsageFlags.Transfer);
             });
 
-            ITexture1 texture = m_lane.CreateTexture(new TextureCreateParams
+            m_setAllocator = m_device.CreateSetAllocator(new SetAllocatorCreateParams()
             {
-                p_format = TextureFormat.BGRA8UnormSrgb,
-                p_arrayLayers = 1,
-                p_mipLevelCount = 1,
-                p_size = new Vec3<uint>(256U, 256U, 1U),
-                p_type = TextureType.Texture2D,
-                p_usage = TextureUsageFlags.Sampled | TextureUsageFlags.TransferDst,
-                p_sampleCount = SampleCount.SampleCount1,
+                p_blockSize = 256U,
             });
-            texture.SetLabel("Texture");
-
-            ITextureView1 textureView = texture.CreateTextureView(new TextureViewCreateParams()
-            {
-                p_type = TextureViewType.View2D,
-                p_aspect = TextureAspectFlags.Color,
-                p_baseArrayLayer = 0,
-                p_format = TextureFormat.BGRA8UnormSrgb,
-                p_baseMipLevel = 0,
-                p_layerCount = 1,
-                p_mipLevelCount = 1,
-                p_usage = TextureUsageFlags.Sampled,
-                p_sampleCount = SampleCount.SampleCount1,
-            });
-            textureView.SetLabel("View");
             
-            textureView.Dispose();
-            texture.Dispose();
+            uint windowProps = SDL3.SDL.GetWindowProperties(i_window);
+            XDisplay* displayPtr = (XDisplay*)SDL3.SDL.GetPointerProperty(windowProps, SDL3.SDL.Props.WindowX11DisplayPointer, 0);
+            nint windowNumber = (nint)SDL3.SDL.GetNumberProperty(windowProps, SDL3.SDL.Props.WindowX11WindowNumber, 0L);
 
-            IBuffer1 buffer = m_lane.CreateBuffer(new BufferCreateParams()
+            m_surface = m_device.CreateSurface(new SurfaceCreateParams()
             {
-                p_size = MemorySize.FromBytes(32),
-                p_type = BufferType.Storage,
-                p_usage = BufferUsageFlags.HostVisible | BufferUsageFlags.DeviceAddress,
+                p_next = new SurfaceXlibCreateParams()
+                {
+                    p_next = null,
+                    p_ptr_display = displayPtr,
+                    p_window = windowNumber,
+                },
             });
-            buffer.SetLabel("Buffer");
-            
-            buffer.Dispose();
 
-            ISampler1 sampler = m_lane.CreateSampler(new SamplerCreateParams()
+            m_swapchain = m_device.CreateSwapchain(new SwapchainCreateParams()
             {
-                p_addressModeU = SamplerAdressMode.Repeat,
-                p_addressModeV = SamplerAdressMode.Repeat,
-                p_addressModeW = SamplerAdressMode.Repeat,
-                p_minFilter = FilterMode.Linear,
-                p_magFilter = FilterMode.Linear,
-                p_mipmapFilter = FilterMode.Linear,
-                p_compareOperation = CompareOp.Never,
-                p_enableAnisotropy = true,
-                p_enableUnnormalizedCoordinates = false,
-                p_lodMinClamp = 0.0f,
-                p_lodMaxClamp = 1.0f,
-                p_maxAnisotropy = 1,
-                p_mipLodBias = 0.0f,
+                p_next = null,
+                p_colorFormat = TextureFormat.BGRA8UnormSrgb,
+                p_colorSpace = ColorSpace.SrgbNonLinear,
+                p_compositeAlphaMode = CompositeAlphaModeFlags.Opaque,
+                p_frameCount = 3,
+                p_size = new Vec2<uint>(800, 600),
+                p_surface = m_surface,
+                p_presentMode = PresentMode.Fifo,
             });
-            sampler.SetLabel("Sampler");
-            
-            sampler.Dispose();
-
-            ILayout1 layout = m_lane.CreateLayout(new LayoutCreateParams()
-            {
-                p_sets = [],
-                p_pushConstant = null,
-            });
-            layout.SetLabel("Layout");
-            
-            layout.Dispose();
         }
         
         private static void Update(TimeSpan i_deltaTime)
         {
+            m_swapchain!.BeginFrame(new SwapchainBeginFrameParams()
+            {
+                p_presentLane = m_lane!,
+                p_waitCommandLists = [],
+            }, out ICommandList1 commandList, out ITextureView1 colorView);
             
-        }
+            commandList.Open();
+            
+            commandList.CmdBeginRenderPass(new RenderPassBeginParams()
+            {
+                p_colorAttachments = 
+                [
+                    new RenderPassColorAttachment()
+                    {
+                        p_clearColor = new Vec4<float>(0.0f, 0.0f, 0.0f, 1.0f),
+                        p_depthSlice = 0,
+                        p_loadOp = LoadOp.Clear,
+                        p_storeOp = StoreOp.Store,
+                        p_textureView = colorView,
+                    }
+                ],
+                p_depthStencilAttachment = null,
+            });
+            
+            commandList.CmdEndRenderPass();
+            
+            commandList.Close();
+            
+            m_swapchain.EndFrame();
+        }   
 
         private static void Quit()
         {
+            m_swapchain?.Dispose();
+            m_surface?.Dispose();
+            m_setAllocator?.Dispose();
             m_device?.Dispose();
         }
         
@@ -158,6 +150,9 @@ namespace Massini.Flamet.HelloTriangle
 
         private static IDevice1? m_device;
         private static ILane1? m_lane;
+        private static ISurface1? m_surface;
+        private static ISwapchain1? m_swapchain;
+        private static ISetAllocator1? m_setAllocator;
     }   
     
     file class AdapterSelector : IAdapterSelector

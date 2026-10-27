@@ -10,10 +10,8 @@ namespace Massini.Flamet2.Impl.Classes
 {
     internal sealed unsafe class Sampler : ISampler1
     {
-        public Sampler(Lane i_lane, in SamplerCreateParams i_createParams)
+        public Sampler(Device i_device, in SamplerCreateParams i_createParams)
         {
-            Device device = (Device)i_lane.GetInfo().Device;
-
             VkSamplerCreateInfo vkSamplerCreateInfo = new()
             {
                 sType = VkStructureType.VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO,
@@ -37,17 +35,17 @@ namespace Massini.Flamet2.Impl.Classes
             };
 
             VkSampler_T* sampler = null;
-            VkResult result = Vk.vkCreateSampler(device.VkDevicePtr, &vkSamplerCreateInfo, null, &sampler);
+            VkResult result = Vk.vkCreateSampler(i_device.VkDevicePtr, &vkSamplerCreateInfo, null, &sampler);
             if (result != VkResult.VK_SUCCESS)
             {
                 throw new Exception("Failed to create sampler.");
             }
 
-            m_lane = i_lane;
             m_ptr_sampler = sampler;
             m_samplerInfo = new SamplerInfo()
             {
                 Id = Rid.NewId(),
+                Device = i_device,
             };
         }
         
@@ -55,7 +53,7 @@ namespace Massini.Flamet2.Impl.Classes
         {
             if (!m_isDisposed)
             {
-                Device device = (Device)m_lane.GetInfo().Device;
+                Device device = (Device)m_samplerInfo.Device;
                 
                 m_isDisposed = true;
                 Vk.vkDestroySampler(device.VkDevicePtr, m_ptr_sampler, null);
@@ -71,12 +69,13 @@ namespace Massini.Flamet2.Impl.Classes
         {
             if (m_isDisposed) return;
             
-            Device device = (Device)m_lane.GetInfo().Device;
+            Device device = (Device)m_samplerInfo.Device;
             IntSharedFuncs.SetObjectLabel(device, m_ptr_sampler, VkObjectType.VK_OBJECT_TYPE_SAMPLER, i_label);      
         }
+        
+        internal VkSampler_T* VkSamplerPtr => m_ptr_sampler;
 
         private bool m_isDisposed = false;
-        private Lane m_lane;
         private readonly VkSampler_T* m_ptr_sampler;
         private readonly SamplerInfo m_samplerInfo;
     }   
