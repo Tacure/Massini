@@ -29,8 +29,8 @@ namespace Massini.Flamet.Classes
         /// </summary>
         public Instance(in InstanceCreateParams i_createParams)
         {
-            VulkanLoader.Setup();
-            VmaLoader.Setup();
+            new VulkanSolver().Setup();
+            new VmaSolver().Setup();
 
             // Baseline API version 1.4.
             uint apiVersion = Vk.ApiVersion0140;

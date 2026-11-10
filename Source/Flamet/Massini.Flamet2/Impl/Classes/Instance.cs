@@ -24,8 +24,8 @@ namespace Massini.Flamet2.Impl.Classes
         /// </summary>
         public Instance(in InstanceCreateParams i_createParams)
         {
-            VulkanLoader.Setup();
-            VmaLoader.Setup();
+            new VulkanSolver().Setup();
+            new VmaSolver().Setup();
 
             // Baseline API version 1.4.
             uint apiVersion = Vk.ApiVersion0140;
@@ -38,16 +38,24 @@ namespace Massini.Flamet2.Impl.Classes
             {
                 extensions.Add(HeapString.CreateUTF8(Vk.VK_KHR_SURFACE));
 
-                // Check if platform is windows.
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                /*
+                 * Because users can chose/be forced to use X11 under Wayland
+                 * (eg: Renderdoc currently requires X11), we require them
+                 * to tell the API which window manager they are going to use.
+                 */
+
+                switch (i_createParams.p_windowManager)
                 {
-                    extensions.Add(HeapString.CreateUTF8(Vk.VK_KHR_WIN32_SURFACE));
-                }
-                // Check if platform is linux.
-                // TODO: Check if it's using X11 or Wayland.
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    extensions.Add(HeapString.CreateUTF8(Vk.VK_KHR_XLIB_SURFACE));
+                    case WindowManager.Windows:
+                        extensions.Add(HeapString.CreateUTF8(Vk.VK_KHR_WIN32_SURFACE));
+                        break;
+                    case WindowManager.X11:
+                        extensions.Add(HeapString.CreateUTF8(Vk.VK_KHR_XLIB_SURFACE));
+                        break;
+                    case WindowManager.Wayland:
+                        extensions.Add(HeapString.CreateUTF8(Vk.VK_KHR_WAYLAND_SURFACE));
+                        break;
+                    default: throw new Exception("Unknown window manager");
                 }
             }
 

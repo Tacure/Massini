@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Massini.Core\Massini.Core.csproj" />
+    <ProjectReference Include="..\Massini.Bindings.Common\Massini.Bindings.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

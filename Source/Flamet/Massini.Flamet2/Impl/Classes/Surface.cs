@@ -1,6 +1,7 @@
 
 using Massini.Bindings.Vulkan;
 using Massini.Core;
+using Massini.Core.Math.Primitives;
 using Massini.Flamet2.Api.Level1.Classes;
 using Massini.Flamet2.Api.Level1.Interfaces;
 using Massini.Flamet2.Api.Level1.Structs;
@@ -80,6 +81,14 @@ namespace Massini.Flamet2.Impl.Classes
             return m_surfaceInfo;
         }
 
+        public void a()
+        {
+            Device device = (Device)m_surfaceInfo.Device;
+            VkSurfaceCapabilitiesKHR caps = new VkSurfaceCapabilitiesKHR();
+            Vk.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device.Adapter.VkPhysicalDevicePtr, m_ptr_surface, &caps);
+            
+        }
+        
         internal VkSurfaceKHR_T* VkSurfacePtr => m_ptr_surface;
         
         private bool m_isDisposed = false;

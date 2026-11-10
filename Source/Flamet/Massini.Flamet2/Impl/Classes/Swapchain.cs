@@ -2,6 +2,7 @@
 using Massini.Bindings.Vulkan;
 using Massini.Core;
 using Massini.Core.Math;
+using Massini.Core.Math.Primitives;
 using Massini.Flamet2.Api.Level1.Classes;
 using Massini.Flamet2.Api.Level1.Enums;
 using Massini.Flamet2.Api.Level1.Interfaces;
@@ -15,6 +16,21 @@ namespace Massini.Flamet2.Impl.Classes
         public Swapchain(Device i_device, in SwapchainCreateParams i_createParams)
         {
             Surface surface = (Surface)i_createParams.p_surface;
+
+            // Clamp extent.
+            
+            Device device = (Device)surface.GetInfo().Device;
+            VkSurfaceCapabilitiesKHR caps = new VkSurfaceCapabilitiesKHR();
+            Vk.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(device.Adapter.VkPhysicalDevicePtr, surface.VkSurfacePtr, &caps);
+            
+            Vec2<uint> extent = Vec2<uint>.Zero;
+            extent.Width = Math<uint>.Clamp(i_createParams.p_size.Width, caps.minImageExtent.width, caps.maxImageExtent.width);
+            extent.Height = Math<uint>.Clamp(i_createParams.p_size.Height, caps.minImageExtent.height, caps.maxImageExtent.height);
+            
+            // Clamp frame count.
+            // When maxImageCount == 0 there isn't a maximum limit of frames.
+            uint maxFrameCount = caps.maxImageCount == 0 ? uint.MaxValue : caps.maxImageCount;
+            uint frameCount = Math<uint>.Clamp(i_createParams.p_frameCount, caps.minImageCount, maxFrameCount);
             
             VkSwapchainKHR_T* swapchain = CreateSwapchain(
                 i_device,
@@ -23,10 +39,8 @@ namespace Massini.Flamet2.Impl.Classes
                 i_createParams.p_colorFormat,
                 i_createParams.p_colorSpace,
                 i_createParams.p_compositeAlphaMode,
-                i_createParams.p_frameCount,
-                i_createParams.p_size.Width,
-                i_createParams.p_size.Height,
-                out uint clampedFrameCount);
+                frameCount,
+                extent);
 
             if (swapchain == null)
             {
@@ -37,7 +51,7 @@ namespace Massini.Flamet2.Impl.Classes
                 i_device,
                 swapchain,
                 i_createParams.p_colorFormat,
-                clampedFrameCount,
+                frameCount,
                 i_createParams.p_size.Width,
                 i_createParams.p_size.Height,
                 out var colorTextures,
@@ -45,7 +59,7 @@ namespace Massini.Flamet2.Impl.Classes
 
             CreateRenderSurfaceSynchronizationPrimitives(
                 i_device,
-                clampedFrameCount,
+                frameCount,
                 out var imageAvailableSemaphores,
                 out var renderFinishedSemaphores);
 
@@ -60,8 +74,8 @@ namespace Massini.Flamet2.Impl.Classes
                 Id = Rid.NewId(),
                 Device = i_device,
                 Surface = i_createParams.p_surface,
-                Extent = i_createParams.p_size,
-                FrameCount = clampedFrameCount,
+                Extent = extent,
+                FrameCount = frameCount,
             };
         }
         
@@ -201,10 +215,8 @@ namespace Massini.Flamet2.Impl.Classes
             TextureFormat i_colorFormat,
             ColorSpace i_colorSpace,
             CompositeAlphaModeFlags i_compositeAlphaMode,
-            uint i_maxFramesInFlight,
-            uint i_width,
-            uint i_height,
-            out uint o_clampedFrameCount)
+            uint i_frameCount,
+            Vec2<uint> i_extent)
         {
             Adapter adapter = i_device.Adapter;
 
@@ -225,12 +237,6 @@ namespace Massini.Flamet2.Impl.Classes
             VkFormat selectedFormat = IntSharedCvs.TextureFormatToVkFormat(i_colorFormat);
             VkColorSpaceKHR selectedColorSpace = IntSharedCvs.ColorSpaceToVkColorSpaceKhr(i_colorSpace);
 
-            VkSurfaceCapabilitiesKHR surfaceCapabilitiesKhr = new();
-            Vk.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(adapter.VkPhysicalDevicePtr, i_surface.VkSurfacePtr, &surfaceCapabilitiesKhr);
-
-            o_clampedFrameCount = Math<uint>.Min(i_maxFramesInFlight, surfaceCapabilitiesKhr.maxImageCount);
-            o_clampedFrameCount = Math<uint>.Max(o_clampedFrameCount, surfaceCapabilitiesKhr.minImageCount);
-
             // TODO: Change queue mode to concurrent.
             
             uint queueFamilyIndex = 0;
@@ -239,10 +245,10 @@ namespace Massini.Flamet2.Impl.Classes
                 sType = VkStructureType.VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,
                 pNext = null,
                 surface = i_surface.VkSurfacePtr,
-                minImageCount = o_clampedFrameCount,
+                minImageCount = i_frameCount,
                 imageFormat = selectedFormat,
                 imageColorSpace = selectedColorSpace,
-                imageExtent = new VkExtent2D { width = i_width, height = i_height },
+                imageExtent = new VkExtent2D { width = i_extent.Width, height = i_extent.Height },
                 preTransform = VkSurfaceTransformFlagBitsKHR.VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR,
                 compositeAlpha = IntSharedCvs.CompositeAlphaModeFlagsToVkCompositeAlphaFlagBitsKhr(i_compositeAlphaMode),
                 presentMode = selectedPresentMode,
@@ -298,7 +304,7 @@ namespace Massini.Flamet2.Impl.Classes
                     },
                     IntSharedCvs.TextureFormatToVkFormat(i_colorFormat),
                     VkImageType.VK_IMAGE_TYPE_2D,
-                    uint.MaxValue,
+                    Vk.VK_QUEUE_FAMILY_EXTERNAL,
                     ONE,
                     VkSampleCountFlagBits.VK_SAMPLE_COUNT_1_BIT,
                     true);

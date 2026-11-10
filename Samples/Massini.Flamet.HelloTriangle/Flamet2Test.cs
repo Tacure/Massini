@@ -32,14 +32,16 @@ namespace Massini.Flamet.HelloTriangle
                     else if (@event.Type == (uint)SDL3.SDL.EventType.WindowPixelSizeChanged)
                     {
                         // Get new window size.
-                        if (!SDL3.SDL.GetWindowSize(window, out var width, out var height))
+                        if (!SDL3.SDL.GetWindowSizeInPixels(window, out var width, out var height))
                         {
-                            throw new Exception("Failed to get window size.");
+                            throw new Exception($"Failed to get window size. {SDL3.SDL.GetError()}");
                         }
                         
                         // Make sure the viewport size is at least 1.
                         width = Math<int>.Max(width, 1);
                         height = Math<int>.Max(height, 1);
+                        
+                        OnWindowResize(new Vec2<uint>((uint)width, (uint)height));
                     }
                 }
 
@@ -62,7 +64,14 @@ namespace Massini.Flamet.HelloTriangle
             {
                 p_enableDebugMode = true,
                 p_enableSwapchain = true,
-                p_logCallback = (level, message) => Console.WriteLine($"{level}: {message}"),
+                p_windowManager = WindowManager.X11,
+                p_logCallback = (level, message) =>
+                {
+                    if (level == LogLevel.Error)
+                    {
+                        Console.WriteLine($"{level}: {message}");
+                    }
+                },
             }, new AdapterSelector());
 
             m_lane = m_device.GetLanes().First(lane =>
@@ -99,7 +108,7 @@ namespace Massini.Flamet.HelloTriangle
                 p_colorSpace = ColorSpace.SrgbNonLinear,
                 p_compositeAlphaMode = CompositeAlphaModeFlags.Opaque,
                 p_frameCount = 3,
-                p_size = new Vec2<uint>(800, 600),
+                p_size = m_viewport,
                 p_surface = m_surface,
                 p_presentMode = PresentMode.Fifo,
             });
@@ -140,10 +149,32 @@ namespace Massini.Flamet.HelloTriangle
 
         private static void Quit()
         {
+            m_lane?.WaitIdle();
+            
             m_swapchain?.Dispose();
             m_surface?.Dispose();
             m_setAllocator?.Dispose();
             m_device?.Dispose();
+        }
+
+        private static void OnWindowResize(Vec2<uint> i_size)
+        {
+            m_lane?.WaitIdle();
+            
+            m_viewport = i_size;
+            m_swapchain?.Dispose();
+
+            m_swapchain = m_device!.CreateSwapchain(new SwapchainCreateParams()
+            {
+                p_next = null,
+                p_colorFormat = TextureFormat.BGRA8UnormSrgb,
+                p_colorSpace = ColorSpace.SrgbNonLinear,
+                p_compositeAlphaMode = CompositeAlphaModeFlags.Opaque,
+                p_frameCount = 3,
+                p_size = m_viewport,
+                p_surface = m_surface!,
+                p_presentMode = PresentMode.Fifo,
+            });
         }
         
         private static Vec2<uint> m_viewport = new(800, 600);

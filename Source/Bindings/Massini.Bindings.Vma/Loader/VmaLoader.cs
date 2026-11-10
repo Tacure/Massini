@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace Massini.Bindings.Vma.Loader
 {
+    [Obsolete]
     public static class VmaLoader
     {
         /// <summary>

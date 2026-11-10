@@ -6,9 +6,6 @@ using Massini.Flamet.Enums;
 using Massini.Flamet.Structs;
 using Massini.Flamet.Structs.Level1;
 using Massini.Flamet.Structs.Level1.Commands;
-using Massini.Flamet.Sugar.Classes;
-using Massini.Flamet.Sugar.Extensions;
-using Massini.Flamet.Sugar.Structs;
 using Massini.Core.Interop.Linux;
 using Massini.Core.Math;
 using Massini.Core.Math.Primitives;
@@ -30,9 +27,8 @@ namespace Massini.Flamet.HelloTriangle
         private static Queue? m_queue = null;
         private static Surface? m_surface = null;
         private static Swapchain? m_swapchain = null;
-        private static Kernel? m_kernel = null;
-        private static VertexBuffer<Vertex>? m_vertexBuffer = null;
-        private static IndexBuffer<uint>? m_indexBuffer = null;
+        private static Buffer? m_vertexBuffer = null;
+        private static Buffer? m_indexBuffer = null;
         
         private static Layout? m_layout = null;
         private static Pipeline? m_pipeline = null;
@@ -44,9 +40,13 @@ namespace Massini.Flamet.HelloTriangle
             Flamet2Test.Run();
             return;
             
-            SDL3.SDL.Init(SDL3.SDL.InitFlags.Events | SDL3.SDL.InitFlags.Video);
-            nint window = SDL3.SDL.CreateWindow("Test", (int)m_viewport.Width, (int)m_viewport.Height, SDL3.SDL.WindowFlags.Resizable);
+            Console.WriteLine(Environment.GetEnvironmentVariable("LD_LIBRARY_PATH"));
+            Console.WriteLine(RuntimeInformation.RuntimeIdentifier);
 
+            SDL3.SDL.Init(SDL3.SDL.InitFlags.Events | SDL3.SDL.InitFlags.Video);
+            Console.WriteLine($"Driver: {SDL3.SDL.GetCurrentVideoDriver()}");
+            nint window = SDL3.SDL.CreateWindow("Test", (int)m_viewport.Width, (int)m_viewport.Height, SDL3.SDL.WindowFlags.Resizable);
+            
             m_instance = new Instance(new InstanceCreateParams()
             {
                 p_next = null,
@@ -114,29 +114,6 @@ namespace Massini.Flamet.HelloTriangle
 
             byte[] vertexShader = File.ReadAllBytes("./hello_triangle.vert.spv");
             byte[] fragmentShader = File.ReadAllBytes("./hello_triangle.frag.spv");
-            
-            m_kernel = m_device.CreateKernel(new KernelCreateParams()
-            {
-                p_next = null,
-                p_label = "ShaderLink",
-                p_stages = 
-                [
-                    new ShaderStage()
-                    {
-                        p_next = null,
-                        p_stage = ShaderStageFlags.Vertex,
-                        p_entryPoint = "main",
-                        p_code = vertexShader,
-                    },
-                    new ShaderStage()
-                    {
-                        p_next = null,
-                        p_stage = ShaderStageFlags.Fragment,
-                        p_entryPoint = "main",
-                        p_code = fragmentShader,
-                    },
-                ],
-            });
 
             m_layout = m_device.CreateLayout(new LayoutCreateParams()
             {
@@ -175,15 +152,16 @@ namespace Massini.Flamet.HelloTriangle
                 ],
             });
             
-            m_vertexBuffer = m_device.CreateVertexBuffer<Vertex>(new TypedBufferCreateParams()
+            m_vertexBuffer = m_device.CreateBuffer(new BufferCreateParams()
             {
                 p_next = null,
                 p_label = "Vertex Buffer",
-                p_count = 3,
+                p_size = (ulong)(sizeof(Vertex) * 3),
+                p_type = BufferType.Vertex,
                 p_usage = BufferUsageFlags.HostVisible | BufferUsageFlags.TransferDst,
             });
 
-            m_vertexBuffer.WriteElements([
+            Vertex[] vertices = [
                 new Vertex {
                     p_position = new Vec4<float>(0.0f, -0.5f, 0.0f, 1.0f),
                     p_color    = new Vec3<float>(1.0f, 0.0f, 0.0f)
@@ -196,18 +174,29 @@ namespace Massini.Flamet.HelloTriangle
                     p_position = new Vec4<float>(-0.5f, 0.5f, 0.0f, 1.0f),
                     p_color    = new Vec3<float>(0.0f, 0.0f, 1.0f)
                 }
-            ]);
+            ];
 
-            m_indexBuffer = m_device.CreateIndexBuffer<uint>(new TypedBufferCreateParams()
+            fixed (Vertex* vertexPtr = vertices)
+            {
+                m_vertexBuffer.WriteBytes(new ReadOnlySpan<byte>(vertexPtr, vertices.Length * sizeof(Vertex)));
+            }
+
+            m_indexBuffer = m_device.CreateBuffer(new BufferCreateParams()
             {
                 p_next = null,
                 p_label = "Index Buffer",
-                p_count = 3,
+                p_size = sizeof(uint) * 3,
+                p_type = BufferType.Index,
                 p_usage = BufferUsageFlags.HostVisible | BufferUsageFlags.TransferDst,
             });
 
-            m_indexBuffer.WriteElements([0, 1, 2]);
-            
+            uint[] indices = [0, 1, 2];
+
+            fixed (uint* indicesPtr = indices)
+            {
+                m_indexBuffer.WriteBytes(new ReadOnlySpan<byte>(indicesPtr, indices.Length * sizeof(uint)));
+            }
+
             bool quit = false;
             double lastTime = 0.0;
             while (!quit)
@@ -263,8 +252,6 @@ namespace Massini.Flamet.HelloTriangle
             
             m_indexBuffer.Dispose();
             m_vertexBuffer.Dispose();
-
-            m_kernel.Dispose();
             
             m_pipeline.Dispose();
             m_layout.Dispose();
@@ -278,7 +265,7 @@ namespace Massini.Flamet.HelloTriangle
             SDL3.SDL.Quit();
         }
 
-        private static void Update(TimeSpan i_deltaTime)
+        private static unsafe void Update(TimeSpan i_deltaTime)
         {
             m_swapchain!.BeginFrame(new SwapchainBeginFrameParams
             {
@@ -352,7 +339,7 @@ namespace Massini.Flamet.HelloTriangle
                 {
                     p_binding = 0,
                     p_stepMode = VertexStepMode.Vertex,
-                    p_stride  = (uint)m_vertexBuffer!.ElementSize,
+                    p_stride  = (uint)sizeof(Vertex),
                     p_attributes = 
                     [
                         new VertexAttribute()

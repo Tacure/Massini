@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace Massini.Bindings.Vulkan.Loader
 {
+    [Obsolete]
     public static class VulkanLoader
     {
         /// <summary>
@@ -41,7 +42,7 @@ namespace Massini.Bindings.Vulkan.Loader
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 return ["vulkan-1.dll"];
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                return ["libvulkan.so"];
+                return ["libvulkan.so", "libvulkan.so.1"];
             else
                 throw new PlatformNotSupportedException(RuntimeInformation.OSDescription);
             return [];

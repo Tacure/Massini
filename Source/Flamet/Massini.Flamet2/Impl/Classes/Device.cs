@@ -20,6 +20,7 @@ namespace Massini.Flamet2.Impl.Classes
             m_instance = new Instance(new InstanceCreateParams()
             {
                 p_label = "Flamet Instance",
+                p_windowManager = i_createParams.p_windowManager,
                 p_features = new InstanceFeatures()
                 {
                     p_debugUtils = i_createParams.p_enableDebugMode,

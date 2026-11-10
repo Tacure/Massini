@@ -102,11 +102,20 @@ namespace Massini.Core.Math
             return true;
         }
 
+        /// <summary>
+        /// Swaps two values.
+        /// </summary>
         public static void Swap(ref T i_val1, ref T i_val2)
         {
-            T temp = i_val1;
-            i_val1 = i_val2;
-            i_val2 = temp;
+            (i_val1, i_val2) = (i_val2, i_val1);
+        }
+
+        /// <summary>
+        /// Clamps the value within the given range.
+        /// </summary>
+        public static T Clamp(T i_val, T i_min, T i_max)
+        {
+            return T.Clamp(i_val, i_min, i_max);
         }
 
         #endregion
@@ -220,14 +229,6 @@ namespace Massini.Core.Math
             public static T Ceiling(T i_val)
             {
                 return T.Ceiling(i_val);
-            }
-
-            /// <summary>
-            /// Clamps the value within the given range.
-            /// </summary>
-            public static T Clamp(T i_val, T i_min, T i_max)
-            {
-                return T.Clamp(i_val, i_min, i_max);
             }
 
             /// <summary>

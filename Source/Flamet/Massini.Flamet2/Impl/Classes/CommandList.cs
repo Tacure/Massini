@@ -344,13 +344,8 @@ namespace Massini.Flamet2.Impl.Classes
                         subresourceState.p_stageMask == i_dstStageMask &&
                         subresourceState.p_queueFamilyIndex == m_lane.FamilyIndex) continue;
                     
-                    uint srcQueueFamilyIdx = Vk.VK_QUEUE_FAMILY_IGNORED;
-                    uint dstQueueFamilyIdx = Vk.VK_QUEUE_FAMILY_IGNORED;
-                    if (subresourceState.p_queueFamilyIndex != m_lane.FamilyIndex)
-                    {
-                        srcQueueFamilyIdx = subresourceState.p_queueFamilyIndex;
-                        dstQueueFamilyIdx = m_lane.FamilyIndex;
-                    }
+                    uint srcQueueFamilyIdx = subresourceState.p_queueFamilyIndex;
+                    uint dstQueueFamilyIdx = m_lane.FamilyIndex;
                     
                     barriers[usedBarriers] = new VkImageMemoryBarrier2()
                     {
@@ -377,6 +372,7 @@ namespace Massini.Flamet2.Impl.Classes
                     subresourceState.p_layout = i_newLayout;
                     subresourceState.p_accessMask = i_dstAccessMask;
                     subresourceState.p_stageMask = i_dstStageMask;
+                    subresourceState.p_queueFamilyIndex = dstQueueFamilyIdx;
 
                     usedBarriers++;
                 }
