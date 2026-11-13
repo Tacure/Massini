@@ -15,6 +15,7 @@
     <Project Path="Source/Bindings/Massini.Bindings.Vulkan/Massini.Bindings.Vulkan.csproj" />
     <Project Path="Source/Bindings/Massini.Bindings.Common/Massini.Bindings.Common.csproj" />
     <Project Path="Source/Bindings/Massini.Bindings.Vma/Massini.Bindings.Vma.csproj" />
+    <Project Path="Source/Bindings/Massini.Bindings.Wgpu/Massini.Bindings.Wgpu.csproj" />
     <Project Path="Source/Bindings/Massini.runtime.linux-x64.vma/Massini.runtime.linux-x64.vma.csproj" />
     <Project Path="Source/Bindings/Massini.runtime.linux-x64.vulkan/Massini.runtime.linux-x64.vulkan.csproj" />
     <Project Path="Source/Bindings/Massini.runtime.win-x64.vma/Massini.runtime.win-x64.vma.csproj" />
