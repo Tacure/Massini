@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net11.0</TargetFramework>
+        <RootNamespace>Massini.runtime.win_x64.wgpu</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\..\Native\Binaries\win-x64\wgpu_native.dll" Pack="true">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <RelativeRuntimePath>runtimes/win-x64/native/wgpu_native.dll</RelativeRuntimePath>
+
+            <PackagePath>%(RelativeRuntimePath)</PackagePath>
+            <TargetPath>%(RelativeRuntimePath)</TargetPath>
+        </None>
+    </ItemGroup>
+    
+</Project>

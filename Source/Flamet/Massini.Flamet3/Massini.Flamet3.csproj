@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net11.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Bindings\Massini.Bindings.Wgpu\Massini.Bindings.Wgpu.csproj" />
+      <ProjectReference Include="..\..\Core\Massini.Core.Math\Massini.Core.Math.csproj" />
+      <ProjectReference Include="..\..\Core\Massini.Core\Massini.Core.csproj" />
+    </ItemGroup>
+
+</Project>

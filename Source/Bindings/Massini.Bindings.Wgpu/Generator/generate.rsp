@@ -1,0 +1,45 @@
+# Library name
+-l
+wgpu
+
+# Methods class name
+--method-class-name
+Wgpu
+
+# Additional includes
+--include-directory
+./Include
+
+# Input header file
+--file
+./Include/wgpu.h
+
+# Core types/functions.
+
+--traverse
+./Include/webgpu.h
+
+# Output namespace for the generated C# code
+--namespace
+Massini.Bindings.Wgpu
+
+# Output directory for the generated files
+--output
+../Interop/
+
+# Include directories for the C/C++ headers
+--include-directory
+./Include
+
+# Language of the input headers (c or c++)
+--language
+c
+
+# Optional: Configuration options
+
+--config
+file=multi
+
+--generate
+helper-types
+macro-bindings

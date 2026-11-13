@@ -1,0 +1,2 @@
+- Add a folder named "Include" with the Wgpu and Webgpu headers.
+- Run the generator script.

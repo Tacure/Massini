@@ -20,9 +20,11 @@
     <Project Path="Source/Bindings/Massini.runtime.linux-x64.vulkan/Massini.runtime.linux-x64.vulkan.csproj" />
     <Project Path="Source/Bindings/Massini.runtime.win-x64.vma/Massini.runtime.win-x64.vma.csproj" />
     <Project Path="Source/Bindings/Massini.runtime.win-x64.vulkan/Massini.runtime.win-x64.vulkan.csproj" />
+    <Project Path="Source/Bindings/Massini.runtime.win-x64.wgpu/Massini.runtime.win-x64.wgpu.csproj" />
   </Folder> 
   <Folder Name="/Source/Flamet/">
     <Project Path="Source/Flamet/Massini.Flamet2/Massini.Flamet2.csproj" />
+    <Project Path="Source/Flamet/Massini.Flamet3/Massini.Flamet3.csproj" />
     <Project Path="Source\Flamet\Massini.Flamet.Sugar\Massini.Flamet.Sugar.csproj" />
     <Project Path="Source\Flamet\Massini.Flamet\Massini.Flamet.csproj" />
   </Folder>
